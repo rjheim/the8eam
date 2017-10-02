@@ -6,9 +6,16 @@
 
 # Definitively text files 
 *.txt text
+*.js text
+*.ts text
+*.json text
+*.html text
+*.css text
+*.php text
 *.c text
 *.h text
 
 # Ensure those won't be messed up with
 *.jpg binary
 *.data binary
+*.png binary
