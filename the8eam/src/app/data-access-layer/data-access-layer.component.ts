@@ -1,15 +1,16 @@
+
 import { Component, Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Event } from './event';
 
-@Component({
-  selector: 'app-data-access-layer',
-  templateUrl: './data-access-layer.component.html',
-  styleUrls: ['./data-access-layer.component.css']
-})
+@Component ( {
+  selector: 'app-data-access-layer' ,
+  templateUrl: './data-access-layer.component.html' ,
+  styleUrls: [ './data-access-layer.component.css' ]
+} )
 
-@Injectable()
+@Injectable ()
 export class DataAccessLayerComponent {
   calendar: AngularFirestoreCollection<Event>;
   list: AngularFirestoreCollection<Event>;
@@ -26,7 +27,9 @@ export class DataAccessLayerComponent {
     this.model.report = 0;
   }
 
-  getCalendar() { return this.calendarItems; }
+  getCalendar () {
+    return this.calendarItems;
+  }
 
   getList() { return this.listItems; }
 
