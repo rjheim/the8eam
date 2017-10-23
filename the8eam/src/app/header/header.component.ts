@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor() {
+    // called first time before the ngOnInit()
+  }
 
   ngOnInit() {
+    // called after the constructor and called after the first ngOnChanges() call (which itself is called when input/output values change)
+    // put all logic for this component in here
   }
 
 }
