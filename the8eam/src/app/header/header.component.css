@@ -1,0 +1,30 @@
+div.app-header, div.view-tabs{
+  font-size:2em;
+  font-style:bold;
+  dispaly : block;
+  width : 100%;
+}
+ul.app-header {
+  list-style-type : none;
+  margin : 0;
+  padding : 0 0 5px 0;
+
+}
+ul.app-header li{
+  display : inline;
+  border : 2px solid black;
+}
+ul.app-header li a { padding : 4px; }
+
+ul.view-tabs {
+  list-style-type : none;
+  margin : 0;
+  padding : 0 0 5px 0;
+}
+ul.view-tabs li {
+  display : inline;
+  border : 2px solid black;
+}
+ul.view-tabs li a{ padding : 4px; }
+
+
