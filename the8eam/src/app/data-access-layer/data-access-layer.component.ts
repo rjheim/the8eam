@@ -1,17 +1,8 @@
-import {Component , Injectable} from '@angular/core';
-import {AngularFirestore , AngularFirestoreCollection} from 'angularfire2/firestore';
-import {Observable} from 'rxjs/Observable';
 
-export interface Event {
-  title: string;
-  cost: number;
-  date: string;
-  description: string;
-  genre: string;
-  link: string;
-  location: string;
-  report: number;
-}
+import { Component, Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import { Event } from './event';
 
 @Component ( {
   selector: 'app-data-access-layer' ,
@@ -24,30 +15,49 @@ export class DataAccessLayerComponent {
   calendar: AngularFirestoreCollection<Event>;
   list: AngularFirestoreCollection<Event>;
   calendarItems: Observable<Event[]>;
-  event: Event;
+  listItems: Observable<Event[]>;
+  model: Event;
 
-  constructor ( db: AngularFirestore ) {
-    console.log ( 'Initialized db' );
-    this.calendar = db.collection ( 'calendar' );
-    this.list = db.collection ( 'list' );
-    this.calendarItems = this.calendar.valueChanges ();
-    this.event = {} as Event;
-    this.event.title = 'test';
-    this.event.description = 'test';
-    this.event.genre = 'test';
-    this.event.date = 'test';
-    this.event.location = 'test';
-    this.event.link = 'test';
-    this.event.cost = 10;
-    this.event.report = 0;
+  constructor(db: AngularFirestore) {
+  	this.calendar = db.collection<Event>('calendar');
+  	this.list = db.collection<Event>('list');
+  	this.calendarItems = this.calendar.valueChanges();
+  	this.listItems = this.list.valueChanges();
+    this.model = {} as Event;
+    this.model.report = 0;
   }
 
   getCalendar () {
     return this.calendarItems;
   }
 
-  getList () {
-    return this.list;
+  getList() { return this.listItems; }
+
+  public addToCalendar(event: Event)
+  {
+    this.calendar.add(event);
   }
 
+  addToList(event: Event)
+  {
+  	this.list.add(event);
+  }
+
+  removeFromCalendar(key: string)
+  {
+  	this.calendar.doc(key).delete();
+  }
+
+  removeFromList(key: string)
+  {
+  	this.list.doc(key).delete();
+  }
+
+  practiceAdd(){
+    this.addToCalendar(this.model);
+  }
+
+  practiceRemove(key: string){
+    console.log(key);
+  }
 }
