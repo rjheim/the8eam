@@ -15,6 +15,5 @@ export class AppComponent {
   constructor(dal: DataAccessLayerComponent) {
     this.calendar = dal.getCalendar();
   }
-
 }
 

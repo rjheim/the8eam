@@ -8,7 +8,8 @@
 <h2>Here is our data in a cool list: </h2>
 <ul>
   <li class="text" *ngFor="let event of calendar | async">
-    {{event.title}}, {{event.date}}
+    Title: {{event.title}}, Date: {{event.date}}, Cost: {{event.cost}}, Location: {{event.location}} <br>
+    Genre: {{event.genre}}, Report: {{event.report}}, Description: {{event.description}} <br>
   </li>
 </ul>
 

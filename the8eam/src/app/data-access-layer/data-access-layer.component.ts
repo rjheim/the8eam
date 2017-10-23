@@ -3,17 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { Event } from './event';
 
-export interface Event {
-	title: string;
-	cost: number;
-	date: string;
-	description: string;
-	genre: string;
-	link: string;
-	location: string;
-	report: number;
-}
-
 @Component({
   selector: 'app-data-access-layer',
   templateUrl: './data-access-layer.component.html',
@@ -26,8 +15,6 @@ export class DataAccessLayerComponent {
   list: AngularFirestoreCollection<Event>;
   calendarItems: Observable<Event[]>;
   listItems: Observable<Event[]>;
-  e: Object;
-  event: Event;
   model: Event;
 
   constructor(db: AngularFirestore) {
@@ -35,7 +22,7 @@ export class DataAccessLayerComponent {
   	this.list = db.collection<Event>('list');
   	this.calendarItems = this.calendar.valueChanges();
   	this.listItems = this.list.valueChanges();
-    this.model = new Event;
+    this.model = {} as Event;
     this.model.report = 0;
   }
 
@@ -45,7 +32,7 @@ export class DataAccessLayerComponent {
 
   public addToCalendar(event: Event)
   {
-  	this.calendar.add(event);
+    this.calendar.add(event);
   }
 
   addToList(event: Event)
@@ -64,6 +51,10 @@ export class DataAccessLayerComponent {
   }
 
   practiceAdd(){
-  	this.addToCalendar(this.model);
+    this.addToCalendar(this.model);
+  }
+
+  practiceRemove(key: string){
+    console.log(key);
   }
 }
