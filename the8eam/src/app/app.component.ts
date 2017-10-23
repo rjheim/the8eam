@@ -9,11 +9,12 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  siteTitle = 'the8eam';
   calendar: Observable<any>;
 
   constructor(dal: DataAccessLayerComponent) {
     this.calendar = dal.getCalendar();
   }
+
 }
 

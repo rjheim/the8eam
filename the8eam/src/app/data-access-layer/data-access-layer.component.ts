@@ -1,8 +1,9 @@
 import { Component, Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { Event } from './event';
 
-export interface Event { 
+export interface Event {
 	title: string;
 	cost: number;
 	date: string;
@@ -24,26 +25,45 @@ export class DataAccessLayerComponent {
   calendar: AngularFirestoreCollection<Event>;
   list: AngularFirestoreCollection<Event>;
   calendarItems: Observable<Event[]>;
+  listItems: Observable<Event[]>;
+  e: Object;
   event: Event;
+  model: Event;
 
-  constructor(db: AngularFirestore) { 
-  	console.log("Initialized db");
-  	this.calendar = db.collection('calendar');
-  	this.list = db.collection('list');
+  constructor(db: AngularFirestore) {
+  	this.calendar = db.collection<Event>('calendar');
+  	this.list = db.collection<Event>('list');
   	this.calendarItems = this.calendar.valueChanges();
-  	this.event = {} as Event;
-  	this.event.title = "test";
-  	this.event.description = "test";
-  	this.event.genre = "test";
-  	this.event.date = "test";
-  	this.event.location = "test";
-  	this.event.link = "test";
-  	this.event.cost = 10;
-  	this.event.report = 0;
+  	this.listItems = this.list.valueChanges();
+    this.model = new Event;
+    this.model.report = 0;
   }
 
   getCalendar() { return this.calendarItems; }
 
-  getList() { return this.list; }
+  getList() { return this.listItems; }
 
+  public addToCalendar(event: Event)
+  {
+  	this.calendar.add(event);
+  }
+
+  addToList(event: Event)
+  {
+  	this.list.add(event);
+  }
+
+  removeFromCalendar(key: string)
+  {
+  	this.calendar.doc(key).delete();
+  }
+
+  removeFromList(key: string)
+  {
+  	this.list.doc(key).delete();
+  }
+
+  practiceAdd(){
+  	this.addToCalendar(this.model);
+  }
 }
