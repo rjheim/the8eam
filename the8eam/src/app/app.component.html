@@ -4,23 +4,3 @@
     Welcome to {{siteTitle}}!
   </h1>
 </div>
-
-<h2>Here is our data in a cool calendar list: </h2>
-<ul>
-  <li class="text" *ngFor="let event of calendar | async">
-    Title: {{event.title}}, Date: {{event.date}}, Cost: {{event.cost}}, Location: {{event.location}} <br>
-    Genre: {{event.genre}}, Report: {{event.report}}, Description: {{event.description}}, Link: {{event.link}} <br>
-    <button (click)="removeData(event.id)">Remove</button>
-  </li>
-</ul>
-
-<h2>Here is our data in a cool list list: </h2>
-<ul>
-  <li class="text" *ngFor="let event of list | async">
-    Title: {{event.title}}, Date: {{event.date}}, Cost: {{event.cost}}, Location: {{event.location}} <br>
-    Genre: {{event.genre}}, Report: {{event.report}}, Description: {{event.description}}, Link: {{event.link}} <br>
-    <button (click)="removeData2(event.id)">Remove</button>
-  </li>
-</ul>
-
-<app-data-access-layer></app-data-access-layer>

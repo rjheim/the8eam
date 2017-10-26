@@ -50,7 +50,7 @@ export class DataAccessLayerComponent {
     return this.listItems;
   }
 
-  public addToCalendar(event: Event)
+  addToCalendar(event: Event)
   {
     this.calendar.add(event);
   }
