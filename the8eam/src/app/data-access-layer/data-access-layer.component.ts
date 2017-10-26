@@ -17,13 +17,28 @@ export class DataAccessLayerComponent {
   calendarItems: Observable<Event[]>;
   listItems: Observable<Event[]>;
   model: Event;
+  model2: Event;
 
   constructor(db: AngularFirestore) {
   	this.calendar = db.collection<Event>('calendar');
   	this.list = db.collection<Event>('list');
-  	this.calendarItems = this.calendar.valueChanges();
-  	this.listItems = this.list.valueChanges();
+  	this.calendarItems = this.calendar.snapshotChanges().map(actions => {
+  	  return actions.map(a => {
+        const data = a.payload.doc.data() as Event;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+  	this.listItems = this.list.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Event;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
     this.model = {} as Event;
+    this.model2 = {} as Event;
+    this.model2.report = 0;
     this.model.report = 0;
   }
 
@@ -31,7 +46,9 @@ export class DataAccessLayerComponent {
     return this.calendarItems;
   }
 
-  getList() { return this.listItems; }
+  getList() {
+    return this.listItems;
+  }
 
   public addToCalendar(event: Event)
   {
@@ -57,7 +74,7 @@ export class DataAccessLayerComponent {
     this.addToCalendar(this.model);
   }
 
-  practiceRemove(key: string){
-    console.log(key);
+  practiceAdd2 (){
+    this.addToList(this.model2);
   }
 }

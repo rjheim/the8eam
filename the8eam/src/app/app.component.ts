@@ -11,9 +11,19 @@ import { Observable } from 'rxjs/Observable';
 export class AppComponent {
   siteTitle = 'the8eam';
   calendar: Observable<any>;
+  list: Observable<any>;
 
-  constructor(dal: DataAccessLayerComponent) {
+  constructor(private dal: DataAccessLayerComponent) {
     this.calendar = dal.getCalendar();
+    this.list = dal.getList();
+  }
+
+  removeData(key: string){
+    this.dal.removeFromCalendar(key);
+  }
+
+  removeData2 (key: string) {
+    this.dal.removeFromList(key);
   }
 }
 
