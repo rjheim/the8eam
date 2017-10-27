@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   siteTitle = 'the8eam';
+  view: boolean;
+
+  constructor() {
+    this.view = true;
+  }
+  toggleView() {
+    this.view = !this.view;
+  }
 }
 

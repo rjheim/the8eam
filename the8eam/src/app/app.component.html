@@ -8,4 +8,13 @@
 
 <app-header></app-header>
 
+<button (click)="toggleView()">Switch views</button>
+
+<div *ngIf="view">
+  <app-event-list-data></app-event-list-data>
+</div>
+
+<div *ngIf="!view">
+  <app-event-calendar-data></app-event-calendar-data>
+</div>
 
