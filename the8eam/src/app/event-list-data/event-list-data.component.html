@@ -2,10 +2,6 @@
   event-list-data works!
 </p>
 
-<div>
-  <ul>
-    <li *ngFor="let event of listItems | async">
-      {{event.title}}, {{event.date}}, {{event.description}}
-    </li>
-  </ul>
+<div *ngFor="let event of listItems | async" id="container-fluid">
+     <app-event [eventItem] = 'event'></app-event>
 </div>
