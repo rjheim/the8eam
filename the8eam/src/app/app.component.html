@@ -8,11 +8,4 @@
 
 <app-header></app-header>
 
-<button (click)="toggleView()">Switch views</button>
-
-<div class="container-fluid">
-  <app-event-list-data *ngIf="view" class="row"></app-event-list-data>
-
-  <app-event-calendar-data *ngIf="!view" class="row"></app-event-calendar-data>
-</div>
 

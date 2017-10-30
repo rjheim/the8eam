@@ -1,5 +1,5 @@
 <p>
-  Add to Calendar Collection!
+  Add to Collection!
 </p>
 
 <form (ngSubmit)="practiceAdd()" >
@@ -8,6 +8,12 @@
     <input type="text" class="form-control" id="title"
            ngModel required
            [(ngModel)]="model.title" name="title">
+  </div>
+  <div class="form-group">
+    <label for="time">Time</label>
+    <input type="text" class="form-control" id="time"
+           ngModel required
+           [(ngModel)]="model.time" name="time">
   </div>
   <div class="form-group">
     <label for="date">Date</label>
@@ -38,51 +44,6 @@
     <label for="genre">Genre</label>
     <input type="text"  class="form-control" id="genre"
            [(ngModel)]="model.genre" name="genre">
-  </div>
-
-  <button type="submit">Submit</button>
-</form>
-
-<p>
-  Add to List Collection!
-</p>
-
-<form (ngSubmit)="practiceAdd2()" >
-  <div class="form-group">
-    <label for="title2">Title</label>
-    <input type="text" class="form-control" id="title2"
-           ngModel required
-           [(ngModel)]="model2.title" name="title2">
-  </div>
-  <div class="form-group">
-    <label for="date2">Date</label>
-    <input type="text"  class="form-control" id="date2"
-           [(ngModel)]="model2.date" name="date2">
-  </div>
-  <div class="form-group">
-    <label for="description2">Description</label>
-    <input type="text"  class="form-control" id="description2"
-           [(ngModel)]="model2.description" name="description">
-  </div>
-  <div class="form-group">
-    <label for="cost2">Cost</label>
-    <input type="number"  class="form-control" id="cost2"
-           [(ngModel)]="model2.cost" name="cost2">
-  </div>
-  <div class="form-group">
-    <label for="link2">Link</label>
-    <input type="text"  class="form-control" id="link2"
-           [(ngModel)]="model2.link" name="link2">
-  </div>
-  <div class="form-group">
-    <label for="loc2">Location</label>
-    <input type="text"  class="form-control" id="loc2"
-           [(ngModel)]="model2.location" name="loc2">
-  </div>
-  <div class="form-group">
-    <label for="genre2">Genre</label>
-    <input type="text"  class="form-control" id="genre2"
-           [(ngModel)]="model2.genre" name="genre2">
   </div>
 
   <button type="submit">Submit</button>
