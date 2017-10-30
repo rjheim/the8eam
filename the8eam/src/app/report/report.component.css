@@ -57,7 +57,6 @@ textarea{
 }
 #submitbutton
 {
-  margin-left: 1em;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -86,6 +85,6 @@ textarea{
   margin: 4px 2px;
   cursor: pointer;
   position: relative;
-  top: 0.1px;
+  top: 1px;
   left: 260px;
 }

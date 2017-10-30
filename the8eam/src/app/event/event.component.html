@@ -1,16 +1,18 @@
-<div *ngIf="eventItem&&eventItem.title" class="row eventItem">
-
-  <div class="eventInfo col-sm-8">
-    <h1>{{eventItem.title}}</h1>
-    <h2>{{eventItem.date}}</h2>
+<div *ngIf="eventItem&&eventItem.title" class="eventItem">
+  <div class="row">
+    <div class="eventTags col-sm-2" *ngIf="eventItem.genre">
+      <img src="../../assets/note.png" *ngIf="eventItem.genre=='music'" (resize)="">
+    </div>
+    <div class="eventInfo col-sm-10">
+      <h1>{{eventItem.title}}</h1>
+      <h2>{{eventItem.date}}<span *ngIf="eventItem.time">, {{eventItem.time}}</span></h2>
+    </div>
   </div>
-
-  <div class="eventTags col-sm-4" *ngIf="eventItem.genre">
-    <p>{{eventItem.genre}}</p>
+  <div id="showDescription">
+    <div class="row">
+      <div class="col-xs-12 eventDescription"*ngIf="eventItem.description">
+        <p>{{eventItem.description}}</p>
+      </div>
+    </div>
   </div>
-
-  <div class="col-xs-12 eventDescription"*ngIf="eventItem.description">
-    <p>{{eventItem.description}}</p>
-  </div>
-
 </div>
