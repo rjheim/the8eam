@@ -21,6 +21,7 @@ export class RssComponent implements OnInit {
 
   constructor(private dal: DataAccessLayerComponent) {
     this.eventToAdd = {} as Event;
+    //this.calendar = db.collection<Event>('calendar');
   }
 
   testRSS() {
@@ -28,8 +29,40 @@ export class RssComponent implements OnInit {
     // rssGet = require('rss-to-json');
 
     rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
-      console.log(rss);
+      //console.log(rss);
+
+
+      // get the specific items (go one layer down)
+      var items = rss["items"];
+      for (var key in items) {
+
+        var title = items[key]["title"];
+        var titleIndex = title.indexOf(" - ");
+        var timeIndex = title.indexOf(" @ ");
+
+        // parse in the event name
+        var eventName = title.substring(0, titleIndex);
+        console.log(title.substring(0, titleIndex));
+
+        // parse the event time
+        var time = title.substring(titleIndex + 3, timeIndex);
+        console.log(title.substring(titleIndex + 3, timeIndex));
+
+        // parse the location
+        var location = title.substring(timeIndex + 3);
+        console.log(title.substring(timeIndex + 3));
+
+        var description = items[key][" description"];
+        var link = items[key]["link"];
+
+        // COST PARSING GOES HERE
+
+
+      }
     });
+
+
+
   }
 
   ngOnInit(){
