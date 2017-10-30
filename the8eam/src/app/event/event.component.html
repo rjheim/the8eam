@@ -1,5 +1,16 @@
-<div>
-  <h1>{{eventItem.title}}</h1>
-  <h2>{{eventItem.date}}</h2>
-  <p>{{eventItem.description}}</p>
+<div *ngIf="eventItem&&eventItem.title" class="row eventItem">
+
+  <div class="eventInfo col-sm-8">
+    <h1>{{eventItem.title}}</h1>
+    <h2>{{eventItem.date}}</h2>
+  </div>
+
+  <div class="eventTags col-sm-4" *ngIf="eventItem.genre">
+    <p>{{eventItem.genre}}</p>
+  </div>
+
+  <div class="col-xs-12 eventDescription"*ngIf="eventItem.description">
+    <p>{{eventItem.description}}</p>
+  </div>
+
 </div>

@@ -10,11 +10,9 @@
 
 <button (click)="toggleView()">Switch views</button>
 
-<div *ngIf="view">
-  <app-event-list-data></app-event-list-data>
-</div>
+<div class="container-fluid">
+  <app-event-list-data *ngIf="view" class="row"></app-event-list-data>
 
-<div *ngIf="!view">
-  <app-event-calendar-data></app-event-calendar-data>
+  <app-event-calendar-data *ngIf="!view" class="row"></app-event-calendar-data>
 </div>
 

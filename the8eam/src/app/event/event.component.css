@@ -1,4 +1,10 @@
-div {
+div.eventItem {
   border: solid 3px black;
   margin: 5px 0 5px 0;
+}
+.eventDescription {
+  text-align : left;
+}
+p.eventDescription {
+  margin: 0 5% 0 5%;
 }
