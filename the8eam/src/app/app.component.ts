@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  view: boolean;
+
+  constructor() {
+    this.view = true;
+  }
+  toggleView() {
+    this.view = true;
+  }
+  toggleView2() {
+    this.view = false;
+
+  }
 }
+
