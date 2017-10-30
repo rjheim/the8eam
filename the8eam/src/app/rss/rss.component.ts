@@ -5,6 +5,7 @@ import { Event } from '../data-access-layer/event';
 import { rss } from 'rss-to-json/src/rss';
 import { xml2js } from 'xml2js';
 import { request } from 'request';
+import * as rssGet from 'rss-to-json'
 //import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -18,15 +19,15 @@ export class RssComponent implements OnInit {
   calendar: AngularFirestoreCollection<Event>;
   list: AngularFirestoreCollection<Event>;
 
-  constructor(private dal: DataAccessLayerComponent, private require: request) {
+  constructor(private dal: DataAccessLayerComponent) {
     this.eventToAdd = {} as Event;
   }
 
   testRSS() {
 
-    var rssGet = this.require.require('rss-to-json');
+    // rssGet = require('rss-to-json');
 
-    rssGet.load('https://isthmus.com/search/event/calendar-of-events/#page=1', function (err, rss) {
+    rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
       console.log(rss);
     });
   }
