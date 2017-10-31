@@ -1,4 +1,4 @@
 
-<div *ngFor="let event of listItems | async" class="row">
+<div *ngFor="let event of listItems | async | report:event" class="row">
      <app-event [eventItem] = 'event'></app-event>
 </div>

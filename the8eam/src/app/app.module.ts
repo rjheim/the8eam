@@ -14,6 +14,7 @@ import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { SearchComponent } from './search/search.component';
 import { ReportComponent } from './report/report.component';
 import { EventComponent } from './event/event.component';
+import { ReportPipe } from './report.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -36,7 +37,8 @@ export const firebaseConfig = {
     OptionsMenuComponent,
     SearchComponent,
     ReportComponent,
-    EventComponent
+    EventComponent,
+    ReportPipe
   ],
   imports: [
     BrowserModule,

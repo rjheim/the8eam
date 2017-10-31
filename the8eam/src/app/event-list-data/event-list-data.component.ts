@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataAccessLayerComponent } from '../data-access-layer/data-access-layer.component';
 import {Observable} from 'rxjs/Observable';
+import { ReportPipe } from "../report.pipe";
 
 @Component({
   selector: 'app-event-list-data',
@@ -10,6 +11,8 @@ import {Observable} from 'rxjs/Observable';
 })
 export class EventListDataComponent implements OnInit {
   listItems: Observable<any>;
+  report: Event;
+
   constructor(private dal: DataAccessLayerComponent) {
     this.listItems = dal.getList();
   }
