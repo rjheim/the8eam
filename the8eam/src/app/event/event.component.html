@@ -1,7 +1,7 @@
 <div *ngIf="eventItem&&eventItem.title" class="eventItem">
   <div class="row">
     <div class="eventTags col-sm-2" *ngIf="eventItem.genre">
-      <img src="../../assets/note.png" *ngIf="eventItem.genre=='music'" (resize)="">
+      <img src="../../assets/note.png" *ngIf="eventItem.genre=='music'">
     </div>
     <div class="eventInfo col-sm-10">
       <h1>{{eventItem.title}}</h1>
