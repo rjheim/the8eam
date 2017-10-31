@@ -1,22 +1,30 @@
-<form>
-  <h2 style="color: #ff3021">Report</h2>
-  <button type="button" id = "close">
-    <span>Close</span>
-  </button>
-  <div>
-    <label for="description" style="color: #c5dcb0">*Description</label>
-    <textarea id = "description"></textarea>
+<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+     [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Report</h2>
+        <button (click)="hide()" class="pull-right" type="button">
+          <span>Close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label for="description">*Description</label>
+          <textarea id = "description"></textarea>
+        </div>
+        <h4>{{eventItem.id}}</h4>
+
+        <div>
+          <label for="email">Email</label>
+          <input type = "email" id = "email">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class = "button">
+          <button type="submit" id = "submitbutton">Submit</button>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <label for="email" style="color: #c5dcb0">Email</label>
-    <input type = "email" id = "email">
-  </div>
-
-  <div class = "button">
-    <button type="submit" id = "submitbutton">Submit</button>
-  </div>
-
-  <h4 style ="color: #c5dcb0">*Required</h4>
-
-</form>
+</div>

@@ -1,10 +1,16 @@
 div.eventItem {
   border: solid 3px black;
-  margin: 5px 0 5px 0;
 }
 .eventDescription {
   text-align : left;
 }
 p.eventDescription {
-  margin: 0 5% 0 5%;
+}
+
+div.genre-music {
+  background-image: url('../../assets/note.png');
+  width: 50px;
+  height: 50px;
+  -webkit-background-size: 100%;
+  background-size: 100%;
 }
