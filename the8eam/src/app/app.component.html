@@ -7,7 +7,21 @@
 </div>
 
 <app-header></app-header>
-<div class="container-fluid">
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 no-gutter">
+    <button type="button" class="button" (click)="toggleView()">List</button>
+    </div>
+    <div class="col-xs-6 no-gutter">
+    <button type="button" class="button" (click)="toggleView2()">Calendar</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="view" class="container-fluid">
   <app-event-list-data></app-event-list-data>
 </div>
 
+<div *ngIf="!view">
+  <app-event-calendar-data></app-event-calendar-data>
+</div>
