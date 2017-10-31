@@ -1,13 +1,17 @@
-<div *ngIf="eventItem&&eventItem.title" class="eventItem">
+<div *ngIf="eventItem&&eventItem.title" class="eventItem col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
   <div class="row">
-    <div class="eventTags col-sm-2" *ngIf="eventItem.genre">
-      <img src="../../assets/note.png" *ngIf="eventItem.genre=='music'">
+    <div class="eventTags col-xs-2" *ngIf="eventItem.genre">
+      <div class="genre-music" *ngIf="eventItem.genre=='music'"></div>
     </div>
-    <div class="eventInfo col-sm-10">
+    <div class="eventInfo col-xs-9">
       <h1>{{eventItem.title}}</h1>
       <h2>{{eventItem.date}}<span *ngIf="eventItem.time">, {{eventItem.time}}</span></h2>
     </div>
+    <div class="reportButton col-xs-1">
+      <button (click)="reportModal.show()">Report</button>
+    </div>
   </div>
+
   <div id="showDescription">
     <div class="row">
       <div class="col-xs-12 eventDescription"*ngIf="eventItem.description">
@@ -15,4 +19,9 @@
       </div>
     </div>
   </div>
+
 </div>
+
+<app-report [eventItem] = 'eventItem' #reportModal></app-report>
+
+

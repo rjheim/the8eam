@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Event } from '../data-access-layer/event';
 
 @Component({
   selector: 'app-event',
@@ -8,11 +8,16 @@ import {Observable} from 'rxjs/Observable';
 })
 export class EventComponent implements OnInit {
   @Input()
-  eventItem:Observable<any>;
-
+  eventItem: Event;
+  reporting = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  /*
+     Triggers the report modul to open
+   */
+  reportWindow() {
+    this.reporting = !this.reporting;
+  }
 }

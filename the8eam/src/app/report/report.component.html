@@ -1,24 +1,30 @@
-<form>
-  <button type="button" id = "close">
-    <span>Close</span>
-  </button>
+<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+     [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Report</h2>
+        <button (click)="hide()" class="pull-right" type="button">
+          <span>Close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label for="description">*Description</label>
+          <textarea id = "description"></textarea>
+        </div>
+        <h4>{{eventItem.id}}</h4>
 
-  <h2>Report</h2>
-
-  <div>
-    <label for="description">*Description</label>
-    <textarea id = "description"></textarea>
+        <div>
+          <label for="email">Email</label>
+          <input type = "email" id = "email">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class = "button">
+          <button type="submit" id = "submitbutton">Submit</button>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <label for="email">Email</label>
-    <input type = "email" id = "email">
-  </div>
-
-  <div class = "button">
-    <button type="submit" id = "submitbutton">Submit</button>
-  </div>
-
-  <h4>(* Required)</h4>
-
-</form>
+</div>
