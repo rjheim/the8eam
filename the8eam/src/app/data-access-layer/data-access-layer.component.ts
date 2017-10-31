@@ -43,6 +43,11 @@ export class DataAccessLayerComponent {
   	this.list.doc(key).delete();
   }
 
+  updateDoc(key: string, event: Event)
+  {
+    this.list.doc(key).update(event);
+  }
+
   practiceAdd(){
     this.addToList(this.model);
   }
