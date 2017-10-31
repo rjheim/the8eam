@@ -1,9 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-
-<button (click)="toggleView()">List View</button>
-<button (click)="toggleView2()">Calendar View</button>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 no-gutter">
+    <button type="button" class="button" (click)="toggleView()">List</button>
+    </div>
+    <div class="col-xs-6 no-gutter">
+    <button type="button" class="button" (click)="toggleView2()">Calendar</button>
+    </div>
+  </div>
+</div>
 <div *ngIf="view">
   <app-event-list-data></app-event-list-data>
 </div>
@@ -12,3 +18,4 @@
   <app-event-calendar-data></app-event-calendar-data>
 </div>
 
+u

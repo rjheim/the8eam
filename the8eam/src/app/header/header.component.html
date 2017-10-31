@@ -1,8 +1,38 @@
-<div class="app-header">
-    <ul class="app-header">
-        <li><a>Madison Art Event Calendar</a></li>
-        <li>Search Bar Here</li>
-        <li><a>Options Button</a></li>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-right">
+
+
+      <li>
+        <form action="" class="search-form">
+        <div class="form-group has-feedback">
+          <label for="search" class="sr-only">Search</label>
+          <input type="text" class="form-control" name="search" id="search" placeholder="search">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+      </li>
+
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Options <span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#">Filter 1</a></li>
+          <li><a href="#">Filter 2</a></li>
+          <li><a href="#">Filter 3</a></li>
+        </ul>
+      </li>
     </ul>
-</div>
+    </div>
+  </div>
+</nav>
+
 
