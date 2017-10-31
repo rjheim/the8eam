@@ -1,10 +1,11 @@
 export class Event {
 	title: string;
 	cost: number;
-	date: string;
+	date: number;
 	description: string;
 	genre: string;
 	link: string;
 	location: string;
 	report: number;
+	time: number;
 }
