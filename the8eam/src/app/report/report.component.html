@@ -13,8 +13,7 @@
           <label for="description">*Description</label>
           <textarea id = "description"></textarea>
         </div>
-        <h4>{{eventItem.id}}</h4>
-
+        <h5>{{eventItem.report}}</h5>
         <div>
           <label for="email">Email</label>
           <input type = "email" id = "email">
@@ -22,7 +21,7 @@
       </div>
       <div class="modal-footer">
         <div class = "button">
-          <button type="submit" id = "submitbutton">Submit</button>
+          <button (click)="submitReport(eventItem.id)" type="submit" id = "submitbutton">Submit</button>
         </div>
       </div>
     </div>

@@ -20,8 +20,11 @@ export class ReportComponent implements OnInit {
   }
 
 
-  submitReport(): void{
+  submitReport(id: string): void{
     //to implement
+    this.eventItem.report++;
+    this.dal.updateDoc(id, this.eventItem);
+    this.hide();
   }
 
   /*
