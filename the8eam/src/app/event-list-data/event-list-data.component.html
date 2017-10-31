@@ -1,3 +1,4 @@
-<p>
-  event-list-data works!
-</p>
+
+<div *ngFor="let event of listItems | async" class="col-xs-12">
+     <app-event [eventItem] = 'event'></app-event>
+</div>

@@ -1,12 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<app-header></app-header>
 
-<div style="text-align:center">
-  <h1>
-    Welcome to {{siteTitle}}!
-  </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 no-gutter">
+    <button type="button" class="button" (click)="toggleView()">List</button>
+    </div>
+    <div class="col-xs-6 no-gutter">
+    <button type="button" class="button" (click)="toggleView2()">Calendar</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="view" class="container-fluid">
+  <app-event-list-data></app-event-list-data>
 </div>
 
-<app-header></app-header>
-<app-rss></app-rss>
-
-
+<div *ngIf="!view">
+  <app-event-calendar-data></app-event-calendar-data>
+</div>
