@@ -1,5 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{siteTitle}}!
+  </h1>
+</div>
+
 <app-header></app-header>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-6 no-gutter">
@@ -10,12 +18,10 @@
     </div>
   </div>
 </div>
-<div *ngIf="view">
+<div *ngIf="view" class="container-fluid">
   <app-event-list-data></app-event-list-data>
 </div>
 
 <div *ngIf="!view">
   <app-event-calendar-data></app-event-calendar-data>
 </div>
-
-u

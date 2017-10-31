@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  
+  siteTitle = 'the8eam';
   view: boolean;
 
   constructor() {
@@ -17,7 +18,6 @@ export class AppComponent {
   }
   toggleView2() {
     this.view = false;
-
   }
 }
 

@@ -1,3 +1,18 @@
-<p>
-  event works!
-</p>
+<div *ngIf="eventItem&&eventItem.title" class="eventItem">
+  <div class="row">
+    <div class="eventTags col-sm-2" *ngIf="eventItem.genre">
+      <img src="../../assets/note.png" *ngIf="eventItem.genre=='music'">
+    </div>
+    <div class="eventInfo col-sm-10">
+      <h1>{{eventItem.title}}</h1>
+      <h2>{{eventItem.date}}<span *ngIf="eventItem.time">, {{eventItem.time}}</span></h2>
+    </div>
+  </div>
+  <div id="showDescription">
+    <div class="row">
+      <div class="col-xs-12 eventDescription"*ngIf="eventItem.description">
+        <p>{{eventItem.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
