@@ -19,7 +19,6 @@ label{
   width: 100px;
 }
 textarea{
-  font: 1em "Segoe UI";
 
   width: 300px;
   height: 100px;
@@ -33,7 +32,6 @@ div{
 }
 
 input{
-  font: 1em "Segoe UI";
 
   width: 300px;
   height: 30px;
@@ -47,7 +45,6 @@ input:focus, textarea:focus{
 
 textarea{
   vertical-align: top;
-  height: 7em;
   resize: vertical;
   border:none;
   background-color: gray;
@@ -68,8 +65,6 @@ textarea{
   background-color: #ff3021;
 
   position: relative;
-  top: -35px;
-  left: 200px;
 
 
 
@@ -78,13 +73,10 @@ textarea{
   border: none;
   background-color: darkblue;
   color: white;
-  padding: 15px 32px;
+  padding:10px;
   text-align: center;
   display: inline-block;
-  font-size: 11px;
   margin: 4px 2px;
   cursor: pointer;
   position: relative;
-  top: 1px;
-  left: 260px;
 }
