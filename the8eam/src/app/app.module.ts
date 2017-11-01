@@ -15,6 +15,11 @@ import { SearchComponent } from './search/search.component';
 import { ReportComponent } from './report/report.component';
 import { EventComponent } from './event/event.component';
 import { ReportPipe } from './report.pipe';
+import { MusicGenrePipe } from './music-genre.pipe';
+import { DanceGenrePipe } from './dance-genre.pipe';
+import { ArtGenrePipe } from './art-genre.pipe';
+import { FoodGenrePipe } from './food-genre.pipe';
+import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -38,7 +43,12 @@ export const firebaseConfig = {
     SearchComponent,
     ReportComponent,
     EventComponent,
-    ReportPipe
+    ReportPipe,
+    MusicGenrePipe,
+    DanceGenrePipe,
+    ArtGenrePipe,
+    FoodGenrePipe,
+    SpokenWordGenrePipe
   ],
   imports: [
     BrowserModule,
