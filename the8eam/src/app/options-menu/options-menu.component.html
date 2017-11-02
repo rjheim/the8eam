@@ -1,20 +1,20 @@
 <div>
   <ul class="nav nav-tabs">
     <li class="active">
-      <a href="#tab1">Genre</a>
+      <a href="#tab1" (click)="genreTab()">Genre</a>
     </li>
     <li>
-      <a href="#">Date</a>
+      <a href="#" (click)="dateTab()">Date</a>
     </li>
     <li>
-      <a href="#">Price</a>
+      <a href="#" (click)="priceTab()">Price</a>
     </li>
     <li>
-      <a href="#">Location</a>
+      <a href="#" (click)="locationTab()">Location</a>
     </li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane fade active in" id="set1">
+    <div *ngIf="genreTabbed" class="tab-pane fade active in" id="set1">
       <div class="tabbable">
         <ul class="nav nav-tabs">
           <li><a href="#">Music</a>
@@ -26,6 +26,48 @@
           <li><a href="#">Dance</a>
           </li>
           <li><a href="#">Spoken Word</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="dateTabbed" class="tab-pane fade active in" id="set2">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a href="#">Today</a>
+          </li>
+          <li><a href="#">Tomorrow</a>
+          </li>
+          <li><a href="#">This Week</a>
+          </li>
+          <li><a href="#">This Month</a>
+          </li>
+          <li><a href="#">Next 3 Months</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="priceTabbed" class="tab-pane fade active in" id="set3">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a href="#">Free</a>
+          </li>
+          <li><a href="#">less than $10</a>
+          </li>
+          <li><a href="#">less than $20</a>
+          </li>
+          <li><a href="#">less than $50</a>
+          </li>
+          <li><a href="#">less than $100</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="locationTabbed" class="tab-pane fade active in" id="set4">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a href="#">Capitol</a>
+          </li>
+          <li><a href="#">UW-Campus</a>
           </li>
         </ul>
       </div>
