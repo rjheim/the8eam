@@ -4,17 +4,27 @@ Madison Arts and Event Calendar
 ##Instructions for Running
 
 Please install the following:
-angluar/cli - 1.4.7 (CURRENT LATEST 10/16)
- sudo npm uninstall -g @angular/cli    (sudo only for mac)
- sudo npm install -g @angular/cli (THIS IS FOR REINSTALL AFTER NODE and NPM IS UPDATED)
+angular/cli - 1.4.7 (CURRENT LATEST 10/16)
+
+`sudo npm uninstall -g @angular/cli`    (sudo only for mac)
+
+`sudo npm install -g @angular/cli` (THIS IS FOR REINSTALL AFTER NODE and NPM IS UPDATED)
+
 Npm - 5.5.1 (CURRENT LATEST 10/16)
- sudo npm uninstall npm -g
- A version of npm comes when you install Node
- npm install npm@latest -g
+
+`sudo npm uninstall npm -g`
+
+A version of npm comes when you install Node
+
+`npm install npm@latest -g`
+
 Node - 6.11.4 (CURRENT LATEST RECOMMENDED 10/16)
- Windows there is a uninstall node application
- Once you clone the new git, change into the directory that contains package.json and use npm install to install all node dependencies.
- Get to the repository, and through command line run npm install. Once that is finished, run ng serve. You can then open up a web browser and navigate to http://localhost:4200/.
+
+Windows there is a uninstall node application
+
+Once you clone the new git, change into the directory that contains package.json and use `npm install` to install all node dependencies.
+
+Get to the repository, and through command line run npm install. Once that is finished, run `ng serve`. You can then open up a web browser and navigate to http://localhost:4200/.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
 
