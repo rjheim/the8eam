@@ -1,0 +1,56 @@
+.search-form{
+  padding-top:0px;
+}
+.search-form .form-group {
+  float: right;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #2d2e30;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+
+  display: inline-block;
+
+}
+.search-form .form-group input.form-control {
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:inline-block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 50%;
+  border-radius: 4px 25px 25px 4px;
+
+}
+
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: white;
+  left: initial;
+  font-size: 14px;
+}
