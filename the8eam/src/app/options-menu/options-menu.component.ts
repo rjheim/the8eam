@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterVarsService } from '../filter-vars.service'
 
 @Component({
   selector: 'app-options-menu',
@@ -10,7 +11,7 @@ export class OptionsMenuComponent implements OnInit {
   priceTabbed = false;
   locationTabbed = false;
   dateTabbed = false;
-  constructor() { }
+  constructor(private filter: FilterVarsService) { }
   genreTab(){
     this.genreTabbed = true;
     this.priceTabbed = !this.genreTabbed;

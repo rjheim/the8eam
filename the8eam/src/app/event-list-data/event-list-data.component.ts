@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-event-list-data',
-  providers: [DataAccessLayerComponent, FilterVarsService],
+  providers: [DataAccessLayerComponent],
   templateUrl: './event-list-data.component.html',
   styleUrls: ['./event-list-data.component.css']
 })

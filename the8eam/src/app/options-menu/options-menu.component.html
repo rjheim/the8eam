@@ -17,15 +17,15 @@
     <div *ngIf="genreTabbed" class="tab-pane fade active in" id="set1">
       <div class="tabbable">
         <ul class="nav nav-tabs">
-          <li><a href="#">Music</a>
+          <li><button (click)="filter.setMusic()">Music</button>
           </li>
-          <li><a href="#">Art</a>
+          <li><button (click)="filter.setArt()">Art</button>
           </li>
-          <li><a href="#">Food</a>
+          <li><button (click)="filter.setFood()">Food</button>
           </li>
-          <li><a href="#">Dance</a>
+          <li><button (click)="filter.setDance()">Dance</button>
           </li>
-          <li><a href="#">Spoken Word</a>
+          <li><button (click)="filter.setSW()">Spoken Word</button>
           </li>
         </ul>
       </div>

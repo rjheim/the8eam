@@ -21,6 +21,7 @@ import { ArtGenrePipe } from './art-genre.pipe';
 import { FoodGenrePipe } from './food-genre.pipe';
 import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
 import { CostPipe } from './cost.pipe';
+import {FilterVarsService} from "./filter-vars.service";
 
 // Must export the config
 export const firebaseConfig = {
@@ -58,7 +59,7 @@ export const firebaseConfig = {
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FilterVarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
