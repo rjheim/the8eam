@@ -1,46 +1,58 @@
-<div>
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a href="#tab1">Genre</a>
-    </li>
-    <li>
-      <a href="#">Date</a>
-    </li>
-    <li>
-      <a href="#">Price</a>
-    </li>
-    <li>
-      <a href="#">Location</a>
-    </li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane fade active in" id="set1">
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li><a href="#">Music</a>
-          </li>
-          <li><a href="#">Art</a>
-          </li>
-          <li><a href="#">Food</a>
-          </li>
-          <li><a href="#">Dance</a>
-          </li>
-          <li><a href="#">Spoken Word</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="btn-group btn-group-justified">
+  <button type="button" class="btn-primary" (click)="clickView()">Genre</button>
+  <button type="button" class="btn-primary" (click)="clickView2()">Date</button>
+  <button type="button" class="btn-primary" (click)="clickView3()">Price</button>
+  <button type="button" class="btn-primary" (click)="clickView4()">Location</button>
+</div>
+
+
+<div *ngIf="genreTab">
+  <div class="btn-group btn-group-justified">
+    <button type="button" class="btn-primary1" >Art</button>
+    <button type="button" class="btn-primary1" >Music</button>
+    <button type="button" class="btn-primary1" >Dance</button>
+    <button type="button" class="btn-primary1" >Food</button>
+    <button type="button" class="btn-primary1" >Spoken Word</button>
   </div>
 </div>
-<div *ngIf="genreTab">
-
-</div>
-<div *ngIf="dateTab">
-
-</div>
 <div *ngIf="priceTab">
-
+  <div class="btn-group btn-group-justified">
+    <button type="button" class="btn-primary1" >Free</button>
+    <button type="button" class="btn-primary1" ><$10</button>
+    <button type="button" class="btn-primary1" >$10-$25</button>
+    <button type="button" class="btn-primary1" >$25-$50</button>
+    <button type="button" class="btn-primary1" >$50-$100</button>
+  </div>
 </div>
 <div *ngIf="locationTab">
-
+  <div class="btn-group btn-group-justified">
+    <button type="button" class="btn-primary1" >Union South</button>
+    <button type="button" class="btn-primary1" >Wisconsin Capitol</button>
+    <button type="button" class="btn-primary1" >The Overture Center</button>
+    <button type="button" class="btn-primary1" >The Chazen Museum of Art</button>
+    <button type="button" class="btn-primary1" >Memorial Union</button>
+  </div>
 </div>
+<div *ngIf="dateTab">
+  <div class="container">
+    <div class="row">
+      <div class='col-sm-6'>
+        <div class="form-group">
+          <div class='input-group date' id='datetimepicker1'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(function () {
+          $('#datetimepicker1').datetimepicker();
+        });
+      </script>
+    </div>
+  </div>
+  <p>yay dates</p>
+</div>
+
+
