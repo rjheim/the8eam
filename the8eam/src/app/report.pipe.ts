@@ -5,11 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ReportPipe implements PipeTransform {
 
-  transform(events: any, args?: any): any {
-    if (events == null) return events;
+  transform(event: any, args?: any): any {
+    if (event == null) return event;
 
-    return events.filter(function(events) {
-      return events.report <= 5;
+    return event.filter(function(event) {
+      return event.report <= 5;
     });
   }
 
