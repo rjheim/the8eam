@@ -3,17 +3,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Report</h2>
-        <button (click)="hide()" class="pull-right" type="button">
-          <span>Close</span>
+        <button (click)="hide()" class="pull-right close" aria-label="Close" type="button">
+          <span aria-hidden="true">&times;</span>
         </button>
+        <h2>Report</h2>
       </div>
       <div class="modal-body">
         <div>
           <label for="description">*Description</label>
           <textarea id = "description"></textarea>
         </div>
-        <h4>{{eventItem.id}}</h4>
 
         <div>
           <label for="email">Email</label>
@@ -22,7 +21,7 @@
       </div>
       <div class="modal-footer">
         <div class = "button">
-          <button type="submit" id = "submitbutton">Submit</button>
+          <button (click)="submitReport(eventItem.id)" type="submit" id = "submitbutton">Submit</button>
         </div>
       </div>
     </div>

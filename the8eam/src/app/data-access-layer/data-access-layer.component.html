@@ -1,3 +1,17 @@
+<div>
+  <button (click)="testWhereTitleAndDate('Noontime Meditations', 11012017)">Test Where call</button>
+  <br>
+  {{length}}
+  <div *ngFor="let event of testEvent | async">
+    <ul>
+      <li>
+        {{event.id}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 <p>
   Add to Collection!
 </p>

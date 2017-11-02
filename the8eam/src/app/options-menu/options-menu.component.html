@@ -1,3 +1,85 @@
-<p>
-  options-menu works!
-</p>
+<div>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#tab1" (click)="genreTab()">Genre</a>
+    </li>
+    <li>
+      <a href="#" (click)="dateTab()">Date</a>
+    </li>
+    <li>
+      <a href="#" (click)="priceTab()">Price</a>
+    </li>
+    <li>
+      <a href="#" (click)="locationTab()">Location</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div *ngIf="genreTabbed" class="tab-pane fade active in" id="set1">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a (click)="filter.setMusic();musicOn()">Music{{_music}}</a>
+          </li>
+          <li><a (click)="filter.setArt();artOn()">Art{{_art}}</a>
+          </li>
+          <li><a (click)="filter.setFood();foodOn()">Food{{_food}}</a>
+          </li>
+          <li><a (click)="filter.setDance();danceOn()">Dance{{_dance}}</a>
+          </li>
+          <li><a (click)="filter.setSW();swOn()">Spoken Word{{_sw}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="dateTabbed" class="tab-pane fade active in" id="set2">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a (click)="filter.setDate(0)">Today</a>
+          </li>
+          <li><a (click)="filter.setDate(10000)">Tomorrow</a>
+          </li>
+          <li><a (click)="filter.setDate(70000)">This Week</a>
+          </li>
+          <li><a (click)="filter.setDate(1000000)">This Month</a>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="priceTabbed" class="tab-pane fade active in" id="set3">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a (click)="filter.setCost(0)">Free</a>
+          </li>
+          <li><a (click)="filter.setCost(10)">less than $10</a>
+          </li>
+          <li><a (click)="filter.setCost(20)">less than $20</a>
+          </li>
+          <li><a (click)="filter.setCost(50)">less than $50</a>
+          </li>
+          <li><a (click)="filter.setCost(100)">less than $100</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="locationTabbed" class="tab-pane fade active in" id="set4">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li><a href="#">Capitol</a>
+          </li>
+          <li><a href="#">UW-Campus</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="genreTab">
+
+</div>
+<div *ngIf="dateTab">
+
+</div>
+<div *ngIf="priceTab">
+
+</div>
+<div *ngIf="locationTab">
+
+</div>

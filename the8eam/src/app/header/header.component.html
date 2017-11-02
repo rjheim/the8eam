@@ -6,32 +6,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="#">Madison Art & Event Calendar</a>
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right">
-
-
-      <li>
-        <form action="" class="search-form">
-        <div class="form-group has-feedback">
-          <label for="search" class="sr-only">Search</label>
-          <input type="text" class="form-control" name="search" id="search" placeholder="search">
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        </div>
-      </form>
-      </li>
-
-
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Options <span class="caret"></span></a>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#">Filter 1</a></li>
-          <li><a href="#">Filter 2</a></li>
-          <li><a href="#">Filter 3</a></li>
-        </ul>
+      <li class="dropdown" (click)="filterMenu()">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4>Filters</h4></a>
       </li>
     </ul>
     </div>
+    <div>
+      <li>
+        <app-search></app-search>
+      </li>
+    </div>
   </div>
 </nav>
+
+<div *ngIf="filterMenuDisplayed">
+  <app-options-menu></app-options-menu>
+</div>
 
