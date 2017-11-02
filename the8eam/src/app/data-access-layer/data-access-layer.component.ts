@@ -15,8 +15,10 @@ export class DataAccessLayerComponent {
   list: AngularFirestoreCollection<Event>;
   listItems: Observable<Event[]>;
   model: Event;
+  length: number;
+  testEvent: Observable<Event[]>;
 
-  constructor(db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {
   	this.list = db.collection<Event>('list');
   	this.listItems = this.list.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -43,6 +45,18 @@ export class DataAccessLayerComponent {
   	this.list.doc(key).delete();
   }
 
+  whereTitleAndDate(title: string, date: number){
+    return(this.db.collection<Event>('list',
+      a => a.where('title', '==', title).where('date', '==', date)))
+      .snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Event;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+  }
+
   updateDoc(key: string, event: Event)
   {
     this.list.doc(key).update(event);
@@ -50,5 +64,10 @@ export class DataAccessLayerComponent {
 
   practiceAdd(){
     this.addToList(this.model);
+  }
+
+  testWhereTitleAndDate(title: string, date: number){
+    this.testEvent = this.whereTitleAndDate(title, date);
+    this.testEvent.subscribe(data => (this.length = data.length));
   }
 }

@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options-menu.component.css']
 })
 export class OptionsMenuComponent implements OnInit {
-
+  genreTab = true;
+  priceTab = false;
+  locationTab = false;
+  dateTab = false;
   constructor() { }
 
   ngOnInit() {
