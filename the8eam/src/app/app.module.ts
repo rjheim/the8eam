@@ -22,6 +22,7 @@ import { FoodGenrePipe } from './food-genre.pipe';
 import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
 import { CostPipe } from './cost.pipe';
 import {FilterVarsService} from "./filter-vars.service";
+import { DatePipe } from './date.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -51,7 +52,8 @@ export const firebaseConfig = {
     ArtGenrePipe,
     FoodGenrePipe,
     SpokenWordGenrePipe,
-    CostPipe
+    CostPipe,
+    DatePipe
   ],
   imports: [
     BrowserModule,

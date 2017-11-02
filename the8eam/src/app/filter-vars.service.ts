@@ -7,6 +7,8 @@ export class FilterVarsService {
   private gFood: boolean;
   private gSW: boolean;
   private gDance: boolean;
+  private cost: number;
+  private date: number;
 
   constructor() {
     this.gMusic = false;
@@ -14,6 +16,8 @@ export class FilterVarsService {
     this.gFood = false;
     this.gSW = false;
     this.gDance = false;
+    this.cost = -1;
+    this.date = -1;
   }
 
   setMusic(){
@@ -30,6 +34,15 @@ export class FilterVarsService {
   }
   setDance(){
     this.gDance = !this.gDance;
+  }
+
+  setCost(cost: number){
+    this.cost = cost;
+  }
+
+  setDate(date: number)
+  {
+    this.date = date;
   }
 
 }
