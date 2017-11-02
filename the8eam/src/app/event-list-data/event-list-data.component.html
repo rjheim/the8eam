@@ -1,5 +1,5 @@
 <!-- Add "| artGenre:event" or a similar Pipe to the line below to use a pipe - James :) -->
-<button (click)="setMusic()">Set Music True</button>
+<button (click)="filter.setMusic()">Set Music True</button>
 <div *ngFor="let event of listItems | async | report | musicGenre:gMusic | danceGenre:gDance
              | foodGenre:gFood | artGenre:gArt | spokenWordGenre:gSW" class="row">
      <app-event [eventItem] = 'event'></app-event>
