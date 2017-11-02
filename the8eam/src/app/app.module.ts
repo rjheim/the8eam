@@ -20,6 +20,7 @@ import { DanceGenrePipe } from './dance-genre.pipe';
 import { ArtGenrePipe } from './art-genre.pipe';
 import { FoodGenrePipe } from './food-genre.pipe';
 import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
+import { CostPipe } from './cost.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -48,7 +49,8 @@ export const firebaseConfig = {
     DanceGenrePipe,
     ArtGenrePipe,
     FoodGenrePipe,
-    SpokenWordGenrePipe
+    SpokenWordGenrePipe,
+    CostPipe
   ],
   imports: [
     BrowserModule,
