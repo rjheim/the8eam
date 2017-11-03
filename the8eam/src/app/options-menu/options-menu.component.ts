@@ -7,10 +7,10 @@ import { FilterVarsService } from '../filter-vars.service'
   styleUrls: ['./options-menu.component.css']
 })
 export class OptionsMenuComponent implements OnInit {
-  genreTabbed = true;
-  priceTabbed = false;
-  locationTabbed = false;
-  dateTabbed = false;
+  genreTabbed: boolean;
+  priceTabbed: boolean;
+  locationTabbed: boolean;
+  dateTabbed: boolean;
 
   //different genre filters
   _music = "";
@@ -34,7 +34,12 @@ export class OptionsMenuComponent implements OnInit {
   _less100 = "";
 
 
-  constructor(private filter: FilterVarsService) { }
+  constructor(private filter: FilterVarsService) {
+    this.genreTabbed = true;
+    this.priceTabbed = false;
+    this.locationTabbed = false;
+    this.dateTabbed = false;
+  }
   genreTab(){
     this.genreTabbed = true;
     this.priceTabbed = !this.genreTabbed;
@@ -164,6 +169,31 @@ export class OptionsMenuComponent implements OnInit {
     this._less100 = "";
   }
 
+//nicoles
+  clickView(){
+    this.genreTabbed = true;
+    this.priceTabbed = false;
+    this.locationTabbed = false;
+    this.dateTabbed = false;
+  }
+  clickView2(){
+    this.genreTabbed = false;
+    this.priceTabbed = false;
+    this.locationTabbed = false;
+    this.dateTabbed = true;
+  }
+  clickView3(){
+    this.genreTabbed = false;
+    this.priceTabbed = true;
+    this.locationTabbed = false;
+    this.dateTabbed = false;
+  }
+  clickView4(){
+    this.genreTabbed = false;
+    this.priceTabbed = false;
+    this.locationTabbed = true;
+    this.dateTabbed = false;
+  }
   ngOnInit() {
   }
 
