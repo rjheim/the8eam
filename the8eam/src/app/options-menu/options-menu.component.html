@@ -3,35 +3,35 @@
   <button type="button" class="btn-primary" (click)="clickView()">Genre</button>
   <button type="button" class="btn-primary" (click)="clickView2()">Date</button>
   <button type="button" class="btn-primary" (click)="clickView3()">Price</button>
-  <button type="button" class="btn-primary" (click)="clickView4()">Location</button>
+  <button type="button" class="btn-primary" id="locationTab" (click)="clickView4()">Location</button>
 </div>
 
 
 <div *ngIf="genreTabbed">
   <div class="btn-group btn-group-justified">
-    <button type="button" class="btn-primary1" >Art</button>
-    <button type="button" class="btn-primary1" >Music</button>
-    <button type="button" class="btn-primary1" >Dance</button>
-    <button type="button" class="btn-primary1" >Food</button>
-    <button type="button" class="btn-primary1" >Spoken Word</button>
+    <button type="button" class="btn-primary1 filter-options" >Art</button>
+    <button type="button" class="btn-primary1 filter-options" >Music</button>
+    <button type="button" class="btn-primary1 filter-options" >Dance</button>
+    <button type="button" class="btn-primary1 filter-options" >Food</button>
+    <button type="button" class="btn-primary1 filter-options" >Spoken Word</button>
   </div>
 </div>
 <div *ngIf="priceTabbed">
   <div class="btn-group btn-group-justified">
-    <button type="button" class="btn-primary1" >Free</button>
-    <button type="button" class="btn-primary1" ><$10</button>
-    <button type="button" class="btn-primary1" >$10-$25</button>
-    <button type="button" class="btn-primary1" >$25-$50</button>
-    <button type="button" class="btn-primary1" >$50-$100</button>
+    <button type="button" class="btn-primary1 filter-options" >Free</button>
+    <button type="button" class="btn-primary1 filter-options" ><$10</button>
+    <button type="button" class="btn-primary1 filter-options" >$10-$25</button>
+    <button type="button" class="btn-primary1 filter-options" >$25-$50</button>
+    <button type="button" class="btn-primary1 filter-options" >$50-$100</button>
   </div>
 </div>
 <div *ngIf="locationTabbed">
   <div class="btn-group btn-group-justified">
-    <button type="button" class="btn-primary1" >Union South</button>
-    <button type="button" class="btn-primary1" >Wisconsin Capitol</button>
-    <button type="button" class="btn-primary1" >The Overture Center</button>
-    <button type="button" class="btn-primary1" >The Chazen Museum of Art</button>
-    <button type="button" class="btn-primary1" >Memorial Union</button>
+    <button type="button" class="btn-primary1 filter-options" >Union South</button>
+    <button type="button" class="btn-primary1 filter-options" >Wisconsin Capitol</button>
+    <button type="button" class="btn-primary1 filter-options" >The Overture Center</button>
+    <button type="button" class="btn-primary1 filter-options" >The Chazen Museum of Art</button>
+    <button type="button" class="btn-primary1 filter-options" >Memorial Union</button>
   </div>
 </div>
 <div *ngIf="dateTabbed">

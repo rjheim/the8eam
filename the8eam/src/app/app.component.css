@@ -1,9 +1,9 @@
 
 .button {
   display: table-cell;
-  background: darkgray;
-  border: solid;
+  background: white;
   text-align: center;
+  color: blue;
   width: 100%;
   display: inline;
   font-size: large;
@@ -22,7 +22,7 @@
 }
 
 .button:hover{
-  background-color: lightgray;
+  background-color: silver;
 }
 
 .container{

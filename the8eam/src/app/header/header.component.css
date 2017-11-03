@@ -4,6 +4,13 @@ div.app-header, div.view-tabs{
   display : block;
   width : 100%;
 }
+.navbar{
+  margin: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
 .navbar-brand{
   font-family: "Verdana";
   font-size: 30px;
