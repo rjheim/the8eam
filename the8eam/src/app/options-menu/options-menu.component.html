@@ -1,83 +1,9 @@
-<<<<<<< HEAD
-<div>
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a href="#tab1" (click)="genreTabbed()">Genre</a>
-    </li>
-    <li>
-      <a href="#" (click)="dateTabbed()">Date</a>
-    </li>
-    <li>
-      <a href="#" (click)="priceTabbed()">Price</a>
-    </li>
-    <li>
-      <a href="#" (click)="locationTabbed()">Location</a>
-    </li>
-  </ul>
-  <div class="tab-content">
-    <div *ngIf="genreTabbed" class="tab-pane fade active in" id="set1">
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li><a (click)="filter.setMusic();musicOn()">Music{{_music}}</a>
-          </li>
-          <li><a (click)="filter.setArt();artOn()">Art{{_art}}</a>
-          </li>
-          <li><a (click)="filter.setFood();foodOn()">Food{{_food}}</a>
-          </li>
-          <li><a (click)="filter.setDance();danceOn()">Dance{{_dance}}</a>
-          </li>
-          <li><a (click)="filter.setSW();swOn()">Spoken Word{{_sw}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div *ngIf="dateTabbed" class="tab-pane fade active in" id="set2">
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li><a (click)="filter.setDate(0);todayOn()">Today{{_today}}</a>
-          </li>
-          <li><a (click)="filter.setDate(10000);tomorrowOn()">Tomorrow{{_tomorrow}}</a>
-          </li>
-          <li><a (click)="filter.setDate(70000);weekOn()">This Week{{_thisweek}}</a>
-          </li>
-          <li><a (click)="filter.setDate(1000000);monthOn()">This Month{{_thismonth}}</a>
-        </ul>
-      </div>
-    </div>
-    <div *ngIf="priceTabbed" class="tab-pane fade active in" id="set3">
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li><a (click)="filter.setCost(0);freeOn()">Free{{_free}}</a>
-          </li>
-          <li><a (click)="filter.setCost(10);c10On()">less than $10{{_less10}}</a>
-          </li>
-          <li><a (click)="filter.setCost(20);c20On()">less than $20{{_less20}}</a>
-          </li>
-          <li><a (click)="filter.setCost(50);c50On()">less than $50{{_less50}}</a>
-          </li>
-          <li><a (click)="filter.setCost(100);c100On()">less than $100{{_less100}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div *ngIf="locationTabbed" class="tab-pane fade active in" id="set4">
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li><a href="#">Capitol</a>
-          </li>
-          <li><a href="#">UW-Campus</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-=======
+
 <div class="btn-group btn-group-justified">
   <button type="button" class="btn-primary" (click)="clickView()">Genre</button>
   <button type="button" class="btn-primary" (click)="clickView2()">Date</button>
   <button type="button" class="btn-primary" (click)="clickView3()">Price</button>
   <button type="button" class="btn-primary" (click)="clickView4()">Location</button>
->>>>>>> optionsMenuStyles
 </div>
 
 
