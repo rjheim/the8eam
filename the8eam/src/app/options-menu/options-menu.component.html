@@ -33,28 +33,28 @@
     <div *ngIf="dateTabbed" class="tab-pane fade active in" id="set2">
       <div class="tabbable">
         <ul class="nav nav-tabs">
-          <li><a (click)="filter.setDate(0)">Today</a>
+          <li><a (click)="filter.setDate(0);todayOn()">Today{{_today}}</a>
           </li>
-          <li><a (click)="filter.setDate(10000)">Tomorrow</a>
+          <li><a (click)="filter.setDate(10000);tomorrowOn()">Tomorrow{{_tomorrow}}</a>
           </li>
-          <li><a (click)="filter.setDate(70000)">This Week</a>
+          <li><a (click)="filter.setDate(70000);weekOn()">This Week{{_thisweek}}</a>
           </li>
-          <li><a (click)="filter.setDate(1000000)">This Month</a>
+          <li><a (click)="filter.setDate(1000000);monthOn()">This Month{{_thismonth}}</a>
         </ul>
       </div>
     </div>
     <div *ngIf="priceTabbed" class="tab-pane fade active in" id="set3">
       <div class="tabbable">
         <ul class="nav nav-tabs">
-          <li><a (click)="filter.setCost(0)">Free</a>
+          <li><a (click)="filter.setCost(0);freeOn()">Free{{_free}}</a>
           </li>
-          <li><a (click)="filter.setCost(10)">less than $10</a>
+          <li><a (click)="filter.setCost(10);c10On()">less than $10{{_less10}}</a>
           </li>
-          <li><a (click)="filter.setCost(20)">less than $20</a>
+          <li><a (click)="filter.setCost(20);c20On()">less than $20{{_less20}}</a>
           </li>
-          <li><a (click)="filter.setCost(50)">less than $50</a>
+          <li><a (click)="filter.setCost(50);c50On()">less than $50{{_less50}}</a>
           </li>
-          <li><a (click)="filter.setCost(100)">less than $100</a>
+          <li><a (click)="filter.setCost(100);c100On()">less than $100{{_less100}}</a>
           </li>
         </ul>
       </div>

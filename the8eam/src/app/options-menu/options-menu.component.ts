@@ -20,10 +20,11 @@ export class OptionsMenuComponent implements OnInit {
   _sw = "";
 
   //different date filters
-  // _today = "";
-  // _tomorrow = "";
-  // _thisweek = "";
-  // _thismonth = "";
+  _date = "";
+  _today = "";
+  _tomorrow = "";
+  _thisweek = "";
+  _thismonth = "";
 
   //diff cost filters
   _free = "";
@@ -97,34 +98,34 @@ export class OptionsMenuComponent implements OnInit {
   }
 
   // //shows what date filters are on
-  // todayOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
-  // tomorrowOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
-  // weekOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
-  // monthOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
+  todayOn(){
+    if(this._today.length == 0) {
+      this._today = ": ON";
+      return
+    }
+    this._today = "";
+  }
+  tomorrowOn(){
+    if(this._today.length == 0) {
+      this._today = ": ON";
+      return
+    }
+    this._today = "";
+  }
+  weekOn(){
+    if(this._today.length == 0) {
+      this._today = ": ON";
+      return
+    }
+    this._today = "";
+  }
+  monthOn(){
+    if(this._today.length == 0) {
+      this._today = ": ON";
+      return
+    }
+    this._today = "";
+  }
 
   //shows what cost filters are on
   freeOn(){
