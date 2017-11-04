@@ -1,41 +1,45 @@
 
+<!-- Filter Tabs // Tabs are ordered as the appear 1-4 -->
 <div class="btn-group btn-group-justified">
-  <button type="button" class="btn-primary" (click)="clickView()">Genre</button>
-  <button type="button" class="btn-primary" (click)="clickView2()">Date</button>
-  <button type="button" class="btn-primary" (click)="clickView3()">Price</button>
-  <button type="button" class="btn-primary" id="locationTab" (click)="clickView4()">Location</button>
+  <button type="button" class="btn-primary" [ngClass]="{active : (filterTab == 1)}" (click)="clickViewTab(1)">Genre</button>
+  <button type="button" class="btn-primary" [ngClass]="{active : (filterTab == 2)}" (click)="clickViewTab(2)">Date</button>
+  <button type="button" class="btn-primary" [ngClass]="{active : (filterTab == 3)}" (click)="clickViewTab(3)">Price</button>
+  <button type="button" class="btn-primary" [ngClass]="{active : (filterTab == 4)}" id="locationTab" (click)="clickViewTab(4)">Location</button>
 </div>
 
 
-<div *ngIf="genreTabbed">
-  <div class="btn-group btn-group-justified">
-    <button type="button" class="btn-primary1 filter-options" >Art</button>
-    <button type="button" class="btn-primary1 filter-options" >Music</button>
-    <button type="button" class="btn-primary1 filter-options" >Dance</button>
-    <button type="button" class="btn-primary1 filter-options" >Food</button>
-    <button type="button" class="btn-primary1 filter-options" >Spoken Word</button>
-  </div>
+
+
+<div [ngSwitch]="filterTab">
+  <!-- Filter By Genre:1 -->
+  <ng-container *ngSwitchCase="1"  class="btn-group btn-group-justified">
+    <button type="button" (click)="clickGenreFilter('Art');filter.setArt()" [ngClass]="{active : isFiltered(genreFilters, 'Art')}" class="btn-primary1 filter-options" >Art</button>
+    <button type="button" (click)="clickGenreFilter('Music');filter.setMusic()" [ngClass]="{active : isFiltered(genreFilters, 'Music')}" class="btn-primary1 filter-options" >Music</button>
+    <button type="button" (click)="clickGenreFilter('Dance');filter.setDance()" [ngClass]="{active : isFiltered(genreFilters, 'Dance')}" class="btn-primary1 filter-options" >Dance</button>
+    <button type="button" (click)="clickGenreFilter('Food');filter.setFood()" [ngClass]="{active : isFiltered(genreFilters, 'Food')}" class="btn-primary1 filter-options" >Food</button>
+    <button type="button" (click)="clickGenreFilter('Spoken Word');filter.setSW()" [ngClass]="{active : isFiltered(genreFilters, 'Spoken Word')}" class="btn-primary1 filter-options" >Spoken Word</button>
+  </ng-container>
+  <!-- Filter By Date:2 -->
+  <ng-container *ngSwitchCase="2" class="btn-group btn-group-justified">
+    <button type="button" (click)="clickDateFilter('Today');" [ngClass]="{active : isFiltered(dateFilter, 'Today')}" class="btn-primary1 filter-options" >Today</button>
+  </ng-container>
+  <!-- Filter By Cost:3 -->
+  <ng-container *ngSwitchCase="3" class="btn-group btn-group-justified">
+    <button type="button" (click)="clickCostFilter('free');" [ngClass]="{active : isFiltered(dateFilter, 'free')}" class="btn-primary1 filter-options" >Free</button>
+    <button type="button" (click)="clickCostFilter('10');" [ngClass]="{active : isFiltered(dateFilter, '10')}" class="btn-primary1 filter-options" >$10 or less</button>
+    <button type="button" (click)="clickCostFilter('25');" [ngClass]="{active : isFiltered(dateFilter, '25')}" class="btn-primary1 filter-options" >$25 or less</button>
+    <button type="button" (click)="clickCostFilter('50');" [ngClass]="{active : isFiltered(dateFilter, '50')}" class="btn-primary1 filter-options" >$50 or less</button>
+    <button type="button" (click)="clickCostFilter('100');" [ngClass]="{active : isFiltered(dateFilter, '100')}" class="btn-primary1 filter-options" >$100 or less</button>
+  </ng-container>
+  <!-- Filter By Location:4 -->
+  <ng-container *ngSwitchCase="4" class="btn-group btn-group-justified">
+    <button type="button" (click)="clickLocFilter('Union South');" [ngClass]="{active : isFiltered(dateFilter, 'Union South')}" class="btn-primary1 filter-options" >Union South</button>
+    <button type="button" (click)="clickLocFilter('State Capitol');" [ngClass]="{active : isFiltered(dateFilter, 'State Capitol')}" class="btn-primary1 filter-options" >State Capitol</button>
+    <button type="button" (click)="clickLocFilter('The Overture Center');" [ngClass]="{active : isFiltered(dateFilter, 'The Overture Center')}" class="btn-primary1 filter-options" >The Overture Center</button>
+    <button type="button" (click)="clickLocFilter('Henry Vilas Zoo');" [ngClass]="{active : isFiltered(dateFilter, 'Henry Vilas Zoo')}" class="btn-primary1 filter-options" >Henry Vilas Zoo</button>
+    <button type="button" (click)="clickLocFilter('Memorial Union');" [ngClass]="{active : isFiltered(dateFilter, 'Memorial Union')}" class="btn-primary1 filter-options" >Memorial Union</button>
+  </ng-container>
 </div>
-<div *ngIf="priceTabbed">
-  <div class="btn-group btn-group-justified">
-    <button type="button" class="btn-primary1 filter-options" >Free</button>
-    <button type="button" class="btn-primary1 filter-options" ><$10</button>
-    <button type="button" class="btn-primary1 filter-options" >$10-$25</button>
-    <button type="button" class="btn-primary1 filter-options" >$25-$50</button>
-    <button type="button" class="btn-primary1 filter-options" >$50-$100</button>
-  </div>
-</div>
-<div *ngIf="locationTabbed">
-  <div class="btn-group btn-group-justified">
-    <button type="button" class="btn-primary1 filter-options" >Union South</button>
-    <button type="button" class="btn-primary1 filter-options" >Wisconsin Capitol</button>
-    <button type="button" class="btn-primary1 filter-options" >The Overture Center</button>
-    <button type="button" class="btn-primary1 filter-options" >The Chazen Museum of Art</button>
-    <button type="button" class="btn-primary1 filter-options" >Memorial Union</button>
-  </div>
-</div>
-<div *ngIf="dateTabbed">
-  <p>yay dates</p>
-</div>
+
 
 
