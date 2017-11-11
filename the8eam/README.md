@@ -28,15 +28,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ##Instructions for Running
  
-Please install the following:
-angluar/cli - 1.4.7 (CURRENT LATEST 10/16)
- sudo npm uninstall -g @angular/cli    (sudo only for mac)
- sudo npm install -g @angular/cli (THIS IS FOR REINSTALL AFTER NODE and NPM IS UPDATED)
-Npm - 5.5.1 (CURRENT LATEST 10/16)
- sudo npm uninstall npm -g
- A version of npm comes when you install Node
- npm install npm@latest -g
-Node - 6.11.4 (CURRENT LATEST RECOMMENDED 10/16)
- Windows there is a uninstall node application
- Once you clone the new git, change into the directory that contains package.json and use npm install to install all node dependencies.
- Get to the repository, and through command line run npm install. Once that is finished, run ng serve. You can then open up a web browser and navigate to http://localhost:4200/.
+In order to run our application as it is tested, we recommend following these steps to replicate our development environment. 
+// (sudo) --> for linux/mac  //
+1. Install Node - 6.11.4
+	[Download](https://nodejs.org/dist/latest-v6.x/) 
+	Optional: If you have multiple node projects you can use Node Version Manager (NVM) Install:https://github.com/creationix/
+2. Install Npm - 5.5.1 
+	'(sudo) npm uninstall npm -g'
+	A version of npm comes when you install Node, if it is less than 5.5.1, run:
+	'npm install npm@latest -g'
+	Navigate into the directory of the repository that contains package.json and use 'npm install' to install all node dependencies.
+ 
+3. Install angular/cli - 1.4.7 
+	(sudo) npm install -g @angular/cli
+	You can install the latest version of angular, and our repository's packages.json file will specify the correct version to use automatically.
+
+4. Run 'npm install' in App's root folder (this directory should have 'src' folder in it).
+
+5. Run ng serve. 
+	You can then open up a web browser and navigate to http://localhost:4200/.
