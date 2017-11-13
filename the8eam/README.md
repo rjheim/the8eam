@@ -33,8 +33,7 @@ In order to run our application as it is tested, we recommend following these st
 1. Install Node - 6.11.4
 	[Download](https://nodejs.org/dist/latest-v6.x/) 
 	Optional: If you have multiple node projects you can use Node Version Manager (NVM) Install:https://github.com/creationix/
-2. Install Npm - 5.5.1 
-	'(sudo) npm uninstall npm -g'
+2. Install npm - 5.5.1 
 	A version of npm comes when you install Node, if it is less than 5.5.1, run:
 	'npm install npm@latest -g'
 	Navigate into the directory of the repository that contains package.json and use 'npm install' to install all node dependencies.
