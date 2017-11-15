@@ -1,37 +1,16 @@
-
-.button {
-  display: table-cell;
-  background: white;
-  text-align: center;
-  color: blue;
-  width: 100%;
-  display: inline;
-  font-size: large;
-  font-family: "Verdana";
-}
 .no-gutter{
   margin: 0 0;
   padding: 0 0;
 }
-.button:active{
-  border: 2px solid white;
+
+#list-view-toggle.active{
+  background-color: #545657;
+  box-shadow: 4px 1px 2px #151718;
 }
 
-.button:target{
-  border: 2px solid red;
-}
-
-.button:hover{
-  background-color: silver;
-}
-
-.container{
-  background: transparent;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  display: table;
-
+#cal-view-toggle.active{
+  background-color: #545657;
+  box-shadow: -4px 1px 2px #151718;
 }
 
 
