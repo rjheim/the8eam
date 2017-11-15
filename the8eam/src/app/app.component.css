@@ -1,19 +1,15 @@
 
 
-#list-view-toggle.active{
+#list-view-toggle.passive, #cal-view-toggle.passive{
   background-color: #545657;
-  box-shadow: 4px 1px 2px #151718;
+  color: #fff;
+}
+#list-view-toggle.passive:hover, #cal-view-toggle.passive:hover{
+  background-color: #737475;
+  border-color: transparent;
+  color: #fff;
 }
 
-#cal-view-toggle.active{
-  background-color: #545657;
-  box-shadow: -4px 1px 2px #151718;
-}
-#list-view-toggle:hover, #cal-view-toggle:hover{
-  background-color: transparent;
-}
-#list-view-toggle.active:hover, #cal-view-toggle.active:hover{
-  background-color: #6A6B6C;
-}
+
 
 
