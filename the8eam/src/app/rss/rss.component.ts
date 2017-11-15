@@ -23,7 +23,7 @@ export class RssComponent implements OnInit {
 
     // rssGet = require('rss-to-json');
     // ALL OF THE SETS WE WILL BE COMPARING DESCRIPTIONS TO
-    var musicArray = ["MUSIC", "SONG", "SINGING", "JAZZ", "ROCK", "PIANO", "GUITAR", "DRUMS", "CONCERT", "SING-ALONG", "OPEN MIC"];
+    var musicArray = ["MUSIC", "SONG", "SINGING", "JAZZ", "ROCK", "PIANO", "GUITAR", "DRUMS", "CONCERT", "SING-ALONG", "OPEN MIC", "SOUL", "AMERICANA"];
     let musicSet: Set<string> = new Set<string>(musicArray);
 
     var spokenWordArray = ["SPOKEN", "WORD", "SLAM", "POETRY", "POET"];
@@ -51,7 +51,6 @@ export class RssComponent implements OnInit {
         var eventToAdd = {} as Event;
 
         var title = items[key]["title"];
-        // TODO figure out what to do with no dash lmao
         var titleIndex = title.indexOf(" - ");
 
 
@@ -171,7 +170,7 @@ export class RssComponent implements OnInit {
         }
 
         // THIS IS THE FULL DATE, AS A STRING
-        var date = "" + month + day + year;
+        var date = "" + year + month + day;
 
         eventToAdd.date = +date;
         eventToAdd.time = time;
@@ -335,6 +334,7 @@ export class RssComponent implements OnInit {
 
 
         // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
+        console.log(toAdd);
         //this.dal.addToList(toAdd);
 
       }
@@ -342,8 +342,10 @@ export class RssComponent implements OnInit {
     });
   }
 
-  ngOnInit(){
 
+  ngOnInit(){
+    //console.log("OnItit");
+    this.testRSS();
   }
 
 }
