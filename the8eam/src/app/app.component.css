@@ -1,7 +1,4 @@
-.no-gutter{
-  margin: 0 0;
-  padding: 0 0;
-}
+
 
 #list-view-toggle.active{
   background-color: #545657;
@@ -11,6 +8,12 @@
 #cal-view-toggle.active{
   background-color: #545657;
   box-shadow: -4px 1px 2px #151718;
+}
+#list-view-toggle:hover, #cal-view-toggle:hover{
+  background-color: transparent;
+}
+#list-view-toggle.active:hover, #cal-view-toggle.active:hover{
+  background-color: #6A6B6C;
 }
 
 
