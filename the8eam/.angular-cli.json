@@ -19,9 +19,16 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../bootstrap-modal/css/bootstrap-modal-bs3patch.css",
+        "../bootstrap-modal/css/bootstrap-modal.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../bootstrap-modal/js/bootstrap-modalmanager.js",
+        "../bootstrap-modal/js/bootstrap-modal.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
