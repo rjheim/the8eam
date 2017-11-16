@@ -1,65 +1,83 @@
-button {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+.filter-container{
+  -webkit-flex-flow: row wrap;
+  flex-flow:row wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: space-around;
+  align-content: space-around;
+}
+.filter{
+  margin: 10px auto;
+}
+.filter-btn{
+  width : 120px;
+  height : 80px;
+  font-size:1.4em;
+  font-weight: bold;
 }
 
-.btn-group, .btn-group-justified{
-  height: 40px;
-  line-height: 40px;
-}
-.btn-group:focus, .btn-group-justified:focus{
-  background-color: transparent;
-  outline-color: transparent;
-}
-.btn-primary{
-  width:25%;
-  display: table-cell;
-  background: firebrick;
-  border:solid #C53030;
-  border-width: 2px;
-  text-align: center;
-  font-size: large;
-  font-family: "Verdana";
-  border-right-width: 0;
-}
-#locationTab { border-right-width: 2px;}
+/*button {*/
+  /*-webkit-border-radius: 0;*/
+  /*-moz-border-radius: 0;*/
+  /*border-radius: 0;*/
+/*}*/
 
-.btn-primary:active{
-  border:solid #C53030;
-}
-.btn-primary:hover, .btn-primary.active, .btn-primary.active:hover{
-  border-color: #C53030;
-  background: #C53030;
-  outline-color: transparent;
-}
+/*.btn-group, .btn-group-justified{*/
+  /*height: 40px;*/
+  /*line-height: 40px;*/
+/*}*/
+/*.btn-group:focus, .btn-group-justified:focus{*/
+  /*background-color: transparent;*/
+  /*outline-color: transparent;*/
+/*}*/
+/*.btn-primary{*/
+  /*width:25%;*/
+  /*display: table-cell;*/
+  /*background: firebrick;*/
+  /*border:solid #C53030;*/
+  /*border-width: 2px;*/
+  /*text-align: center;*/
+  /*font-size: large;*/
+  /*font-family: "Verdana";*/
+  /*border-right-width: 0;*/
+/*}*/
+/*#locationTab { border-right-width: 2px;}*/
 
-.btn-primary1{
-  width:100%;
-  display: table-cell;
-  background: firebrick;
-  border: solid #C53030;
-  border-width: 2px;
-  text-align: center;
-  font-size: large;
-  font-family: "Verdana";
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: white;
-}
-.btn-primary1:hover, .btn-primary1:active{
-  background: #C53030;
-}
+/*.btn-primary:active{*/
+  /*border:solid #C53030;*/
+/*}*/
+/*.btn-primary:hover, .btn-primary.active, .btn-primary.active:hover{*/
+  /*border-color: #C53030;*/
+  /*background: #C53030;*/
+  /*outline-color: transparent;*/
+/*}*/
 
-.filter-options{
-  border-top-width: 0;
-}
-.btn-primary1.active {
-  background-color: #06c300;
-  border-width:1px;
-  border: solid #fff;
-}
-.btn-primary1.active:hover{
-  background-color: #63c363;
-}
+/*.btn-primary1{*/
+  /*width:100%;*/
+  /*display: table-cell;*/
+  /*background: firebrick;*/
+  /*border: solid #C53030;*/
+  /*border-width: 2px;*/
+  /*text-align: center;*/
+  /*font-size: large;*/
+  /*font-family: "Verdana";*/
+  /*padding-top: 5px;*/
+  /*padding-bottom: 5px;*/
+  /*color: white;*/
+/*}*/
+/*.btn-primary1:hover, .btn-primary1:active{*/
+  /*background: #C53030;*/
+/*}*/
+
+/*.filter-options{*/
+  /*border-top-width: 0;*/
+/*}*/
+/*.btn-primary1.active {*/
+  /*background-color: #06c300;*/
+  /*border-width:1px;*/
+  /*border: solid #fff;*/
+/*}*/
+/*.btn-primary1.active:hover{*/
+  /*background-color: #63c363;*/
+/*}*/
 
