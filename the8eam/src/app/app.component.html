@@ -1,22 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-
 <div class="container-fluid">
-  <ul class="row nav nav-tabs">
-    <li class="nav-item col-6 no-gutter">
-      <a class="nav-link rounded-0" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
-    </li>
-    <li class="nav-item col-6 no-gutter">
-      <a class="nav-link active rounded-0" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
-    </li>
-  </ul>
-</div>
+  <div id="view-toggle">
+    <ul class="row nav nav-tabs">
+      <li class="nav-item col-6 no-gutter">
+        <a class="nav-link rounded-0" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
+      </li>
+      <li class="nav-item col-6 no-gutter">
+        <a class="nav-link active rounded-0" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
+      </li>
+    </ul>
+  </div>
 
-<div *ngIf="view" class="container-fluid mt-1">
-  <app-event-list-data></app-event-list-data>
-</div>
+  <div *ngIf="view" class="mt-1">
+    <app-event-list-data></app-event-list-data>
+  </div>
 
-<div *ngIf="!view" class="container-fluid mt-1">
-  <app-event-calendar-data></app-event-calendar-data>
+  <div *ngIf="!view" class="mt-1">
+    <app-event-calendar-data></app-event-calendar-data>
+  </div>
 </div>
-

@@ -1,3 +1,6 @@
+#view-toggle{
+  background-color: #002642;
+}
 #list-view-toggle.active {
   border-top: solid 1.5px #171818;
   border-right: solid 1.5px #171818;
