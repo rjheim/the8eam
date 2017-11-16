@@ -5,7 +5,7 @@ import { rss } from 'rss-to-json/src/rss';
 import { xml2js } from 'xml2js';
 import { request } from 'request';
 import * as rssGet from 'rss-to-json'
-//import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-rss',
@@ -14,7 +14,7 @@ import * as rssGet from 'rss-to-json'
   styleUrls: ['./rss.component.css']
 })
 export class RssComponent implements OnInit {
-
+  dupObserve: Observable<Event[]>;
   constructor(private dal: DataAccessLayerComponent) {
 
   }
@@ -317,14 +317,15 @@ export class RssComponent implements OnInit {
         //console.log(eventToAdd.genre);
         eventToAdd.genre = genres;
 
-
-
         // set default report value to ZERO
         eventToAdd.report = 0;
+
+
+
         if (list.indexOf(eventToAdd) == -1) {
           list.push(eventToAdd);
         }
-
+        //console.log(list);
       }
       resolve();
      })
@@ -335,6 +336,14 @@ export class RssComponent implements OnInit {
 
         // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
         console.log(toAdd);
+        // check for duplicates here
+        this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
+          this.dupObserve.subscribe(data => {
+          if (data.length < 1) {
+            console.log("Added it ^^^");
+          }
+
+        })
         //this.dal.addToList(toAdd);
 
       }
@@ -344,7 +353,7 @@ export class RssComponent implements OnInit {
 
 
   ngOnInit(){
-    //console.log("OnItit");
+    //console.log("OnInit");
     this.testRSS();
   }
 
