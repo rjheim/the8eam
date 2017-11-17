@@ -26,14 +26,15 @@
   position: relative;
 }
 .filter-btn{
-  width : 120px;
-  height : 80px;
-  font-size:1.2em;
+  width : 100px;
+  height : 60px;
+  font-size:1.1em;
   font-weight: bold;
   background-color: #EDEDF4;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
+  border-color: #A20021;
 }
 .filter-btn:hover{
   background-color: #D8D8DE;
@@ -44,13 +45,18 @@
 }
 .oi-circle-check{
   position : absolute;
-  top:8px;
-  left:94px;
+  top:6px;
+  left:80px;
   color: #64A77E;
   display : none;
 }
 .filterOn>span{
   display: inherit;
+}
+@media (min-width: 768px){
+  .filter-container{
+    /* Make shit align left */
+  }
 }
 
 
