@@ -41,46 +41,46 @@
       </div>
       <!-- Filter By Cost:3 -->
       <div *ngSwitchCase="3" class="d-flex filter-container">
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'free')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 'free')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('free');">Free</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter('free');filter.setCost(0)">Free</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '10')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '10')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('10');">$10 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter('10');filter.setCost(10)">$10 or less</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '25')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '25')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('25');">$25 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter('25');filter.setCost(25)">$25 or less</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '50')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '50')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('50');">$50 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter('50');filter.setCost(50)">$50 or less</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '100')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '100')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('100');">$100 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter('100');filter.setCost(100)">$100 or less</button>
         </div>
       </div>
       <!-- Filter By Location:4 -->
       <div *ngSwitchCase="4" class="d-flex filter-container">
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Union South')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');">Union South</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'State Capitol')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickLocFilter('State Capitol');">State Capitol</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Overture Center')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickLocFilter('The Overture Center');">Overture Center</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Henry Vilas Zoo')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickLocFilter('Henry Vilas Zoo');">Henry Vilas Zoo</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Memorial Union')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');">Memorial Union</button>
         </div>

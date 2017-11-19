@@ -14,7 +14,7 @@ export class OptionsMenuComponent implements OnInit {
   genreFilters : string;   // more than one genre can be selected
   dateFilter : string;
   costFilter : string;
-  locationFilters : string; // more than one location can be selected
+  locFilter : string; // more than one location can be selected
 
 
 
@@ -25,7 +25,7 @@ export class OptionsMenuComponent implements OnInit {
     this.genreFilters = "";
     this.dateFilter = "";
     this.costFilter = "";
-    this.locationFilters = "";
+    this.locFilter = "";
   }
 
   /*
@@ -59,13 +59,13 @@ export class OptionsMenuComponent implements OnInit {
       this.costFilter = ""
   }
   clickLocFilter( filterName:string ){
-    var index = this.locationFilters.indexOf(filterName);
+    var index = this.locFilter.indexOf(filterName);
     // if locationfilters contains filterName, remove it (turn it off)
     if(index >= 0)
-      this.locationFilters = this.locationFilters.substring(0, index) + this.locationFilters.substring(index+filterName.length,this.locationFilters.length);
-    // else locationFilters doesn't have the filter name (it's off), we add it (turn it on)
+      this.locFilter = this.locFilter.substring(0, index) + this.locFilter.substring(index+filterName.length,this.locFilter.length);
+    // else locFilter doesn't have the filter name (it's off), we add it (turn it on)
     else
-      this.locationFilters += filterName;
+      this.locFilter += filterName;
   }
 
   isFiltered( filterCtg, filterName ){
