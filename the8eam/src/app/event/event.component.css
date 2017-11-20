@@ -1,6 +1,6 @@
-div.eventItem {
+.eventItem {
   border: solid 3px black;
-
+  background-color: #A20021;
 }
 .eventDescription {
   text-align : left;
@@ -9,45 +9,6 @@ div.eventItem {
 p.eventDescription {
 }
 
-div.genre-music {
-  background-image: url('../../assets/note.png');
-  width: 100px;
-  height: 100px;
-  -webkit-background-size: 100%;
-  background-size: 100%;
-}
-div.genre-art{
-  background-image: url('../../assets/art.jpg');
-  width: 100px;
-  height: 100px;
-  -webkit-background-size: 100%;
-  background-size: 100%;
-}
-div.genre-food{
-  background-image: url('../../assets/food.jpg');
-  width: 130px;
-  height: 100px;
-  -webkit-background-size: 100%;
-  background-size: 100%;
-}
-div.genre-dance{
-  background-image: url('../../assets/dance.png');
-  width: 100px;
-  height: 100px;
-  -webkit-background-size: 100%;
-  background-size: 100%;
-}
-.imageid{
-  color: white;
-  font-family: Verdana;
-  display: inline-block;
-  float: inherit;
-  z-index: 1000;
-}
-div{
-  background-color: darkred;
-
-}
 div.eventInfo{
   color: white;
 

@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  filterMenuDisplayed = false;
+  showFilters = false;
   constructor() {
     // called first time before the ngOnInit()
 
   }
   filterMenu() {
-    this.filterMenuDisplayed = !this.filterMenuDisplayed;
+    this.showFilters = !this.showFilters;
   }
   ngOnInit() {
     // called after the constructor and called after the first ngOnChanges() call (which itself is called when input/output values change)
