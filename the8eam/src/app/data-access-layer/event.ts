@@ -7,5 +7,5 @@ export class Event {
 	link: string;
 	location: string;
 	report: number;
-	time: number;
+	time: string;
 }
