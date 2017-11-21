@@ -18,7 +18,7 @@ describe('OptionsMenuComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  // Test that the Options-Menu is successfully created
   it('should create', () => {
     expect(component).toBeTruthy();
   });
