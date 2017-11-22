@@ -21,7 +21,7 @@ import { FoodGenrePipe } from './food-genre.pipe';
 import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
 import { CostPipe } from './cost.pipe';
 import { FilterVarsService } from "./filter-vars.service";
-import { DataAccessLayerService } from "./data-access-layer.service"
+import { DataAccessLayerService } from "./data-access-layer.service";
 import { DatePipe } from './date.pipe';
 
 // Must export the config
