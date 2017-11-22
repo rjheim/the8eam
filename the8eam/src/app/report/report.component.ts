@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '../data-access-layer/event';
-import {DataAccessLayerComponent} from '../data-access-layer/data-access-layer.component';
+import { Event } from '../event';
+import {DataAccessLayerService} from '../data-access-layer.service';
 import * as jQuery from 'jquery';
 
 @Component({
   selector: 'app-report',
-  providers: [DataAccessLayerComponent],
+  providers: [DataAccessLayerService],
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
@@ -16,7 +16,7 @@ export class ReportComponent implements OnInit {
   public visible = false;
   public visibleAnimate = false;
 
-  constructor(private dal: DataAccessLayerComponent) {
+  constructor(private dal: DataAccessLayerService) {
     this.eventItem = {} as Event;
   }
 
