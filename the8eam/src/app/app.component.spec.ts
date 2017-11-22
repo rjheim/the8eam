@@ -34,11 +34,11 @@ describe('AppComponent', () => {
     el = de.nativeElement;
   });
   //First Test
-  it('should create the app', async(() => {
+  it('should create the app',() => {
     expect(component).toBeTruthy();
-  }));
+  });
   //Second Test
-  it('should render the active view\'s bootstrap container as a "root" div', async(() => {
+  it('should render the active view\'s bootstrap container as a "root" div', () => {
     let debEl : DebugElement;
 
     // Tells angular to perform change detection.
@@ -49,7 +49,7 @@ describe('AppComponent', () => {
     else debEl = fixture.debugElement.query(By.css('#calendar-view'));
 
     expect(debEl).toBeTruthy();
-  }));
+  });
   //and so on...
 });
 // mock components to simulate injected elements of app-component's template
