@@ -37,12 +37,22 @@ export class FilterVarsService {
   }
 
   setCost(cost: number){
-    this.cost = cost;
+    if (this.cost == cost){
+      this.cost = -1;
+    }
+    else
+      this.cost = cost;
+    console.log(this.cost);
   }
 
   setDate(date: number)
   {
-    this.date = date;
+    if (this.date == date){
+      this.date = -1;
+    }
+    else
+      this.date = date;
+    console.log(this.date);
   }
 
 }
