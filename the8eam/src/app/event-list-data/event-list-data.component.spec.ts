@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EventListDataComponent } from './event-list-data.component';
 
 describe('EventListDataComponent', () => {
@@ -8,7 +7,10 @@ describe('EventListDataComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventListDataComponent ]
+      declarations: [ EventListDataComponent ],
+      providers: [
+
+      ]
     })
     .compileComponents();
   }));

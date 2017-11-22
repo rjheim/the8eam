@@ -55,6 +55,11 @@
     }
   ],
   "test": {
+    "codeCoverage": {
+     "exclude": [
+       "src/app/rss/*"
+     ]
+    },
     "karma": {
       "config": "./karma.conf.js"
     }
