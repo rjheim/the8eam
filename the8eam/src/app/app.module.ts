@@ -38,7 +38,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     RssComponent,
-    DataAccessLayerComponent,
     EventListDataComponent,
     EventCalendarDataComponent,
     HeaderComponent,
@@ -61,7 +60,7 @@ export const firebaseConfig = {
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [FilterVarsService],
+  providers: [FilterVarsService, DataAccessLayerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

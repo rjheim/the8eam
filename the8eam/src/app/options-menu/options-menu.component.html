@@ -36,7 +36,23 @@
       <div *ngSwitchCase="2" class="d-flex filter-container">
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Today')}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickDateFilter('Today');">Today</button>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Today');filter.setDate(0)">Today</button>
+        </div>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Week')}" >
+          <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Week');filter.setDate(7)">Today</button>
+        </div>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Month')}" >
+          <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Month');filter.setDate(100)">Today</button>
+        </div>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '3Months')}" >
+          <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('3Months');filter.setDate(300)">Today</button>
+        </div>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Year')}" >
+          <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Year');filter.setDate(10000)">Today</button>
         </div>
       </div>
       <!-- Filter By Cost:3 -->
