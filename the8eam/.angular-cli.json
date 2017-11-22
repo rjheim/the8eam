@@ -57,7 +57,8 @@
   "test": {
     "codeCoverage": {
      "exclude": [
-       "src/app/rss/*"
+       "src/app/rss/*",
+       "src/app/data-access-layer/*"
      ]
     },
     "karma": {

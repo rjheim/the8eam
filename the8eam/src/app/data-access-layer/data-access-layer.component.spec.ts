@@ -5,7 +5,7 @@ import { Event } from "./event";
 import { QueryFn } from "angularfire2/firestore/interfaces";
 import * as firebase from 'firebase/app';
 
-describe('DataAccessLayerComponent', () => {
+xdescribe('DataAccessLayerComponent', () => {
   let component:  DataAccessLayerComponent;
   let fixture:    ComponentFixture<DataAccessLayerComponent>;
   // try spying instead of mocking
