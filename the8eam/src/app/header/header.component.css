@@ -1,6 +1,39 @@
+#app-header{
+  padding-bottom: 10px;
+}
 .options-toggle{
   padding: 3px 10px;
+  background-color: #64A77E;
+  color: #EDEDF4;
 }
 .options-toggle:focus{
   box-shadow: none;
+}
+.options-toggle:hover, .options-toggle:active, .showFilters{
+  background-color: #7BBD94;
+  box-shadow: none;
+}
+.nav-options>div, .nav-options>button{
+  display: inline-block;
+}
+
+/* Extra small devices <576 */
+.brand-icon{
+  display: inline-block;
+  color: #EDEDF4;
+  font-size: 1.3em;
+  margin-left: 5px;
+}
+.brand-text{
+  display: none;
+}
+/* Small devices >=576 */
+@media (min-width: 576px) {
+  .brand-icon {
+    display: none;
+  }
+
+  .brand-text {
+    display: inline-block;
+  }
 }

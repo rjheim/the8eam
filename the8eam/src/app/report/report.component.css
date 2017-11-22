@@ -1,25 +1,37 @@
-/* Extra Small Devices*/
-#report-modal{
-  top:25%;
+/* Extra Small Devices */
+.no-scroll-on-modal{
+  height:100%;
+  overflow: hidden;
 }
-.report-header{
-  padding:0;
+#feedback-modal {
+  max-width:98vw;
+  margin:auto;
+
 }
-.close-report{
-  padding: 15px 15px 0 0;
+@media (min-width: 768px) {
+  #feedback-modal {
+    top: 20%;
+    max-width: 50vw;
+  }
 }
-.report-event{
-  max-height:40px; /*two lines*/
-  overflow:hidden;
-}
-.report-event:after{
-  content: "";
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 20px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
-}
+/*.feedback-header{*/
+  /*padding:0;*/
+/*}*/
+/*.close-feedback{*/
+  /*padding: 15px 15px 0 0;*/
+/*}*/
+/*.event-feedback{*/
+  /*max-height:40px; !*two lines*!*/
+  /*overflow:hidden;*/
+/*}*/
+/*.event-feedback:after{*/
+  /*content: "";*/
+  /*text-align: right;*/
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*right: 0;*/
+  /*width: 70%;*/
+  /*height: 20px;*/
+  /*background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);*/
+/*}*/
 
