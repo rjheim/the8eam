@@ -13,7 +13,7 @@ export class EventListDataComponent implements OnInit {
   listItems: Observable<any>;
   report: Event;
 
-  constructor(private dal: DataAccessLayerService, private filter: FilterVarsService) {
+  constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
     this.listItems = dal.getList();
   }
 

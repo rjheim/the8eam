@@ -11,7 +11,7 @@ export class DataAccessLayerService {
   length: number;
   testEvent: Observable<Event[]>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(public db: AngularFirestore) {
     this.list = db.collection<Event>('list');
     this.listItems = db.collection<Event>('list',
       a => a.orderBy("date")).snapshotChanges().map(actions => {

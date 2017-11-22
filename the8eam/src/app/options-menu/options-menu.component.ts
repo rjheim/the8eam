@@ -20,7 +20,7 @@ export class OptionsMenuComponent implements OnInit {
 
 
 
-  constructor(private filter: FilterVarsService) {
+  constructor(public filter: FilterVarsService) {
     this.filterService = filter;
     // Genre is the default view
     this.filterTab = 1;

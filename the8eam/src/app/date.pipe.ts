@@ -26,7 +26,6 @@ export class DatePipe implements PipeTransform {
       var curNum = +cur + date;
       if (((+d > 21 && +m == 2) || (+d > 23 && (+m == 9 || +m == 4 || +m == 11 || +m == 6)) || (+d > 24))
         && date == 7) {
-        console.log("in week correct");
         if (+m == 12){
           tempYear = +y + 1;
           y = tempYear.toString();
@@ -48,7 +47,6 @@ export class DatePipe implements PipeTransform {
         curNum = +cur;
       }
       if (date == 100 && +m == 12){
-        console.log("in month correct");
         tempYear = +y + 1;
         y = tempYear.toString();
         m = "1";
@@ -56,7 +54,6 @@ export class DatePipe implements PipeTransform {
         curNum = +cur;
       }
       if (date == 300 && +m > 9){
-        console.log("in 3 month correct");
         tempYear = +y + 1;
         y = tempYear.toString();
         if (+m == 12) {
