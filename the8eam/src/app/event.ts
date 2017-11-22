@@ -8,4 +8,5 @@ export class Event {
 	location: string;
 	report: number;
 	time: number;
+	id: string;
 }

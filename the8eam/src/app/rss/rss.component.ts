@@ -15,7 +15,7 @@ import * as rssGet from 'rss-to-json'
 })
 export class RssComponent implements OnInit {
 
-  constructor(private dal: DataAccessLayerService) {
+  constructor(public dal: DataAccessLayerService) {
 
   }
 

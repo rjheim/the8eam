@@ -16,7 +16,7 @@ export class ReportComponent implements OnInit {
   public visible = false;
   public visibleAnimate = false;
 
-  constructor(private dal: DataAccessLayerService) {
+  constructor(public dal: DataAccessLayerService) {
     this.eventItem = {} as Event;
   }
 

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FilterVarsService {
-  private gMusic: boolean;
-  private gArt: boolean;
-  private gFood: boolean;
-  private gSW: boolean;
-  private gDance: boolean;
-  private cost: number;
-  private date: number;
+   gMusic: boolean;
+   gArt: boolean;
+   gFood: boolean;
+   gSW: boolean;
+   gDance: boolean;
+   cost: number;
+   date: number;
 
   constructor() {
     this.gMusic = false;
