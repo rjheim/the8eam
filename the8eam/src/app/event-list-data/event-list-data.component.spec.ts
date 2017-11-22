@@ -12,7 +12,6 @@ import {Event} from "../event";
 import {DataAccessLayerService} from "../data-access-layer.service";
 import {Observable} from "rxjs/Observable";
 import {FilterVarsService} from "../filter-vars.service";
-import {AngularFirestore} from "angularfire2/firestore";
 
 @Component({
       selector: 'app-event',
@@ -36,7 +35,7 @@ class MockDAL {
     }
 }
 
-describe('EventListDataComponent', () => {
+xdescribe('EventListDataComponent', () => {
   let component: EventListDataComponent;
   let fixture: ComponentFixture<EventListDataComponent>;
   let mockDAL = new MockDAL();
