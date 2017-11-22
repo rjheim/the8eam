@@ -21,15 +21,19 @@
   </ng-container>
   <!-- Filter By Date:2 -->
   <ng-container *ngSwitchCase="2" class="btn-group btn-group-justified">
-    <button type="button" (click)="clickDateFilter('Today');" [ngClass]="{active : isFiltered(dateFilter, 'Today')}" class="btn-primary1 filter-options" >Today</button>
+    <button type="button" (click)="clickDateFilter('Today');filter.setDate(0)" [ngClass]="{active : isFiltered(dateFilter, 'Today')}" class="btn-primary1 filter-options" >Today</button>
+    <button type="button" (click)="clickDateFilter('Week');filter.setDate(7)" [ngClass]="{active : isFiltered(dateFilter, 'Week')}" class="btn-primary1 filter-options" >This Week</button>
+    <button type="button" (click)="clickDateFilter('Month');filter.setDate(100)" [ngClass]="{active : isFiltered(dateFilter, 'Month')}" class="btn-primary1 filter-options" >This Month</button>
+    <button type="button" (click)="clickDateFilter('3Months');filter.setDate(300)" [ngClass]="{active : isFiltered(dateFilter, '3Months')}" class="btn-primary1 filter-options" >Next 3 Months</button>
+      <button type="button" (click)="clickDateFilter('Year');filter.setDate(10000)" [ngClass]="{active : isFiltered(dateFilter, 'Year')}" class="btn-primary1 filter-options" >Next Year</button>
   </ng-container>
   <!-- Filter By Cost:3 -->
   <ng-container *ngSwitchCase="3" class="btn-group btn-group-justified">
-    <button type="button" (click)="clickCostFilter('free');" [ngClass]="{active : isFiltered(dateFilter, 'free')}" class="btn-primary1 filter-options" >Free</button>
-    <button type="button" (click)="clickCostFilter('10');" [ngClass]="{active : isFiltered(dateFilter, '10')}" class="btn-primary1 filter-options" >$10 or less</button>
-    <button type="button" (click)="clickCostFilter('25');" [ngClass]="{active : isFiltered(dateFilter, '25')}" class="btn-primary1 filter-options" >$25 or less</button>
-    <button type="button" (click)="clickCostFilter('50');" [ngClass]="{active : isFiltered(dateFilter, '50')}" class="btn-primary1 filter-options" >$50 or less</button>
-    <button type="button" (click)="clickCostFilter('100');" [ngClass]="{active : isFiltered(dateFilter, '100')}" class="btn-primary1 filter-options" >$100 or less</button>
+    <button type="button" (click)="clickCostFilter('free');filter.setCost(0)" [ngClass]="{active : isFiltered(dateFilter, 'free')}" class="btn-primary1 filter-options" >Free</button>
+    <button type="button" (click)="clickCostFilter('10');filter.setCost(10)" [ngClass]="{active : isFiltered(dateFilter, '10')}" class="btn-primary1 filter-options" >$10 or less</button>
+    <button type="button" (click)="clickCostFilter('25');filter.setCost(25)" [ngClass]="{active : isFiltered(dateFilter, '25')}" class="btn-primary1 filter-options" >$25 or less</button>
+    <button type="button" (click)="clickCostFilter('50');filter.setCost(50)" [ngClass]="{active : isFiltered(dateFilter, '50')}" class="btn-primary1 filter-options" >$50 or less</button>
+    <button type="button" (click)="clickCostFilter('100');filter.setCost(100)" [ngClass]="{active : isFiltered(dateFilter, '100')}" class="btn-primary1 filter-options" >$100 or less</button>
   </ng-container>
   <!-- Filter By Location:4 -->
   <ng-container *ngSwitchCase="4" class="btn-group btn-group-justified">
