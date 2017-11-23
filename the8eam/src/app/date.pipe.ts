@@ -48,7 +48,11 @@ export class DatePipe implements PipeTransform {
         }
         tempDay = date - tempDay;
         tempMonth = +m + 1;
-        if (tempMonth < 10){
+        if (tempMonth == 13)
+        {
+          m = "01";
+        }
+        else if (tempMonth < 10){
           m = "0" + tempMonth.toString();
         }
         else {
@@ -56,9 +60,6 @@ export class DatePipe implements PipeTransform {
         }
         if (tempDay < 10){
           d = "0" + tempDay.toString();
-        }
-        else {
-          d = tempDay.toString();
         }
         cur = y + m + d;
         curNum = +cur;
