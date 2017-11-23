@@ -9,6 +9,7 @@ export class FilterVarsService {
    gDance: boolean;
    cost: number;
    date: number;
+   curDate: Date;
 
   constructor() {
     this.gMusic = false;
@@ -18,6 +19,7 @@ export class FilterVarsService {
     this.gDance = false;
     this.cost = -1;
     this.date = -1;
+    this.curDate = new Date();
   }
 
   setMusic(){

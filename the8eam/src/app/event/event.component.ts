@@ -14,10 +14,4 @@ export class EventComponent implements OnInit {
 
   ngOnInit() {
   }
-  /*
-     Triggers the report modul to open
-   */
-  reportWindow() {
-    this.reporting = !this.reporting;
-  }
 }

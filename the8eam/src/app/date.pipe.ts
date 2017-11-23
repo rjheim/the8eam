@@ -5,10 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DatePipe implements PipeTransform {
 
-  transform(event: any, date: number): any {
-    if(event == null || date == -1) return event;
-    return event.filter(function(event){
-      var curDate = new Date();
+  transform(events: any, date: number, curDate: Date): any {
+    if(events == null || date == -1) return events;
+    return events.filter(function(event){
       var m = "" + curDate.getMonth();
       var d = "" + curDate.getDate();
       var y = "" + curDate.getFullYear();
@@ -16,11 +15,18 @@ export class DatePipe implements PipeTransform {
       var tempMonth;
       var tempYear;
       tempMonth = +m + 1;
+      tempDay = +d;
       if (tempMonth < 10){
         m = "0" + tempMonth.toString();
       }
       else {
         m = tempMonth.toString();
+      }
+      if (tempDay < 10){
+        d = "0" + tempDay.toString();
+      }
+      else {
+        d = tempDay.toString();
       }
       var cur = y + m + d;
       var curNum = +cur + date;
@@ -42,14 +48,25 @@ export class DatePipe implements PipeTransform {
         }
         tempDay = date - tempDay;
         tempMonth = +m + 1;
-        m = tempMonth.toString();
-        cur = y + m + tempDay;
+        if (tempMonth < 10){
+          m = "0" + tempMonth.toString();
+        }
+        else {
+          m = tempMonth.toString();
+        }
+        if (tempDay < 10){
+          d = "0" + tempDay.toString();
+        }
+        else {
+          d = tempDay.toString();
+        }
+        cur = y + m + d;
         curNum = +cur;
       }
       if (date == 100 && +m == 12){
         tempYear = +y + 1;
         y = tempYear.toString();
-        m = "1";
+        m = "01";
         cur = y + m + d;
         curNum = +cur;
       }
@@ -68,7 +85,7 @@ export class DatePipe implements PipeTransform {
         cur = y + m + d;
         curNum = +cur;
       }
-      console.log("Edited date: " + curNum + ", event.date: " + event.date);
+      console.log("Edited date: " + curNum + ", events.date: " + event.date);
       return event.date <= curNum;
     });
   }
