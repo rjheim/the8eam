@@ -50,6 +50,22 @@ describe('AppComponent', () => {
 
     expect(debEl).toBeTruthy();
   });
+  it('should create the event-list-data-component container by default and when "List" tab is clicked', () => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('app-event-list-data'));
+    expect(de).toBeTruthy(); // is created by default
+
+    component.toggleView();
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('app-event-list-data'));
+    expect(de).toBeTruthy(); // is created when "List" tab is created
+  });
+  it('should create the event-calendar-data-component container when "Calendar" tab is clicked', () => {
+    component.toggleView2();
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('app-event-calendar-data'));
+    expect(de).toBeTruthy(); // is created when "List" tab is created
+  });
   //and so on...
 });
 // mock components to simulate injected elements of app-component's template

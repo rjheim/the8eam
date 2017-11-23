@@ -24,7 +24,7 @@ describe('HeaderComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('should create an instance', () => {
     expect(component).toBeTruthy();
   });
   it('should show options-menu-component when "Filters" button is clicked', () => {
