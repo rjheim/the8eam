@@ -1,5 +1,7 @@
 #app-header{
   padding-bottom: 10px;
+  background-color: #002642;
+  color: #EDEDF4;
 }
 .options-toggle{
   padding: 3px 10px;
@@ -35,5 +37,12 @@
 
   .brand-text {
     display: inline-block;
+  }
+}
+/* Large devices >= 992 */
+@media (min-width: 992px){
+  #app-header > div{
+    max-width: 992px;
+    margin: 0 auto;
   }
 }
