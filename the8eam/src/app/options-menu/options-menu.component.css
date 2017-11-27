@@ -1,44 +1,61 @@
-.nav-tabs > li{
-  float:none;
-  display: inline-block;
-  zoom: 1;
-  margin-bottom: 0;
-  padding-top: 0;
+.filter-tab{
+  color: #EDEDF4;
+}
+.filter-tab:hover{
+  border-color: #EDEDF4;
+}
+.filter-tab.active{
+  background-color: #EDEDF4;
+  color: #A20021;
+}
+#filter-tabs{ border: none; }
+.filter-container{
+  border: solid 2px #EDEDF4;
+  border-radius: 0 0 0.5em 0.5em;
+}
+.filter-container{
+  -webkit-flex-flow: row wrap;
+  flex-flow:row wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: space-around;
+  align-content: space-around;
+}
+.filter{
+  margin: 10px auto;
+  position: relative;
+}
+.filter-btn{
+  width : 100px;
+  height : 60px;
+  font-size:1.1em;
+  font-weight: bold;
+  background-color: #EDEDF4;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
+}
+.filter-btn:hover{
+  background-color: #D8D8DE;
+}
+.filter-btn:focus{
+  box-shadow: none;
+  outline:none;
+}
+.oi-circle-check{
+  position : absolute;
+  top:6px;
+  left:80px;
+  color: #64A77E;
+  display : none;
+}
+.filterOn>span{
+  display: inherit;
+}
+@media (min-width: 768px){
+  .filter-container{
+    /* Make shit align left */
+  }
 }
 
-.nav-tabs > li > a{
-  padding-top: 5px;
-  padding-bottom: 8px;
-  line-height: 20px;
-  border: 1px solid transparent;
-  -moz-border-radius:0px;
-  -webkit-border-radius:0px;
-  border-radius:0px;
-  -moz-border-radius-bottomright: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-
-}
-.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
-  color: #555555;
-  cursor: default;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-top-color: transparent;
-  margin-top:0px ;
-}
-
-.nav-tabs{
-  text-align: center;
-  font-size: large;
-  margin-top:-5px ;
-  padding:0;
-}
-.set1{
-  text-align: center;
-  padding-top:5px;
-}
 

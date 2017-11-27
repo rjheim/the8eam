@@ -7,161 +7,82 @@ import { FilterVarsService } from '../filter-vars.service'
   styleUrls: ['./options-menu.component.css']
 })
 export class OptionsMenuComponent implements OnInit {
-  genreTabbed = true;
-  priceTabbed = false;
-  locationTabbed = false;
-  dateTabbed = false;
 
-  //different genre filters
-  _music = "";
-  _dance = "";
-  _food = "";
-  _art = "";
-  _sw = "";
-
-  //different date filters
-  // _today = "";
-  // _tomorrow = "";
-  // _thisweek = "";
-  // _thismonth = "";
-
-  //diff cost filters
-  _free = "";
-  _less10 = "";
-  _less20 = "";
-  _less50 = "";
-  _less100 = "";
+  filterService: FilterVarsService;
+  // The tab selected to view
+  filterTab : number;
+  // which filters are on
+  genreFilters : string;   // more than one genre can be selected
+  dateFilter : string;
+  costFilter : string;
+  locFilter : string; // more than one location can be selected
 
 
-  constructor(private filter: FilterVarsService) { }
-  genreTab(){
-    this.genreTabbed = true;
-    this.priceTabbed = !this.genreTabbed;
-    this.locationTabbed = !this.genreTabbed;
-    this.dateTabbed = !this.genreTabbed;
-  }
-  priceTab(){
-    this.priceTabbed = true;
-    this.genreTabbed = !this.priceTabbed;
-    this.locationTabbed = !this.priceTabbed;
-    this.dateTabbed = !this.priceTabbed;
-  }
-  locationTab(){
-    this.locationTabbed = true;
-    this.priceTabbed = !this.locationTabbed;
-    this.genreTabbed = !this.locationTabbed;
-    this.dateTabbed = !this.locationTabbed;
-  }
-  dateTab(){
-    this.dateTabbed = true;
-    this.priceTabbed = !this.dateTabbed;
-    this.locationTabbed = !this.dateTabbed;
-    this.genreTabbed = !this.dateTabbed;
+
+
+  constructor(public filter: FilterVarsService) {
+    this.filterService = filter;
+    // Genre is the default view
+    this.filterTab = 1;
+    this.genreFilters = "";
+    this.dateFilter = "";
+    this.costFilter = "";
+    this.locFilter = "";
   }
 
-  //shows that genre filters are on
-  musicOn(){
-    if(this._music.length == 0) {
-      this._music = ": ON";
-      return
-    }
-    this._music = "";
+  /*
+    @view the tab selected, 1-4, Genre through Location
+   */
+  clickViewTab( view:number){
+    if(view < 1 || view  > 4 || view == null) this.filterTab = 1;
+    this.filterTab = view;
   }
-  danceOn(){
-    if(this._dance.length == 0) {
-      this._dance = ": ON";
-      return
+  clickGenreFilter( filterName:string ) {
+    let index = this.genreFilters.indexOf ( filterName );
+    // if genrefilters contains filterName, remove it (turn it off)
+    if (index >= 0) {
+      this.genreFilters = this.genreFilters.substring ( 0 , index ) + this.genreFilters.substring ( index + filterName.length , this.genreFilters.length );
     }
-    this._dance = "";
+    // else genreFilters doesn't have the filter name (it's off), we add it (turn it on)
+    else{
+      this.genreFilters += filterName;
+    }
   }
-  foodOn(){
-    if(this._food.length == 0) {
-      this._food= ": ON";
-      return
-    }
-    this._food= "";
+  clickDateFilter ( filterName:string ) {
+    if(this.dateFilter != filterName )
+      this.dateFilter = filterName;
+    else
+      this.dateFilter = "";
   }
-  swOn(){
-    if(this._sw.length == 0) {
-      this._sw= ": ON";
-      return
-    }
-    this._sw= "";
+  clickCostFilter ( filterName:string ) {
+    if(this.costFilter != filterName )
+      this.costFilter = filterName;
+    else
+      this.costFilter = ""
   }
-  artOn(){
-    if(this._art.length == 0) {
-      this._art= ": ON";
-      return
-    }
-    this._art= "";
+  clickLocFilter( filterName:string ){
+    var index = this.locFilter.indexOf(filterName);
+    // if locationfilters contains filterName, remove it (turn it off)
+    if(index >= 0)
+      this.locFilter = this.locFilter.substring(0, index) + this.locFilter.substring(index+filterName.length,this.locFilter.length);
+    // else locFilter doesn't have the filter name (it's off), we add it (turn it on)
+    else
+      this.locFilter += filterName;
   }
 
-  // //shows what date filters are on
-  // todayOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
-  // tomorrowOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
-  // weekOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
-  // monthOn(){
-  //   if(this._today.length == 0) {
-  //     this._today = ": ON";
-  //     return
-  //   }
-  //   this._today = "";
-  // }
+  isFiltered( filterCtg, filterName ){
+    if(filterCtg.indexOf(filterName) >= 0)
+      return true;
+    return false;
+  }
 
-  //shows what cost filters are on
-  freeOn(){
-    if(this._free.length == 0) {
-      this._free = ": ON";
-      return
-    }
-    this._free = "";
-  }
-  c10On(){
-    if(this._less10.length == 0) {
-      this._less10 = ": ON";
-      return
-    }
-    this._less10 = "";
-  }
-  c20On(){
-    if(this._less20.length == 0) {
-      this._less20 = ": ON";
-      return
-    }
-    this._less20 = "";
-  }
-  c50On(){
-    if(this._less50.length == 0) {
-      this._less50 = ": ON";
-      return
-    }
-    this._less50 = "";
-  }
-  c100On(){
-    if(this._less100.length == 0) {
-      this._less100 = ": ON";
-      return
-    }
-    this._less100 = "";
-  }
+
+
+
+
+
+
+
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataAccessLayerComponent } from '../data-access-layer/data-access-layer.component';
-import { Event } from '../data-access-layer/event';
+import { DataAccessLayerService } from '../data-access-layer.service';
+import { Event } from '../event';
 import { rss } from 'rss-to-json/src/rss';
 import { xml2js } from 'xml2js';
 import { request } from 'request';
@@ -9,13 +9,13 @@ import * as rssGet from 'rss-to-json'
 
 @Component({
   selector: 'app-rss',
-  providers: [DataAccessLayerComponent],
+  providers: [DataAccessLayerService],
   templateUrl: './rss.component.html',
   styleUrls: ['./rss.component.css']
 })
 export class RssComponent implements OnInit {
 
-  constructor(private dal: DataAccessLayerComponent) {
+  constructor(public dal: DataAccessLayerService) {
 
   }
 
