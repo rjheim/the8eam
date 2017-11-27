@@ -2,11 +2,11 @@
  <!--View Tabs ( List / Calendar )-->
 <div class="container-fluid" id="app-body">
   <div id="view-toggle">
-    <ul class="row nav nav-tabs view-tabs">
-      <li class="col-xs-6 col-md-4 nav-item no-gutter">
+    <ul class="row nav nav-tabs">
+      <li class="nav-item col-6 no-gutter">
         <a class="nav-link rounded-0 font-weight-bold" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
       </li>
-      <li class="col-xs-6 col-md-4 nav-item no-gutter">
+      <li class="nav-item col-6 no-gutter">
         <a class="nav-link active rounded-0 font-weight-bold" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
       </li>
     </ul>
