@@ -3,31 +3,49 @@
 }
 #view-toggle{
   background-color: #002642;
+  margin: 0 -15px;
+}
+.view-tabs{
+  border-bottom:none;
 }
 #list-view-toggle.active, #cal-view-toggle.active{
-  border-top: solid 2px #171818;
-  border-right: solid 2px #171818;
+  border: solid 1px #171818;
   border-bottom-color: #EDEDF4;
   background-color: #EDEDF4;
 }
-#cal-view-toggle.active{
-  border-top: solid 2px #171818;
-  border-left: solid 2px #171818;
-  background-color: #EDEDF4;
-}
-#list-view-toggle.passive, #cal-view-toggle.passive{
+#list-view-toggle.passive{
   background-color: #A20021;
-  border-bottom: solid 2px #171818;
-  color: #fff;
+  border-left: solid 1px #171818;
+  border-top: solid 1px #171818;
+  margin-bottom: 1px;
+  color: #EDEDF4;
+}
+#cal-view-toggle.passive{
+  background-color: #A20021;
+  border-right: solid 1px #171818;
+  border-top: solid 1px #171818;
+  margin-bottom: 1px;
+  color: #EDEDF4;
 }
 #list-view-toggle.passive:hover, #cal-view-toggle.passive:hover{
-  background-color: #A20021;
+  background-color: #B22E49;
   border-color: transparent;
-  border-bottom: solid 2px #171818;
-  color: #fff;
+  color: #EDEDF4;
 }
 
+@media (min-width: 992px){
+  .view-tabs{
+    max-width: 992px;
+    margin: 0 auto;
 
+  }
+  #list-view, #calendar-view {
+    max-width: 992px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
 
 
 

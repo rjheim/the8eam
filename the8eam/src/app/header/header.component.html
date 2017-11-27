@@ -1,17 +1,19 @@
-<div id="app-header" class="app-header">
-  <nav class="navbar navbar-dark" id="app-nav">
-    <a class="navbar-brand app-brand" id="app-brand" href="#">
-      <span class="brand-text">Madison Art & Event Calendar</span>
-      <span class="oi oi-home brand-icon" data-glyph="home" title="home" aria-hidden="true" ></span>
-    </a>
-    <div class="nav-options">
-      <div>
-        <app-search></app-search>
+<div id="app-header">
+  <div>
+    <nav class="navbar navbar-dark" id="app-nav">
+      <a class="navbar-brand app-brand" id="app-brand" href="#">
+        <span class="brand-text">Madison Art & Event Calendar</span>
+        <span class="oi oi-home brand-icon" data-glyph="home" title="home" aria-hidden="true" ></span>
+      </a>
+      <div class="nav-options">
+        <div>
+          <app-search></app-search>
+        </div>
+        <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filters</button>
       </div>
-      <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filters</button>
-    </div>
-  </nav>
-  <ng-container *ngIf="showFilters">
-    <app-options-menu></app-options-menu>
-  </ng-container>
+    </nav>
+    <ng-container *ngIf="showFilters">
+      <app-options-menu></app-options-menu>
+    </ng-container>
+  </div>
 </div>
