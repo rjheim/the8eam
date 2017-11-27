@@ -1,54 +1,20 @@
-<div *ngIf="eventItem&&eventItem.title" class="eventItem col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-  <div class="row">
-    <div class="eventTags col-xs-2" *ngIf="eventItem.genre">
-      <div class="genre-music" *ngIf="eventItem.genre=='music;'">
-        <div class="genre-music">
-        </div>
-        <div class="imageid">
-          <p>Music</p>
-        </div>
-      </div>
-      <div class="genre-food" *ngIf="eventItem.genre=='food;'">
-        <div class="genre-food">
-        </div>
-        <div class="imageid">
-          <p>Food</p>
-        </div>
-      </div>
-      <div class="genre-art" *ngIf="eventItem.genre=='art;'">
-        <div class="genre-art">
-        </div>
-        <div class="imageid">
-          <p>Art</p>
-        </div>
-      </div>
-      <div class="genre-dance" *ngIf="eventItem.genre=='dance;'">
-        <div class="genre-dance">
-        </div>
-        <div class="imageid">
-          <p>Dance</p>
-        </div>
-      </div>
-      <div class="genre-spoken-word" *ngIf="eventItem.genre=='spoken word;'">
-        <div class="genre-spoken-word">
-        </div>
-        <div class="imageid">
-          <p>Spoken Word</p>
-        </div>
-      </div>
+<div *ngIf="eventItem&&eventItem.title" class="eventItem">
+  <div class="d-flex">
+    <div class="eventInfo">
+      <h2>{{eventItem.title}}</h2>
+      <h3><span *ngIf="eventItem.time"> {{eventItem.time}}</span>
+        <span *ngIf="eventItem.cost">, ${{eventItem.cost}}</span>
+        <span *ngIf="eventItem.cost==0">, Free</span>
+      </h3>
     </div>
-    <div class="eventInfo col-xs-9">
-      <h1>{{eventItem.title}}</h1>
-      <h2><span *ngIf="eventItem.time"> {{eventItem.time}}</span></h2>
-    </div>
-    <div class="reportButton col-xs-1">
-      <button (click)="reportModal.show()">Report</button>
+    <div class="reportButton">
+      <button (click)="reportModal.show()">Feedback</button>
     </div>
   </div>
 
   <div id="showDescription">
-    <div class="row">
-      <div class="col-xs-12 eventDescription"*ngIf="eventItem.description">
+    <div class="d-flex">
+      <div class="eventDescription"*ngIf="eventItem.description">
         <p>{{eventItem.description}}</p>
       </div>
     </div>

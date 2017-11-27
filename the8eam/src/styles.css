@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* Use this class to get rid of right/left padding from bootstrap columns */
+.no-gutter{
+  padding-left: 0;
+  padding-right: 0;
+}
+body{
+  background-color: #EDEDF4;
+}
+.app-header {
+  background-color: #002642;
+  color: #EDEDF4;
+}

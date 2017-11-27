@@ -1,75 +1,39 @@
-div.app-header, div.view-tabs{
-  font-size:2em;
-  font-style: bold;
-  display : block;
-  width : 100%;
+#app-header{
+  padding-bottom: 10px;
 }
-.navbar-brand{
-  font-family: "Verdana";
-  font-size: 30px;
-  color: white;
-
-
+.options-toggle{
+  padding: 3px 10px;
+  background-color: #64A77E;
+  color: #EDEDF4;
 }
-.container-fluid{
-  background-image: url('../../assets/winew.jpg');
-  object-fit: cover;
-
+.options-toggle:focus{
+  box-shadow: none;
 }
-.headerBar{
-  padding-bottom: 0px;
-  padding-top: 5px;
-  background-color: red;
-
+.options-toggle:hover, .options-toggle:active, .showFilters{
+  background-color: #7BBD94;
+  box-shadow: none;
+}
+.nav-options>div, .nav-options>button{
+  display: inline-block;
 }
 
-
-ul.app-header {
-  list-style-type : none;
-  margin : 0;
-  padding : 0 0 5px 0;
-
-
+/* Extra small devices <576 */
+.brand-icon{
+  display: inline-block;
+  color: #EDEDF4;
+  font-size: 1.3em;
+  margin-left: 5px;
 }
+.brand-text{
+  display: none;
+}
+/* Small devices >=576 */
+@media (min-width: 576px) {
+  .brand-icon {
+    display: none;
+  }
 
-ul.app-header i{
-  display : inline;
-
+  .brand-text {
+    display: inline-block;
+  }
 }
-.dropdown{
-  text-align: right;
-}
-.dropdown-menu{
-  text-align: right;
-}
-.dropdown-toggle{
-  background-color: black;
-}
-
-ul.app-header li a {
-  padding : 4px;
-}
-
-ul.view-tabs {
-  list-style-type : none;
-  margin : 0;
-  padding : 0 0 5px 0;
-}
-ul.view-tabs li {
-  display : inline;
-  border : 2px solid black;
-}
-ul.view-tabs li a {
-  padding : 4px;
-}
-
-/* Mobile View */
-[class*="col-"]{
-  width:100%;
-}
-
-@media only screen and (min-width:786px){
-
-}
-
-

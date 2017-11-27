@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '../data-access-layer/event';
+import { Event } from '../event';
 
 @Component({
   selector: 'app-event',
@@ -13,11 +13,5 @@ export class EventComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-  /*
-     Triggers the report modul to open
-   */
-  reportWindow() {
-    this.reporting = !this.reporting;
   }
 }
