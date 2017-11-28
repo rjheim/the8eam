@@ -12,12 +12,15 @@ import {Observable} from 'rxjs/Observable';
 export class EventListDataComponent implements OnInit {
   listItems: Observable<any>;
   report: Event;
+  ;
 
   constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
     this.listItems = dal.getList();
+    console.log(dal.getList());
   }
 
   ngOnInit() {
+    console.log();
   }
 
 }

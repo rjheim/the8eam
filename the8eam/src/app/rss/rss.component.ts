@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataAccessLayerService } from '../data-access-layer.service';
+// import { DataAccessLayerService } from '../data-access-layer.service';
 import { Event } from '../event';
 import { rss } from 'rss-to-json/src/rss';
 import * as parser1 from 'xml2js';
@@ -14,13 +14,13 @@ import * as converter from 'ical2json';
 
 @Component({
   selector: 'app-rss',
-  providers: [DataAccessLayerService],
+  // providers: [DataAccessLayerService],
   templateUrl: './rss.component.html',
   styleUrls: ['./rss.component.css']
 })
 export class RssComponent implements OnInit {
-
-  constructor(public dal: DataAccessLayerService) {
+  dupObserve: Observable<Event[]>;
+  constructor(/*private dal: DataAccessLayerService*/) {
 
   }
 
