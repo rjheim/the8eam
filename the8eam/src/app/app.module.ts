@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { RssComponent } from './rss/rss.component';
 import { EventListDataComponent } from './event-list-data/event-list-data.component';
 import { EventCalendarDataComponent } from './event-calendar-data/event-calendar-data.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,7 +36,6 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    RssComponent,
     EventListDataComponent,
     EventCalendarDataComponent,
     HeaderComponent,

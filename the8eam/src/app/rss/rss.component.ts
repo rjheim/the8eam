@@ -304,7 +304,7 @@ export class RssComponent implements OnInit {
         var splitted = time.split(" ", 5);
 
         eventToAdd.date = date(splitted);
-        eventToAdd.time = timeFunc(splitted);
+        eventToAdd.time = +timeFunc(splitted);
 
 
 

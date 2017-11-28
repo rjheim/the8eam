@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
+import { RssComponent} from "./rss/rss.component";
 
 @Component({
   selector: 'app-root',
+  providers: [RssComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  view: boolean;
 
-  constructor() {
+  view: boolean;
+  rss: RssComponent;
+
+  constructor(rss = new RssComponent()) {
     this.view = true;
   }
   toggleView() {
@@ -17,6 +20,10 @@ export class AppComponent {
   }
   toggleView2() {
     this.view = false;
+  }
+
+  doButton(){
+    this.rss.testRSS();
   }
 }
 
