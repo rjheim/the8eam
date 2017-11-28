@@ -11,7 +11,7 @@
       <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filters</button>
     </div>
   </nav>
-  <div *ngIf="showFilters">
+  <ng-container *ngIf="showFilters">
     <app-options-menu></app-options-menu>
-  </div>
+  </ng-container>
 </div>

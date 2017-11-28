@@ -1,26 +1,20 @@
-
-import { Component, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Event } from './event';
 
-@Component ( {
-  selector: 'app-data-access-layer' ,
-  templateUrl: './data-access-layer.component.html' ,
-  styleUrls: [ './data-access-layer.component.css' ]
-} )
-
 @Injectable ()
-export class DataAccessLayerComponent {
+export class DataAccessLayerService {
   list: AngularFirestoreCollection<Event>;
   listItems: Observable<Event[]>;
   model: Event;
   length: number;
   testEvent: Observable<Event[]>;
 
-  constructor(private db: AngularFirestore) {
-  	this.list = db.collection<Event>('list');
-  	this.listItems = this.list.snapshotChanges().map(actions => {
+  constructor(public db: AngularFirestore) {
+    this.list = db.collection<Event>('list');
+    this.listItems = db.collection<Event>('list',
+      a => a.orderBy("date")).snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Event;
         const id = a.payload.doc.id;
@@ -37,24 +31,24 @@ export class DataAccessLayerComponent {
 
   addToList(event: Event)
   {
-  	this.list.add(event);
+    this.list.add(event);
   }
 
   removeFromList(key: string)
   {
-  	this.list.doc(key).delete();
+    this.list.doc(key).delete();
   }
 
   whereTitleAndDate(title: string, date: number){
     return(this.db.collection<Event>('list',
       a => a.where('title', '==', title).where('date', '==', date)))
       .snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Event;
-        const id = a.payload.doc.id;
-        return { id, ...data };
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Event;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
       });
-    });
   }
 
   updateDoc(key: string, event: Event)
@@ -71,3 +65,4 @@ export class DataAccessLayerComponent {
     this.testEvent.subscribe(data => (this.length = data.length));
   }
 }
+

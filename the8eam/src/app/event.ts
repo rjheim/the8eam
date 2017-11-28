@@ -7,5 +7,6 @@ export class Event {
 	link: string;
 	location: string;
 	report: number;
-	time: string;
+	time: number;
+	id: string;
 }

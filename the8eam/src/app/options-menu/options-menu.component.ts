@@ -8,6 +8,7 @@ import { FilterVarsService } from '../filter-vars.service'
 })
 export class OptionsMenuComponent implements OnInit {
 
+  filterService: FilterVarsService;
   // The tab selected to view
   filterTab : number;
   // which filters are on
@@ -19,7 +20,8 @@ export class OptionsMenuComponent implements OnInit {
 
 
 
-  constructor(private filter: FilterVarsService) {
+  constructor(public filter: FilterVarsService) {
+    this.filterService = filter;
     // Genre is the default view
     this.filterTab = 1;
     this.genreFilters = "";

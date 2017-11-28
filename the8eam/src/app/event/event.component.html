@@ -2,7 +2,10 @@
   <div class="d-flex">
     <div class="eventInfo">
       <h2>{{eventItem.title}}</h2>
-      <h3><span *ngIf="eventItem.time"> {{eventItem.time}}</span></h3>
+      <h3><span *ngIf="eventItem.time"> {{eventItem.time}}</span>
+        <span *ngIf="eventItem.cost">, ${{eventItem.cost}}</span>
+        <span *ngIf="eventItem.cost==0">, Free</span>
+      </h3>
     </div>
     <div class="reportButton">
       <button (click)="reportModal.show()">Feedback</button>

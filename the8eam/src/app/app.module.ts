@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { RssComponent } from './rss/rss.component';
-import { DataAccessLayerComponent } from './data-access-layer/data-access-layer.component';
 import { EventListDataComponent } from './event-list-data/event-list-data.component';
 import { EventCalendarDataComponent } from './event-calendar-data/event-calendar-data.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,7 +20,8 @@ import { ArtGenrePipe } from './art-genre.pipe';
 import { FoodGenrePipe } from './food-genre.pipe';
 import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
 import { CostPipe } from './cost.pipe';
-import {FilterVarsService} from "./filter-vars.service";
+import { FilterVarsService } from "./filter-vars.service";
+import { DataAccessLayerService } from "./data-access-layer.service";
 import { DatePipe } from './date.pipe';
 
 // Must export the config
@@ -60,7 +60,7 @@ export const firebaseConfig = {
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [FilterVarsService, DataAccessLayerComponent],
+  providers: [FilterVarsService, DataAccessLayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
