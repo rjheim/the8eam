@@ -9,7 +9,7 @@ export class SpokenWordGenrePipe implements PipeTransform {
     if(event == null || bool == false) return event;
     return event.filter(function(event){
       //search the the genres string for the genre, if indexof() doesn't return -1, the genre exists
-      return event.genre.indexOf("spoken word") >= 0;
+      return event.genre.indexOf("spokenword") >= 0;
     });
   }
 

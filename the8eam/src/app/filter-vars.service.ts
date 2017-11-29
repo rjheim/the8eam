@@ -44,7 +44,6 @@ export class FilterVarsService {
     }
     else
       this.cost = cost;
-    console.log(this.cost);
   }
 
   setDate(date: number)
@@ -54,7 +53,6 @@ export class FilterVarsService {
     }
     else
       this.date = date;
-    console.log(this.date);
   }
 
 }
