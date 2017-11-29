@@ -1,6 +1,6 @@
 #app-header{
   padding-bottom: 10px;
-  background-color: #EDEDF4;
+  background-color: #002642;
   color: #EDEDF4;
   font-family: "Avenir Next";
 }
@@ -30,7 +30,7 @@
 }
 .brand-text{
   display: none;
-  color: #333333;
+  color: #EDEDF4;
 }
 /* Small devices >=576 */
 @media (min-width: 576px) {

@@ -28,17 +28,17 @@
   text-decoration: underline;
 }
 
-@media (min-width: 992px){
+@media (min-width: 768px){
   #view-toggle{
     margin: 0 -15px;
   }
   .view-tabs{
-    max-width: 980px;
+    max-width: 750px;
     margin: 0 auto;
 
   }
   #list-view, #calendar-view {
-    max-width: 980px;
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
   }

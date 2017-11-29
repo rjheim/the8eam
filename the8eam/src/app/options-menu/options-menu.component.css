@@ -53,8 +53,9 @@
   display: inherit;
 }
 @media (min-width: 768px){
-  .filter-container{
-    /* Make shit align left */
+  #options-menu{
+    max-width: 750px;
+    margin: 0 auto;
   }
 }
 
