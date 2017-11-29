@@ -30,17 +30,19 @@
   height : 60px;
   font-size:1.1em;
   font-weight: bold;
-  background-color: #EDEDF4;
+  color: #EDEDF4;
+  background-color: transparent;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
 }
 .filter-btn:hover{
-  background-color: #D8D8DE;
+  border-color: #C21F39;
 }
 .filter-btn:focus{
   box-shadow: none;
   outline:none;
+
 }
 .oi-circle-check{
   position : absolute;

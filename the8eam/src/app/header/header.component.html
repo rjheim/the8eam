@@ -9,8 +9,7 @@
         <div>
           <app-search></app-search>
         </div>
-        <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filters</button>
-
+        <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filter</button>
       </div>
     </nav>
     <ng-container *ngIf="showFilters">

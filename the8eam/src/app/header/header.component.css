@@ -6,15 +6,13 @@
 }
 .options-toggle{
   padding: 3px 10px;
-  background-color: #777679;
-  color: #EDEDF4;
+  color: #002642;
 
 }
 .options-toggle:focus{
   box-shadow: none;
 }
 .options-toggle:hover, .options-toggle:active, .showFilters{
-  background-color: #777679;
   box-shadow: none;
 }
 .nav-options>div, .nav-options>button{
