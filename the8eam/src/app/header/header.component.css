@@ -29,14 +29,35 @@
 .brand-text{
   display: none;
 }
+.search-bar:focus{
+  box-shadow: none;
+  border-color:transparent;
+}
+.search-bar{
+  width:130px;
+  margin-right: 5px;
+}
+
 /* Small devices >=576 */
 @media (min-width: 576px) {
   .brand-icon {
     display: none;
   }
-
   .brand-text {
     display: inline-block;
+  }
+  .search-bar{
+    width:167px;
+    margin-right: 8px;
+  }
+}
+@media (min-width: 768px) {
+  .search-bar{
+    min-width: 290px;
+    margin-right: 15px;
+  }
+  .options-toggle{
+    margin-right: 5px;
   }
 }
 /* Large devices >= 992 */
@@ -44,4 +65,8 @@
   #app-header > div{
     margin: 0 30px;
   }
+  .search-bar{
+    min-width: 380px;
+  }
 }
+
