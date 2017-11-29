@@ -1,18 +1,18 @@
 #app-header{
   padding-bottom: 10px;
-  background-color: #002642;
-  color: #EDEDF4;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  font-family: "Avenir Next";
 }
 .options-toggle{
   padding: 3px 10px;
-  background-color: #64A77E;
-  color: #EDEDF4;
+  color: var(--dark-bg);
+
 }
 .options-toggle:focus{
   box-shadow: none;
 }
 .options-toggle:hover, .options-toggle:active, .showFilters{
-  background-color: #7BBD94;
   box-shadow: none;
 }
 .nav-options>div, .nav-options>button{
@@ -22,12 +22,13 @@
 /* Extra small devices <576 */
 .brand-icon{
   display: inline-block;
-  color: #EDEDF4;
+  color: var(--light-text);
   font-size: 1.3em;
   margin-left: 5px;
 }
 .brand-text{
   display: none;
+  color: var(--light-text);
 }
 .search-bar:focus{
   box-shadow: none;

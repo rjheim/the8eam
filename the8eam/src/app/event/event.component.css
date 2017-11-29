@@ -9,9 +9,9 @@ h5{  font-size: 1.0rem;  }
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  background-color: #EDEDF4;
+  background-color: var(--light-bg);
   font-size: 0.9rem;
-  color: #000;
+  color: var(--dark-text);
 }
 .eventInfo{
   margin: 5px 8px;
@@ -20,12 +20,13 @@ h5{  font-size: 1.0rem;  }
   text-align : center;
 }
 .eventDescription>p{
+  /* 70 characters wide for optimal reading comfort */
   max-width: 70ch;
 }
 
 .fbk-icon{
   display: inline-block;
-  color: #C21F39;
+  color: var(--warn);
   font-size: 1.1em;
   line-height: 19px;
   font-weight: bold;
@@ -34,18 +35,19 @@ h5{  font-size: 1.0rem;  }
   margin-right: -2px;
   width: 22px;
   height: 22px;
-  border: 2px solid #C21F39;
+  border: 2px solid var(--warn);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
 .fbk-icon:hover, .fbk-icon:active, .fbk-icon:focus{
-  background-color: #C21F39;
-  color: #EDEDF4;
+  background-color: var(--warn);
+  color: var(--light-text);
 }
 .fbk-button{
   display: none;
 }
+
 @media (min-width: 576px){
   .eventDescription{
     text-align: left;

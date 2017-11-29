@@ -7,3 +7,12 @@
 body{
   background-color: #EDEDF4;
 }
+
+/* Custom Color Properties */
+:root{
+  --dark-bg: #002642;
+  --light-bg: #EDEDF4;
+  --warn: #C21F39;
+  --dark-text: #000;
+  --light-text: #EDEDF4;
+}
