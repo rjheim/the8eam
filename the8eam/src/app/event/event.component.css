@@ -5,7 +5,6 @@ h4{  font-size: 1.1rem;  }
 h5{  font-size: 1.0rem;  }
 
 .eventItem {
-  border: solid 2px #000;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -13,13 +12,15 @@ h5{  font-size: 1.0rem;  }
   font-size: 0.9rem;
   color: var(--dark-text);
 }
-.eventInfo{
+.eventHeader{ padding-bottom: 6px; }
+.eventBody{
   margin: 5px 8px;
+  padding: 0.65rem;
 }
-.eventDescription {
-  text-align : center;
+.eventDesc {
+  text-align : left;
 }
-.eventDescription>p{
+.eventDesc>p{
   /* 70 characters wide for optimal reading comfort */
   max-width: 70ch;
 }
@@ -47,12 +48,48 @@ h5{  font-size: 1.0rem;  }
 .fbk-button{
   display: none;
 }
-
-@media (min-width: 576px){
-  .eventDescription{
-    text-align: left;
-  }
+.infoToggle{
+  width:50px;
+  height:20px;
+  margin: 0 auto 20px auto;
+  font-size:.7rem;
+  line-height: .5rem;
+  text-align:center;
 }
+.infoToggle>a{
+  color: var(--dark-text);
+  text-decoration: none;
+  text-decoration-color: var(--dark-text);
+}
+.moreInfo{
+  max-height: 0;
+  opacity: 0;
+  -webkit-transition: max-height 0.5s linear, opacity 0.6s linear;
+  -moz-transition: max-height 0.5s linear, opacity 0.6s linear;
+  -ms-transition: max-height 0.5s linear, opacity 0.6s linear;
+  -o-transition: max-height 0.5s linear, opacity 0.6s linear;
+  transition: max-height 0.5s linear, opacity 0.6s linear;
+}
+.moreInfo.showInfo{
+  max-height: 99em;
+  opacity: 1;
+}
+span#toggleIcon{
+  -webkit-transition: 0.4s linear;
+  -moz-transition: 0.4s linear;
+  -ms-transition: 0.4s linear;
+  -o-transition: 0.4s linear;
+  transition: 0.4s linear;
+  transform-style: preserve-3d;
+}
+span#toggleIcon.showInfo{
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+
 @media (min-width: 768px) {
   h1{  font-size: 2.0rem;  }
   h2{  font-size: 1.8rem;  }
@@ -63,7 +100,7 @@ h5{  font-size: 1.0rem;  }
   .eventItem{
     font-size: 1.0rem;
   }
-  .eventInfo{
+  .eventBody{
     margin: 5px 15px;
   }
   .fbk-icon{  display: none; }

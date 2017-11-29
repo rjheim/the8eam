@@ -1,5 +1,5 @@
-<div *ngIf="eventItem&&eventItem.title" class="eventItem flex-column">
-  <div class="eventInfo">
+<div *ngIf="eventItem&&eventItem.title" class="eventItem card">
+  <div class="card-header eventHeader">
     <div class="d-flex w-100 justify-content-between">
       <h4 class="font-weight-bold">{{eventItem.title}}</h4>
       <div class="fdk-toggle" (click)="reportModal.show()">
@@ -7,19 +7,31 @@
         <button class="fbk-button btn btn-sm btn-danger" >Feedback</button>
       </div>
     </div>
-    <h4>
-      <span *ngIf="eventItem.time"> {{eventItem.time}}</span>
-      <span *ngIf="eventItem.cost">, ${{eventItem.cost}}</span>
-      <span *ngIf="eventItem.cost==0">, Free</span>
-    </h4>
-
-
-    <div id="showDescription">
-      <div class="eventDescription"*ngIf="eventItem.description">
+  </div>
+  <div class="eventBody card-body">
+    <div class="card-title">
+      <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Location: </span>{{eventItem.location}}</h4>
+      <h4 *ngIf="eventItem.time"><span class="font-weight-bold">Date: </span>{{eventItem.time}}</h4>
+      <h4>
+        <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
+        <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
+        <span *ngIf="eventItem.cost==0">Free</span>
+      </h4>
+    </div>
+    <span>Genres: [ {{eventItem.genre}} ]</span>
+    <div class="infoToggle"  (click)="toggleInfo()">
+      <a href="#" >
+        <span>More Info</span>
+        <span [ngClass]="{showInfo: showInfo}" id="toggleIcon" class="oi oi-chevron-bottom" style="font-size:1.3rem"></span>
+      </a>
+    </div>
+    <div class="moreInfo" [ngClass]="{showInfo: showInfo}">
+      <div class="eventDesc" *ngIf="eventItem.description">
           <p>{{eventItem.description}}</p>
       </div>
+      <span *ngIf="eventItem.link" class="font-weight-bold">Source: </span>
+      <a *ngIf="eventItem.link" href="{{eventItem.link}}">{{eventItem.link}}</a>
     </div>
-
   </div>
 </div>
 
