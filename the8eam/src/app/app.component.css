@@ -2,49 +2,46 @@
   max-width: 100vw;
 }
 #view-toggle{
-  background-color: #002642;
   margin: 0 -15px;
+  width: auto;
+  background-color: #002642;
 }
 .view-tabs{
+  margin: 0 auto;
   border-bottom:none;
+  font-size: 1.2em;
+  text-align: center;
 }
+#list-view-toggle{  border-right: solid 1px #EDEDF4;  }
+#list-view-toggle,#cal-view-toggle{  margin-bottom: 3px;  }
 #list-view-toggle.active, #cal-view-toggle.active{
-  border: solid 1px #171818;
-  border-bottom-color: #EDEDF4;
-  background-color: #EDEDF4;
-}
-#list-view-toggle.passive{
-  background-color: #A20021;
-  border-left: solid 1px #171818;
-  border-top: solid 1px #171818;
-  margin-bottom: 1px;
   color: #EDEDF4;
+  background-color: transparent;
+  text-decoration: underline;
 }
-#cal-view-toggle.passive{
-  background-color: #A20021;
-  border-right: solid 1px #171818;
-  border-top: solid 1px #171818;
-  margin-bottom: 1px;
+#list-view-toggle.passive, #cal-view-toggle.passive{
+  background-color: transparent;
   color: #EDEDF4;
+  text-decoration: none;
 }
 #list-view-toggle.passive:hover, #cal-view-toggle.passive:hover{
-  background-color: #B22E49;
-  border-color: transparent;
-  color: #EDEDF4;
+  text-decoration: underline;
 }
 
 @media (min-width: 992px){
+  #view-toggle{
+    margin: 0 -15px;
+  }
   .view-tabs{
-    max-width: 992px;
+    max-width: 980px;
     margin: 0 auto;
 
   }
   #list-view, #calendar-view {
-    max-width: 992px;
+    max-width: 980px;
     margin-left: auto;
     margin-right: auto;
   }
-
 }
 
 

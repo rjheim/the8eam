@@ -42,7 +42,7 @@
 /* Large devices >= 992 */
 @media (min-width: 992px){
   #app-header > div{
-    max-width: 992px;
+    max-width: 980px;
     margin: 0 auto;
   }
 }
