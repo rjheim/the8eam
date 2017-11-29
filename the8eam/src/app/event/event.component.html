@@ -20,8 +20,9 @@
     </div>
     <span>Genres: [ {{eventItem.genre}} ]</span>
     <div class="infoToggle"  (click)="toggleInfo()">
-      <a href="#" >
+      <a>
         <span>More Info</span>
+        <br>
         <span [ngClass]="{showInfo: showInfo}" id="toggleIcon" class="oi oi-chevron-bottom" style="font-size:1.3rem"></span>
       </a>
     </div>
