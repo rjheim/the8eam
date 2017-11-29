@@ -38,7 +38,7 @@
   margin-right: 5px;
 }
 
-/* Small devices >=576 */
+/*** BREAKPOINTS ***/
 @media (min-width: 576px) {
   .brand-icon {
     display: none;

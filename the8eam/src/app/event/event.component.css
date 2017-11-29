@@ -43,7 +43,7 @@ h5{  font-size: 1.0rem;  }
 }
 .fbk-icon:hover, .fbk-icon:active, .fbk-icon:focus{
   background-color: var(--warn);
-  color: var(--light-text);
+  color: var(--light-bg);
 }
 .fbk-button{
   display: none;
@@ -51,7 +51,7 @@ h5{  font-size: 1.0rem;  }
 .infoToggle{
   width:100%;
   font-size:.7rem;
-  line-height: .5rem;
+  line-height: .9rem;
   text-align:center;
 }
 .infoToggle>a{
@@ -60,6 +60,7 @@ h5{  font-size: 1.0rem;  }
   text-decoration: none;
   text-decoration-color: var(--dark-text);
 }
+/* Description and Link are hidden... */
 .moreInfo{
   max-height: 0;
   opacity: 0;
@@ -69,10 +70,12 @@ h5{  font-size: 1.0rem;  }
   -o-transition: max-height 0.5s linear, opacity 0.6s linear;
   transition: max-height 0.5s linear, opacity 0.6s linear;
 }
+/* ...until they are shown */
 .moreInfo.showInfo{
   max-height: 99em;
   opacity: 1;
 }
+/* Flip the chevron when toggling the description */
 span#toggleIcon{
   -webkit-transition: 0.4s linear;
   -moz-transition: 0.4s linear;
@@ -89,6 +92,7 @@ span#toggleIcon.showInfo{
   transform: rotateX(180deg);
 }
 
+/*** BREAKPOINTS ***/
 @media (min-width: 768px) {
   h1{  font-size: 2.0rem;  }
   h2{  font-size: 1.8rem;  }
