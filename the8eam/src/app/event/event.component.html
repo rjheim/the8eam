@@ -1,25 +1,26 @@
-<div *ngIf="eventItem&&eventItem.title" class="eventItem">
-  <div class="d-flex">
-    <div class="eventInfo">
-      <h2>{{eventItem.title}}</h2>
-      <h3><span *ngIf="eventItem.time"> {{eventItem.time}}</span>
-        <span *ngIf="eventItem.cost">, ${{eventItem.cost}}</span>
-        <span *ngIf="eventItem.cost==0">, Free</span>
-      </h3>
-    </div>
-    <div class="reportButton">
-      <button (click)="reportModal.show()">Feedback</button>
-    </div>
-  </div>
-
-  <div id="showDescription">
-    <div class="d-flex">
-      <div class="eventDescription"*ngIf="eventItem.description">
-        <p>{{eventItem.description}}</p>
+<div *ngIf="eventItem&&eventItem.title" class="eventItem flex-column">
+  <div class="eventInfo">
+    <div class="d-flex w-100 justify-content-between">
+      <h4>{{eventItem.title}}</h4>
+      <div class="fdk-toggle" (click)="reportModal.show()">
+        <span class="fbk-icon">!</span>
+        <button class="fbk-button btn btn-sm btn-danger" >Feedback</button>
       </div>
     </div>
-  </div>
+    <h3>
+      <span *ngIf="eventItem.time"> {{eventItem.time}}</span>
+      <span *ngIf="eventItem.cost">, ${{eventItem.cost}}</span>
+      <span *ngIf="eventItem.cost==0">, Free</span>
+    </h3>
 
+
+    <div id="showDescription">
+      <div class="eventDescription"*ngIf="eventItem.description">
+          <p>{{eventItem.description}}</p>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <app-report [eventItem] = 'eventItem' #reportModal></app-report>

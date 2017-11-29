@@ -1,15 +1,56 @@
+h1{  font-size: 1.6rem;  }
+h2{  font-size: 1.4rem;  }
+h3{  font-size: 1.2rem;  }
+h4{  font-size: 1.1rem;  }
+h5{  font-size: 1.0rem;  }
+
 .eventItem {
-  border: solid 3px black;
-  background-color: #A20021;
+  border: solid 3px #000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #EDEDF4;
+  font-size: 0.9rem;
+  color: #000;
+}
+.eventInfo{
+  margin: 5px 8px;
 }
 .eventDescription {
   text-align : left;
-  color: white;
 }
 p.eventDescription {
 }
 
-div.eventInfo{
-  color: white;
+.fbk-icon{
+  display: inline-block;
+  color: #C21F39;
+  font-size: 1.1em;
+  line-height: 17px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: -2px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #C21F39;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.fbk-button{
+  display: none;
+}
+@media (min-width: 768px) {
+  h1{  font-size: 2.0rem;  }
+  h2{  font-size: 1.8rem;  }
+  h3{  font-size: 1.6rem;  }
+  h4{  font-size: 1.4rem;  }
+  h5{  font-size: 1.2rem;  }
 
+  .eventInfo{
+    margin: 5px 15px;
+  }
+
+  .fbk-icon{  display: none; }
+  .fbk-button{ display: inline-block; }
 }
