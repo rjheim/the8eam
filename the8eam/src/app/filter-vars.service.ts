@@ -9,6 +9,7 @@ export class FilterVarsService {
    gDance: boolean;
    cost: number;
    date: number;
+   searchTxt: string;
    curDate: Date;
 
   constructor() {
@@ -53,6 +54,10 @@ export class FilterVarsService {
     }
     else
       this.date = date;
+  }
+
+  setFilter(search: string){
+    this.searchTxt = search;
   }
 
 }

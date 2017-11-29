@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterVarsService } from '../filter-vars.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   showFilters = false;
-  constructor() {
+  words: string;
+  constructor(public filter: FilterVarsService) {
     // called first time before the ngOnInit()
 
   }
