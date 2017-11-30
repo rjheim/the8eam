@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   showFilters = false;
   words: string;
   constructor(public filter: FilterVarsService) {
+    this.words = '';
     // called first time before the ngOnInit()
 
   }

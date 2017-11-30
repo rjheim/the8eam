@@ -14,6 +14,7 @@ describe('FilterVarsService', () => {
 
   let cost: number;
   let date: number;
+  let search: string;
 
   it('should set music to false if first true (and vice versa)', () => {
     service.setMusic();
@@ -54,5 +55,10 @@ describe('FilterVarsService', () => {
     service.setDate(date);
     service.setDate(date);
     expect(service.date).toBe(-1);
+  });
+  it('Should set search', () => {
+    search = "A string";
+    service.setSearch(search);
+    expect(service.searchTxt).toBe("A string");
   });
 });

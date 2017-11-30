@@ -56,7 +56,8 @@ export class FilterVarsService {
       this.date = date;
   }
 
-  setFilter(search: string){
+  setSearch(search: string){
+    console.log("set search text: " + search);
     this.searchTxt = search;
   }
 

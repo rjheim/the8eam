@@ -16,9 +16,9 @@ export class SearchPipe implements PipeTransform {
         let check: Boolean;
         return events.filter(function (event) {
           check = true;
-          for (let word in wordArray) {
-            check = event.description.toLowerCase().includes(word.toLowerCase()) && check;
-            check = event.title.toLowerCase().includes(word.toLowerCase()) && check;
+          for (let word of wordArray) {
+            check = (event.description.toLowerCase().includes(word.toLowerCase()) && check) ||
+              (event.title.toLowerCase().includes(word.toLowerCase()) && check);
           }
           if (check) {
             return event
