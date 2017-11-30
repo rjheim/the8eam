@@ -4,19 +4,15 @@
   <div id="view-toggle">
     <ul class="row nav view-tabs">
       <li class="col-6 nav-item no-gutter">
-        <a class="nav-link rounded-0" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
+        <a routerLink="/list-view" class="nav-link rounded-0" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
       </li>
       <li class="col-6 nav-item no-gutter">
-        <a class="nav-link active rounded-0" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
+        <a routerLink="/cal-view" class="nav-link active rounded-0" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
       </li>
     </ul>
   </div>
 
-  <div *ngIf="view" id="list-view" class="mt-4">
-    <app-event-list-data></app-event-list-data>
-  </div>
-
-  <div *ngIf="!view" id="calendar-view" class="mt-4">
-    <app-event-calendar-data></app-event-calendar-data>
+  <div  id="main-view" class="mt-4">
+    <router-outlet></router-outlet>
   </div>
 </div>

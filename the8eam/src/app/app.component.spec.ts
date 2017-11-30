@@ -2,6 +2,7 @@ import {TestBed , async , ComponentFixture} from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {Component , DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('AppComponent', () => {
   let component:     AppComponent;
@@ -19,6 +20,9 @@ describe('AppComponent', () => {
         MockEventListDataComponent,
         MockEventCalendarDataComponent
       ],
+      imports: [
+        RouterTestingModule
+      ]
     }).compileComponents();
   }));
   // synchronous beforeEach()
@@ -45,26 +49,20 @@ describe('AppComponent', () => {
     // In production, this happens every time a componenet is created, the user enters a keystroke, or an asynchronous activity completes.
     fixture.detectChanges();
 
-    if (component.view) debEl = fixture.debugElement.query(By.css('#list-view'));
-    else debEl = fixture.debugElement.query(By.css('#calendar-view'));
+    debEl = fixture.debugElement.query(By.css('#main-view'));
+
 
     expect(debEl).toBeTruthy();
   });
-  it('should create the event-list-data-component container by default and when "List" tab is clicked', () => {
+  it('"List" tab should route to "/list-view" (event-list-data-component)', () => {
     fixture.detectChanges();
-    de = fixture.debugElement.query(By.css('app-event-list-data'));
-    expect(de).toBeTruthy(); // is created by default
-
-    component.toggleView();
-    fixture.detectChanges();
-    de = fixture.debugElement.query(By.css('app-event-list-data'));
-    expect(de).toBeTruthy(); // is created when "List" tab is created
+    de = fixture.debugElement.query(By.css('#list-view-toggle'));
+    expect(de.nativeElement.href).toContain('/list-view');
   });
-  it('should create the event-calendar-data-component container when "Calendar" tab is clicked', () => {
-    component.toggleView2();
+  it('"Calendar" tab should route to "/cal-view" (event-calendar-data-component)', () => {
     fixture.detectChanges();
-    de = fixture.debugElement.query(By.css('app-event-calendar-data'));
-    expect(de).toBeTruthy(); // is created when "List" tab is created
+    de = fixture.debugElement.query(By.css('#cal-view-toggle'));
+    expect(de.nativeElement.href).toContain('/cal-view');
   });
   //and so on...
 });
@@ -75,6 +73,7 @@ describe('AppComponent', () => {
 })
 class MockHeaderComponent {
 }
+
 @Component({
   selector: 'app-event-list-data',
   template: ''
