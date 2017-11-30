@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Event } from './event';
+import { Report } from './report'
 
 @Injectable ()
 export class DataAccessLayerService {
   list: AngularFirestoreCollection<Event>;
+  report: AngularFirestoreCollection<Report>;
   listItems: Observable<Event[]>;
   model: Event;
   length: number;
@@ -13,6 +15,7 @@ export class DataAccessLayerService {
 
   constructor(public db: AngularFirestore) {
     this.list = db.collection<Event>('list');
+    this.report = db.collection<Report>('reportData');
     this.listItems = db.collection<Event>('list',
       a => a.orderBy("date")).snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -32,6 +35,11 @@ export class DataAccessLayerService {
   addToList(event: Event)
   {
     this.list.add(event);
+  }
+
+  addToReport(report: Report)
+  {
+    this.report.add(report);
   }
 
   removeFromList(key: string)

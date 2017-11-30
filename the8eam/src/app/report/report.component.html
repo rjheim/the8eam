@@ -23,21 +23,23 @@
         <div class="form-group">
           <label >Feedback Type</label>
           <select class="form-control">
-            <option>Inaccurate Information</option>
-            <option>Inappropriate</option>
-            <option>Duplicate Item</option>
-            <option>This isn't an Art Event</option>
+            <!--This doesn't work right now-->
+            <option (click)="reasNum = 0">Inaccurate Information</option>
+            <option (click)="reasNum = 1">Inappropriate</option>
+            <option (click)="reasNum = 2">Duplicate Item</option>
+            <option (click)="reasNum = 3">This isn't an Art Event</option>
           </select>
         </div>
 
         <div class="form-group">
           <label  for="description">Description (Required)</label>
-          <textarea class = "form-control" id = "description"></textarea>
+          <textarea [value]="description" (keyup)="description = $event.target.value" class = "form-control" id = "description"></textarea>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input class = "form-control" type = "email" id = "email">
+          <input [value]="email" (keyup)="email = $event.target.value"
+                  class = "form-control" type = "email" id = "email">
         </div>
 
       </div>

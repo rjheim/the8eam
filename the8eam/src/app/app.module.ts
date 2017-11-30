@@ -10,7 +10,6 @@ import { EventListDataComponent } from './event-list-data/event-list-data.compon
 import { EventCalendarDataComponent } from './event-calendar-data/event-calendar-data.component';
 import { HeaderComponent } from './header/header.component';
 import { OptionsMenuComponent } from './options-menu/options-menu.component';
-import { SearchComponent } from './search/search.component';
 import { ReportComponent } from './report/report.component';
 import { EventComponent } from './event/event.component';
 import { ReportPipe } from './report.pipe';
@@ -43,7 +42,6 @@ export const firebaseConfig = {
     EventCalendarDataComponent,
     HeaderComponent,
     OptionsMenuComponent,
-    SearchComponent,
     ReportComponent,
     EventComponent,
     ReportPipe,
