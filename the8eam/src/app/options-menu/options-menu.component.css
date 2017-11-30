@@ -1,16 +1,16 @@
 .filter-tab{
-  color: #EDEDF4;
+  color: var(--light-bg);
 }
 .filter-tab:hover{
-  border-color: #EDEDF4;
+  border-color: var(--light-bg);
 }
 .filter-tab.active{
-  background-color: #EDEDF4;
+  background-color: var(--light-bg);
   color: #A20021;
 }
 #filter-tabs{ border: none; }
 .filter-container{
-  border: solid 2px #EDEDF4;
+  border: solid 2px var(--light-bg);
   border-radius: 0 0 0.5em 0.5em;
 }
 .filter-container{
@@ -30,17 +30,19 @@
   height : 60px;
   font-size:1.1em;
   font-weight: bold;
-  background-color: #EDEDF4;
+  color: var(--light-bg);
+  background-color: transparent;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
 }
 .filter-btn:hover{
-  background-color: #D8D8DE;
+  border-color: #C21F39;
 }
 .filter-btn:focus{
   box-shadow: none;
   outline:none;
+
 }
 .oi-circle-check{
   position : absolute;
@@ -53,8 +55,9 @@
   display: inherit;
 }
 @media (min-width: 768px){
-  .filter-container{
-    /* Make shit align left */
+  #options-menu{
+    max-width: 750px;
+    margin: 0 auto;
   }
 }
 

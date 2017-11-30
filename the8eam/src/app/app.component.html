@@ -2,21 +2,21 @@
  <!--View Tabs ( List / Calendar )-->
 <div class="container-fluid" id="app-body">
   <div id="view-toggle">
-    <ul class="row nav nav-tabs">
-      <li class="nav-item col-6 no-gutter">
-        <a class="nav-link rounded-0 font-weight-bold" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
+    <ul class="row nav view-tabs">
+      <li class="col-6 nav-item no-gutter">
+        <a class="nav-link rounded-0" id="list-view-toggle" (click)="toggleView()" [ngClass]="{active : view, passive : !view}" >List</a>
       </li>
-      <li class="nav-item col-6 no-gutter">
-        <a class="nav-link active rounded-0 font-weight-bold" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
+      <li class="col-6 nav-item no-gutter">
+        <a class="nav-link active rounded-0" id="cal-view-toggle" (click)="toggleView2()" [ngClass]="{active : !view, passive : view}" >Calendar</a>
       </li>
     </ul>
   </div>
 
-  <div *ngIf="view" id="list-view" class="mt-1">
+  <div *ngIf="view" id="list-view" class="mt-4">
     <app-event-list-data></app-event-list-data>
   </div>
 
-  <div *ngIf="!view" id="calendar-view" class="mt-1">
+  <div *ngIf="!view" id="calendar-view" class="mt-4">
     <app-event-calendar-data></app-event-calendar-data>
   </div>
 </div>

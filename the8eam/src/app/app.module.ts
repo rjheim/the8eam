@@ -22,6 +22,7 @@ import { CostPipe } from './cost.pipe';
 import { FilterVarsService } from "./filter-vars.service";
 import { DataAccessLayerService } from "./data-access-layer.service";
 import { DatePipe } from './date.pipe';
+import { SearchPipe } from './search.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -50,7 +51,8 @@ export const firebaseConfig = {
     FoodGenrePipe,
     SpokenWordGenrePipe,
     CostPipe,
-    DatePipe
+    DatePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

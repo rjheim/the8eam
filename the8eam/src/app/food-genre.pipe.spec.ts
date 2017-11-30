@@ -2,7 +2,7 @@ import { FoodGenrePipe } from './food-genre.pipe';
 import {Event} from "./event";
 
 describe('FoodGenrePipe', () => {
-  let pipe = new FoodGenrePipe();
+  const pipe = new FoodGenrePipe();
   let testEvent1 = new Event();
   let testEvent2 = new Event();
   let inputList: Event[] = [];

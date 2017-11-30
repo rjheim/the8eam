@@ -1,16 +1,17 @@
 #app-header{
   padding-bottom: 10px;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
 }
 .options-toggle{
   padding: 3px 10px;
-  background-color: #64A77E;
-  color: #EDEDF4;
+  color: var(--dark-bg);
+
 }
 .options-toggle:focus{
   box-shadow: none;
 }
 .options-toggle:hover, .options-toggle:active, .showFilters{
-  background-color: #7BBD94;
   box-shadow: none;
 }
 .nav-options>div, .nav-options>button{
@@ -20,20 +21,52 @@
 /* Extra small devices <576 */
 .brand-icon{
   display: inline-block;
-  color: #EDEDF4;
+  color: var(--light-text);
   font-size: 1.3em;
   margin-left: 5px;
 }
 .brand-text{
   display: none;
+  color: var(--light-text);
 }
-/* Small devices >=576 */
+.search-bar:focus{
+  box-shadow: none;
+  border-color:transparent;
+}
+.search-bar{
+  width:130px;
+  margin-right: 5px;
+}
+
+/*** BREAKPOINTS ***/
 @media (min-width: 576px) {
   .brand-icon {
     display: none;
   }
-
   .brand-text {
     display: inline-block;
   }
+  .search-bar{
+    width:167px;
+    margin-right: 8px;
+  }
 }
+@media (min-width: 768px) {
+  .search-bar{
+    min-width: 290px;
+    margin-right: 15px;
+  }
+  .options-toggle{
+    margin-right: 5px;
+  }
+}
+/* Large devices >= 992 */
+@media (min-width: 992px){
+  #app-header > div{
+    margin: 0 30px;
+  }
+  .search-bar{
+    min-width: 380px;
+  }
+}
+

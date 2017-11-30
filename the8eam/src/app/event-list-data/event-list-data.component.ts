@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FilterVarsService } from '../filter-vars.service'
 import { DataAccessLayerService } from '../data-access-layer.service';
 import {Observable} from 'rxjs/Observable';
@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Observable';
   templateUrl: './event-list-data.component.html',
   styleUrls: ['./event-list-data.component.css']
 })
-export class EventListDataComponent implements OnInit {
+export class EventListDataComponent {
   listItems: Observable<any>;
   report: Event;
   ;
@@ -17,10 +17,6 @@ export class EventListDataComponent implements OnInit {
   constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
     this.listItems = dal.getList();
     console.log(dal.getList());
-  }
-
-  ngOnInit() {
-    console.log();
   }
 
 }
