@@ -1,8 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import {Component , DebugElement} from "@angular/core";
+import {Component , DebugElement, NgModule} from "@angular/core";
 import {By} from "@angular/platform-browser";
+import { FormsModule } from '@angular/forms';
+import {FilterVarsService} from "../filter-vars.service";
+
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -14,7 +17,9 @@ describe('HeaderComponent', () => {
         HeaderComponent,
         MockSearchComponent,
         MockOptionsMenuComponent
-      ]
+      ],
+      imports:[ FormsModule ],
+      providers: [ FilterVarsService ]
     })
     .compileComponents();
   }));
@@ -27,6 +32,9 @@ describe('HeaderComponent', () => {
   it('should create an instance', () => {
     expect(component).toBeTruthy();
   });
+  it('should have a Filter-Vars Service', inject([FilterVarsService], (filter: FilterVarsService) => {
+    expect(filter).toEqual(component.filter);
+  }));
   it('should show options-menu-component when "Filters" button is clicked', () => {
     component.showFilters = false;
     component.filterMenu(); // set show to true

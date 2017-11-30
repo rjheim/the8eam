@@ -7,9 +7,9 @@
       </a>
       <div class="nav-options">
         <div>
-          <form action="" class="form-inline">
-            <input type="text" class="form-control form-control-sm search-bar" placeholder="search">
-          </form>
+          <input [value]="words" (keyup)="words = $event.target.value;filter.setSearch(words)" type="text"
+                 class="form-control form-control-sm search-bar"
+                 placeholder="search">
         </div>
         <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filter</button>
       </div>
