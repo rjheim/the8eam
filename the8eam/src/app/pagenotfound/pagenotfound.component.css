@@ -1,0 +1,5 @@
+#pagenotfound{
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  text-align: center;
+}
