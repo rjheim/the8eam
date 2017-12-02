@@ -604,6 +604,7 @@ export class RssService {
     //var data = ical.parseFile('majestic-theatre-7360f72fe39.ics');
     //console.log(data);
     ical.fromURL('https://www.madisonfrequency.com/feed/ical/', {}, function(err, ical) {
+
       console.log(ical);
       /*for (var event in ical) {
         //console.log(ical[event]);
