@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
-import { RssComponent} from "./rss/rss.component";
+import { Component, OnInit } from '@angular/core';
+import { RssService} from "./rss.service";
 
 @Component({
   selector: 'app-root',
-  providers: [RssComponent],
+  providers: [RssService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   view: boolean;
-  rss: RssComponent;
+  rss: RssService;
 
-  constructor(rss = new RssComponent()) {
+  constructor(rss : RssService) {
+    this.rss = rss;
     this.view = true;
   }
   toggleView() {
@@ -22,7 +23,7 @@ export class AppComponent {
     this.view = false;
   }
 
-  doButton(){
+  ngOnInit(){
     this.rss.testRSS();
   }
 }

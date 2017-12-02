@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-// import { DataAccessLayerService } from '../data-access-layer.service';
+//import { DataAccessLayerService } from '../data-access-layer.service';
 import {Event} from './event';
 import {rss} from 'rss-to-json/src/rss';
 import * as parser1 from 'xml2js';
@@ -7,6 +7,7 @@ import {request} from 'request';
 import * as rssGet from 'rss-to-json'
 import {Observable} from 'rxjs/Observable';
 import * as ical from 'ical';
+import { DataAccessLayerService } from './data-access-layer.service';
 import * as parser from 'xml2js-parser';
 //import * as iCal from 'node-ical';
 import * as converter from 'ical2json';
@@ -42,18 +43,18 @@ let filmSet: Set<string> = new Set<string>(filmArray);
 export class RssService {
   dupObserve: Observable<Event[]>;
 
-  constructor(/*private dal: DataAccessLayerService*/) {
+  constructor(private dal: DataAccessLayerService) {
 
   }
 
   testRSS() {
-
-
-    let list: Array<Event> = [];
-    var promise = new Promise((resolve, reject) => {
+    this.getAllEvents();
+    //this.testiCal();
+    //let list: Array<Event> = [];
+    /*var promise = new Promise((resolve, reject) => {
       var mySet = new Set();
 
-    });
+    });*/
 
   }
 
@@ -213,14 +214,15 @@ export class RssService {
 
     var descr = description.split(" ");
 
-    for (var word in descr) {
+    for (var inds in descr) {
+      var word = descr[inds];
       //remove beginning and end punctuation
-      if(word.endsWith('.') || word.endsWith('?') || word.endsWith('!') || word.endsWith(',') || word.endsWith(';') ||
-      word.endsWith(':') || word.endsWith('\'') || word.endsWith('\"')) {
+      if (word.endsWith('.') || word.endsWith('?') || word.endsWith('!') || word.endsWith(',') || word.endsWith(';') ||
+        word.endsWith(':') || word.endsWith('\'') || word.endsWith('\"')) {
         word = word.substr(0, word.length - 1);
       }
 
-      if(word.startsWith('\"') || word.startsWith('\'')) {
+      if (word.startsWith('\"') || word.startsWith('\'')) {
         word = word.substr(1);
       }
 
@@ -228,106 +230,102 @@ export class RssService {
       word = word.toUpperCase();
 
 
-    }
-    // CHECK MUSIC SET
-    /*
-    musicSet.forEach(function (item) {
-      if (description.indexOf(item) != -1) {
-        music = true;
+      // CHECK MUSIC SET
+      /*
+      musicSet.forEach(function (item) {
+        if (description.indexOf(item) != -1) {
+          music = true;
 
+        }
+        if (eventName.indexOf(item) != -1) {
+          music = true;
+        }
+      }, this);
+      */
+
+      if (musicSet.has(word)) {
+        ++music;
       }
-      if (eventName.indexOf(item) != -1) {
-        music = true;
+
+      // CHECK SPOKEN WORD SET
+      /*
+      spokenWordSet.forEach(function (item) {
+        if (description.indexOf(item) != -1) {
+          spokenWord = true;
+        }
+        if (eventName.indexOf(item) != -1) {
+          spokenWord = true;
+        }
+      }, this);
+      */
+      if (literarySet.has(word)) {
+        ++literary;
       }
-    }, this);
+
+      // CHECK FOOD SET
+      /*
+      foodSet.forEach(function (item) {
+        if (description.indexOf(item) != -1) {
+          food = true;
+        }
+        if (eventName.indexOf(item) != -1) {
+          food = true;
+        }
+      }, this);
+      */
+
+      if (foodSet.has(word)) {
+        ++food;
+      }
+
+      // CHECK ART SET
+      /*
+      artSet.forEach(function (item) {
+        if (description.indexOf(item) != -1) {
+          art = true;
+        }
+        if (eventName.indexOf(item) != -1) {
+          art = true;
+        }
+      }, this);
     */
 
-    if(musicSet.has(word))
-    {
-      ++music;
-    }
+      if (artSet.has(word)) {
+        ++art;
+      }
 
-    // CHECK SPOKEN WORD SET
-    /*
-    spokenWordSet.forEach(function (item) {
-      if (description.indexOf(item) != -1) {
-        spokenWord = true;
-      }
-      if (eventName.indexOf(item) != -1) {
-        spokenWord = true;
-      }
-    }, this);
-    */
-    if(literarySet.has(word))
-    {
-      ++literary;
-    }
+      // CHECK DANCE SET
 
-    // CHECK FOOD SET
-    /*
-    foodSet.forEach(function (item) {
-      if (description.indexOf(item) != -1) {
-        food = true;
-      }
-      if (eventName.indexOf(item) != -1) {
-        food = true;
-      }
-    }, this);
+      /*
+      danceSet.forEach(function (item) {
+        if (description.indexOf(item) != -1) {
+          dance = true;
+        }
+        if (eventName.indexOf(item) != -1) {
+          dance = true;
+        }
+      }, this);
     */
 
-    if(foodSet.has(word))
-    {
-      ++food;
-    }
-
-    // CHECK ART SET
-    /*
-    artSet.forEach(function (item) {
-      if (description.indexOf(item) != -1) {
-        art = true;
+      if (danceSet.has(word)) {
+        ++dance;
       }
-      if (eventName.indexOf(item) != -1) {
-        art = true;
+
+      // CHECK FAMILY SET
+      if (familySet.has(word)) {
+        ++family;
       }
-    }, this);
-  */
 
-    if(artSet.has(word))
-    {
-      ++art;
-    }
-
-    // CHECK DANCE SET
-
-    /*
-    danceSet.forEach(function (item) {
-      if (description.indexOf(item) != -1) {
-        dance = true;
+      // CHECK THEATER SET
+      if (theaterSet.has(word)) {
+        ++theater;
       }
-      if (eventName.indexOf(item) != -1) {
-        dance = true;
+
+      // CHECK FILM SET
+      if (filmSet.has(word)) {
+        ++film;
       }
-    }, this);
-  */
 
-    if(danceSet.has(word))
-    {
-      ++dance;
-    }
-
-    // CHECK FAMILY SET
-    if(familySet.has(word)){
-      ++family;
-    }
-
-    // CHECK THEATER SET
-    if(theaterSet.has(word)){
-      ++theater;
-    }
-
-    // CHECK FILM SET
-    if(filmSet.has(word)){
-      ++film;
     }
 
     var genres = "";
@@ -368,11 +366,11 @@ export class RssService {
     if (film > 0) {
       genres = genres + "film;"
     }
-
     return genres;
   }
 
   getAllEvents() {
+    var that = this;
     rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
       // get the specific items (go one layer down)
       var items = rss["items"];
@@ -382,7 +380,6 @@ export class RssService {
 
 
         for (var key in items) {
-          console.log(key);
 
           var eventToAdd = {} as Event;
           let toAdd: boolean = true;
@@ -407,12 +404,12 @@ export class RssService {
 
           var splitted = time.split(" ", 5);
 
-          eventToAdd.date = this.date(splitted);
-          eventToAdd.time = +this.timeFunc(splitted);
+          eventToAdd.date = that.date(splitted);
+          eventToAdd.time = +that.timeFunc(splitted);
 
 
           // parse and add the LOCATION
-          eventToAdd.location = this.location(title.substring(timeIndex + 3))
+          eventToAdd.location = that.location(title.substring(timeIndex + 3))
 
 
           // parse and add the event DESCRIPTION
@@ -425,7 +422,7 @@ export class RssService {
           eventToAdd.link = link;
 
           // parse and add the event COST
-          eventToAdd.cost = this.cost(description);
+          eventToAdd.cost = that.cost(description);
 
 
           //var keys = description.split(" ", 100);
@@ -435,8 +432,7 @@ export class RssService {
           description = description.toUpperCase();
           eventName = eventName.toUpperCase();
 
-          eventToAdd.genre = this.categorizer(description, eventName);
-          console.log(eventToAdd.genre);
+          eventToAdd.genre = that.categorizer(description, eventName);
 
           if(eventToAdd.genre == "" || eventToAdd.genre == "family;"){
             toAdd = false;
@@ -448,6 +444,7 @@ export class RssService {
 
           if(toAdd) {
             if (list.indexOf(eventToAdd) == -1) {
+
               list.push(eventToAdd);
             }
           }
@@ -457,11 +454,11 @@ export class RssService {
         resolve();
       }).then(() => {
         //Add everything from the list to the database
-        for (var toAdd of list) {
+        for (var events of list) {
 
 
           // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
-          console.log(toAdd);
+          console.log(events);
           // check for duplicates here
           /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
             this.dupObserve.subscribe(data => {
@@ -487,18 +484,18 @@ export class RssService {
       cache: 'default'
     };
 
-    var data = ical.parseFile('majestic-theatre-7360f72fe39.ics');
-    console.log(data);
-    /*ical.fromURL('majestic-theatre-7360f72fe39.ics', {}, function(err, ical) {
+    //var data = ical.parseFile('majestic-theatre-7360f72fe39.ics');
+    //console.log(data);
+    ical.fromURL('https://www.madisonfrequency.com/feed/ical/', {}, function(err, ical) {
       console.log(ical);
-      for (var event in ical) {
+      /*for (var event in ical) {
         //console.log(ical[event]);
         var eventToAdd = {} as Event;
         eventToAdd.title = ical[event].summary;
         eventToAdd.location = ical[event].location;
 
-      }
-    })*/
+      }*/
+    })
 
 
   }

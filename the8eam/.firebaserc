@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "the-8-eam"
+    "default": "the-8-eam",
+    "the-8-eam": "the-8-eam"
   }
 }

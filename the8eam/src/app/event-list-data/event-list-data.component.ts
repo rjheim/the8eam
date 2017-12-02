@@ -12,7 +12,6 @@ import {Observable} from 'rxjs/Observable';
 export class EventListDataComponent {
   listItems: Observable<any>;
   report: Event;
-  ;
 
   constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
     this.listItems = dal.getList();
