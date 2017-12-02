@@ -8,9 +8,9 @@ import * as rssGet from 'rss-to-json'
 import {Observable} from 'rxjs/Observable';
 import * as ical from 'ical';
 import { DataAccessLayerService } from './data-access-layer.service';
-import * as parser from 'xml2js-parser';
+//import * as parser from 'xml2js-parser';
 //import * as iCal from 'node-ical';
-import * as converter from 'ical2json';
+//import * as converter from 'ical2json';
 
 // rssGet = require('rss-to-json');
 // ALL OF THE SETS WE WILL BE COMPARING DESCRIPTIONS TO
@@ -48,7 +48,8 @@ export class RssService {
   }
 
   testRSS() {
-    this.getAllEvents();
+    this.getIsthmusEvents();
+    this.getUWEvents();
     //this.testiCal();
     //let list: Array<Event> = [];
     /*var promise = new Promise((resolve, reject) => {
@@ -64,39 +65,39 @@ export class RssService {
     let month = 0;
     let day = '';
     switch (splitted[0]) {
-      case'Jan':
+      case'Jan' || 'January':
         month = 1;
         break;
-      case'Feb':
+      case'Feb' || 'February':
         month = 2;
         break;
-      case'Mar':
+      case'Mar' || 'March':
         month = 3;
         break;
-      case'Apr':
+      case'Apr' || 'March':
         month = 4;
         break;
       case'May':
         month = 5;
         break;
-      case'Jun':
+      case'Jun' || 'June':
         month = 6;
         break;
-      case'Jul':
+      case'Jul' || 'July':
         month = 7;
         break;
-      case'Aug':
+      case'Aug' || 'August':
         month = 8;
         break;
-      case'Sep':
+      case'Sep' || 'September':
         month = 9;
-      case'Oct':
+      case'Oct' || 'October':
         month = 10;
         break;
-      case'Nov':
+      case'Nov' || 'November':
         month = 11;
         break;
-      case'Dec':
+      case'Dec' || 'December':
         month = 12;
         break;
       default:
@@ -369,9 +370,13 @@ export class RssService {
     return genres;
   }
 
-  getAllEvents() {
+  getUWEvents() {
     var that = this;
-    rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
+    var proxy = 'https://cors-anywhere.herokuapp.com/'
+
+    rssGet.load(proxy + 'https://today.wisc.edu/events.rss2', function (err, rss) {
+
+    //rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
       // get the specific items (go one layer down)
       var items = rss["items"];
       let list: Array<Event> = [];
@@ -380,6 +385,7 @@ export class RssService {
 
 
         for (var key in items) {
+          console.log(items[key]);
 
           var eventToAdd = {} as Event;
           let toAdd: boolean = true;
@@ -475,6 +481,117 @@ export class RssService {
     });
 
   }
+
+  getIsthmusEvents() {
+    var that = this;
+    //var proxy = 'https://cors-anywhere.herokuapp.com/'
+
+    rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
+      // get the specific items (go one layer down)
+      var items = rss["items"];
+      let list: Array<Event> = [];
+      var promise = new Promise((resolve, reject) => {
+        var mySet = new Set();
+
+
+        for (var key in items) {
+          console.log(items[key]);
+
+          var eventToAdd = {} as Event;
+          let toAdd: boolean = true;
+
+          var title = items[key]["title"];
+          var titleIndex = title.indexOf(" - ");
+
+
+          var timeIndex = title.indexOf(" @ ");
+          if (timeIndex == -1) {
+            timeIndex = title.length;
+          }
+
+          // parse in the event NAME
+          var eventName = title.substring(0, titleIndex);
+          eventToAdd.title = eventName;
+
+
+          // parse the event TIME
+          var time = title.substring(titleIndex + 3, timeIndex);
+          //eventToAdd.time = time;
+
+          var splitted = time.split(" ", 5);
+
+          eventToAdd.date = that.date(splitted);
+          eventToAdd.time = +that.timeFunc(splitted);
+
+
+          // parse and add the LOCATION
+          eventToAdd.location = that.location(title.substring(timeIndex + 3))
+
+
+          // parse and add the event DESCRIPTION
+          var description = items[key]["description"];
+          //console.log(description);
+          eventToAdd.description = description;
+
+          // parse and add the event LINK
+          var link = items[key]["link"];
+          eventToAdd.link = link;
+
+          // parse and add the event COST
+          eventToAdd.cost = that.cost(description);
+
+
+          //var keys = description.split(" ", 100);
+
+
+          // ADD CATEGORIES HERE
+          description = description.toUpperCase();
+          eventName = eventName.toUpperCase();
+
+          eventToAdd.genre = that.categorizer(description, eventName);
+
+          if(eventToAdd.genre == "" || eventToAdd.genre == "family;"){
+            toAdd = false;
+          }
+
+
+          // set default report value to ZERO
+          eventToAdd.report = 0;
+
+          if(toAdd) {
+            if (list.indexOf(eventToAdd) == -1) {
+
+              list.push(eventToAdd);
+            }
+          }
+
+          //console.log(list);
+        }
+        resolve();
+      }).then(() => {
+        //Add everything from the list to the database
+        for (var events of list) {
+
+
+          // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
+          console.log(events);
+          // check for duplicates here
+          /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
+           this.dupObserve.subscribe(data => {
+           if (data.length < 1) {
+           console.log("Added it ^^^");
+           }
+
+           })*/
+          //this.dal.addToList(toAdd);
+
+        }
+
+      });
+    });
+
+  }
+
 
   testiCal() {
     let list: Array<Event> = [];
