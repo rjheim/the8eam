@@ -37,7 +37,14 @@
   width:130px;
   margin-right: 5px;
 }
-
+.form-control-clear{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 15px;
+  outline: none;
+}
+.hide-close{ display: none; }
 /*** BREAKPOINTS ***/
 @media (min-width: 576px) {
   .brand-icon {

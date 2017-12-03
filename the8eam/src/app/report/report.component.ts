@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../event';
 import {DataAccessLayerService} from '../data-access-layer.service';
-import * as jQuery from 'jquery';
 
 @Component({
   selector: 'app-report',

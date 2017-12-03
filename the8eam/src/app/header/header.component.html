@@ -10,10 +10,13 @@
         <span class="brand-text">Arts & Events Calendar</span>
       </div>
       <div class="nav-options">
-        <div>
+        <div style="position: relative" class="has-clear">
           <input [value]="words" (keyup)="words = $event.target.value;filter.setSearch(words)" type="text"
                  class="form-control form-control-sm search-bar"
                  placeholder="search">
+           <button (click)="filter.setSearch('')" class="form-control-clear close hide-close" aria-label="Close" type="button">
+                <span aria-hidden="true">&times;</span>
+           </button>
         </div>
         <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filter</button>
       </div>

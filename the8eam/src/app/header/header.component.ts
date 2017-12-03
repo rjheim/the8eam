@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterVarsService } from '../filter-vars.service';
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-header',
@@ -20,6 +22,18 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     // called after the constructor and called after the first ngOnChanges() call (which itself is called when input/output values change)
     // put all logic for this component in here
+    $('.has-clear input[type="text"]').on('input propertychange', function() {
+      var $this = $(this);
+      var visible = Boolean($this.val());
+      $this.siblings('.form-control-clear').toggleClass('hide-close', !visible);
+    }).trigger('propertychange');
+
+    $('.form-control-clear').click(function() {
+      $(this).siblings('input[type="text"]').val('')
+        .trigger('propertychange').focus();
+    });
   }
+
+
 
 }
