@@ -1,5 +1,11 @@
 #pagenotfound{
-  background-color: var(--light-bg);
+  background-color: transparent;
   color: var(--dark-text);
   text-align: center;
+}
+
+@media (min-width: 768px){
+  #pagenotfound{
+    color: var(--light-text);
+  }
 }

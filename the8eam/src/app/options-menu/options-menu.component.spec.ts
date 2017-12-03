@@ -29,7 +29,7 @@ describe('OptionsMenuComponent', () => {
   });
 
   it('should have a Filter-Vars Service', inject([FilterVarsService], (filterService: FilterVarsService) => {
-    expect(filterService).toEqual(component.filterService);
+    expect(filterService).toEqual(component.filter);
   }));
   it('should show default Genre tab if invalid tab number is passed to clickViewTab()', () => {
     let el : HTMLElement;

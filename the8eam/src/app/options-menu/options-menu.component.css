@@ -1,10 +1,20 @@
+#options-menu{
+  display: none;
+}
+#options-menu.showFilters{
+  display: block;
+  margin: 0 15px;
+}
+
 .filter-tab{
   color: var(--light-bg);
+  border-bottom: none;
 }
 .filter-tab:hover{
+  border-bottom: none;
   border-color: var(--light-bg);
 }
-.filter-tab.active{
+a.filter-tab.active, a.filter-tab.active:hover{
   background-color: var(--light-bg);
   color: #A20021;
 }
@@ -26,15 +36,17 @@
   position: relative;
 }
 .filter-btn{
-  width : 100px;
-  height : 60px;
+  width: auto;
+  min-width: 100px;
+  height : 40px;
   font-size:1.1em;
   font-weight: bold;
   color: var(--light-bg);
   background-color: transparent;
-  -webkit-border-radius: 0.4em;
-  -moz-border-radius: 0.4em;
-  border-radius: 0.4em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  border-color: var(--light-bg);
 }
 .filter-btn:hover{
   border-color: #C21F39;
@@ -54,8 +66,20 @@
 .filterOn>span{
   display: inherit;
 }
+a.clear-filters{
+  background-color: var(--red);
+  border: 1px solid var(--red);
+  border-bottom: none;
+}
+.clear-filters{ border-bottom: none; }
+li.clear-filters{
+  margin-bottom: 0;
+  margin-top: -1px;
+}
+div.clear-filters{ display: none; }
+div.clear-filters.filtering{  display: block;}
 @media (min-width: 768px){
-  #options-menu{
+  #options-menu.showFilters{
     max-width: 750px;
     margin: 0 auto;
   }

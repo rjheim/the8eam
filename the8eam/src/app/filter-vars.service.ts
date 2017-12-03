@@ -20,6 +20,7 @@ export class FilterVarsService {
     this.gDance = false;
     this.cost = -1;
     this.date = -1;
+    this.searchTxt = "";
     this.curDate = new Date();
   }
 
@@ -59,6 +60,18 @@ export class FilterVarsService {
   setSearch(search: string){
     console.log("set search text: " + search);
     this.searchTxt = search;
+  }
+
+  clearFilters(){
+    this.gMusic = false;
+    this.gArt = false;
+    this.gFood = false;
+    this.gSW = false;
+    this.gDance = false;
+    this.cost = -1;
+    this.date = -1;
+    //need to be able to clear the visual text as well
+    //this.searchTxt = "";
   }
 
 }

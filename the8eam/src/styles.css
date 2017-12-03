@@ -1,3 +1,13 @@
+
+/* Custom Color Properties */
+:root{
+  --dark-bg: #002642;
+  --light-bg: #EDEDF4;
+  --red: #A20021;
+  --dark-text: #000;
+  --light-text: #EDEDF4;
+}
+
 /* Use this class to get rid of right/left padding from bootstrap columns */
 .no-gutter{
   padding-left: 0;
@@ -6,12 +16,10 @@
 body{
   background-color: #EDEDF4;
 }
-
-/* Custom Color Properties */
-:root{
-  --dark-bg: #002642;
-  --light-bg: #EDEDF4;
-  --warn: #C21F39;
-  --dark-text: #000;
-  --light-text: #EDEDF4;
+a{
+  color: var(--red);
 }
+button {
+  border-style: solid;
+}
+

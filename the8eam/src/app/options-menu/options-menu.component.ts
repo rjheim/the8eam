@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component , Input , OnInit} from '@angular/core';
 import { FilterVarsService } from '../filter-vars.service'
+import * as axis from 'axis.js'
 
 @Component({
   selector: 'app-options-menu',
@@ -8,25 +9,28 @@ import { FilterVarsService } from '../filter-vars.service'
 })
 export class OptionsMenuComponent implements OnInit {
 
-  filterService: FilterVarsService;
+  @Input()
+    showFilters;
+
+  filter: FilterVarsService;
   // The tab selected to view
   filterTab : number;
   // which filters are on
   genreFilters : string;   // more than one genre can be selected
   dateFilter : string;
-  costFilter : string;
+  costFilter : number;
   locFilter : string; // more than one location can be selected
 
 
 
 
-  constructor(public filter: FilterVarsService) {
-    this.filterService = filter;
+  constructor(filter: FilterVarsService) {
+    this.filter = filter;
     // Genre is the default view
     this.filterTab = 1;
     this.genreFilters = "";
     this.dateFilter = "";
-    this.costFilter = "";
+    this.costFilter = -1;
     this.locFilter = "";
   }
 
@@ -54,11 +58,11 @@ export class OptionsMenuComponent implements OnInit {
     else
       this.dateFilter = "";
   }
-  clickCostFilter ( filterName:string ) {
+  clickCostFilter ( filterName:number ) {
     if(this.costFilter != filterName )
       this.costFilter = filterName;
     else
-      this.costFilter = ""
+      this.costFilter = -1;
   }
   clickLocFilter( filterName:string ){
     var index = this.locFilter.indexOf(filterName);
@@ -71,18 +75,34 @@ export class OptionsMenuComponent implements OnInit {
   }
 
   isFiltered( filterCtg, filterName ){
-    if(filterCtg.indexOf(filterName) >= 0)
-      return true;
-    return false;
+    if(axis.isNumber(filterCtg)) {
+      if(filterCtg == filterName)
+        return true;
+      return false;
+    }
+    else{
+      if (filterCtg.indexOf ( filterName ) >= 0)
+        return true;
+      return false;
+    }
   }
 
-
-
-
-
-
-
-
+  // Checks if any filters are on
+  filtering(){
+    var f = false;
+    if(this.genreFilters.length > 0) f = true;
+    if(this.dateFilter.length > 0) f = true;
+    if(this.costFilter > -1) f = true;
+    if(this.locFilter.length > 0) f = true;
+    return f;
+  }
+  clearFilters(){
+    this.genreFilters = "";
+    this.dateFilter = "";
+    this.costFilter = -1;
+    this.locFilter = "";
+    this.filter.clearFilters();
+  }
 
   ngOnInit() {
   }

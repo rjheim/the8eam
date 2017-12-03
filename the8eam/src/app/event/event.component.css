@@ -27,7 +27,7 @@ h5{  font-size: 1.0rem;  }
 
 .fbk-icon{
   display: inline-block;
-  color: var(--warn);
+  color: var(--red);
   font-size: 1.1em;
   line-height: 19px;
   font-weight: bold;
@@ -36,13 +36,13 @@ h5{  font-size: 1.0rem;  }
   margin-right: -2px;
   width: 22px;
   height: 22px;
-  border: 2px solid var(--warn);
+  border: 2px solid var(--red);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
 .fbk-icon:hover, .fbk-icon:active, .fbk-icon:focus{
-  background-color: var(--warn);
+  background-color: var(--red);
   color: var(--light-bg);
 }
 .fbk-button{

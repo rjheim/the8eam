@@ -1,13 +1,17 @@
 
 <!-- Filter Tabs // Tabs are ordered as they appear 1-4 -->
-<div class="app-header" id="options-menu">
-    <div class="nav nav-tabs" id="filter-tabs">
-      <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(1)"><a [ngClass]="{active : (filterTab == 1)}" class="nav-link filter-tab" href="#">Genre</a></li>
-      <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(2)"><a [ngClass]="{active : (filterTab == 2)}" class="nav-link filter-tab" href="#">Date</a></li>
-      <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(3)"><a [ngClass]="{active : (filterTab == 3)}" class="nav-link filter-tab" href="#">Price</a></li>
-      <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(4)"><a [ngClass]="{active : (filterTab == 4)}" class="nav-link filter-tab" href="#">Location</a></li>
+<div class="app-header" id="options-menu" [ngClass]="{showFilters : showFilters}">
+    <div class="d-flex justify-content-between" id="option-tabs">
+      <div class="nav nav-tabs" id="filter-tabs">
+        <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(1)"><a [ngClass]="{active : (filterTab == 1)}" class="nav-link filter-tab" >Genre</a></li>
+        <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(2)"><a [ngClass]="{active : (filterTab == 2)}" class="nav-link filter-tab" >Date</a></li>
+        <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(3)"><a [ngClass]="{active : (filterTab == 3)}" class="nav-link filter-tab" >Price</a></li>
+        <li class="nav-item font-weight-bold filter-tab"  (click)="clickViewTab(4)"><a [ngClass]="{active : (filterTab == 4)}" class="nav-link filter-tab" >Location</a></li>
+      </div>
+      <div class="nav nav-tabs clear-filters" (click)="clearFilters()" [ngClass]="{filtering : filtering()}">
+        <li class="nav-item font-weight-bold clear-filters"><a class="nav-link clear-filters">Reset</a></li>
+      </div>
     </div>
-
     <ng-container [ngSwitch]="filterTab">
       <!-- Filter By Genre:1 -->
       <div *ngSwitchCase="1"  class="d-flex filter-container">
@@ -57,25 +61,25 @@
       </div>
       <!-- Filter By Cost:3 -->
       <div *ngSwitchCase="3" class="d-flex filter-container">
-        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 'free')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 0)}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('free');filter.setCost(0)">Free</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(0);filter.setCost(0)">Free</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '10')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 10)}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('10');filter.setCost(10)">$10 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(10);filter.setCost(10)">$10 or less</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '25')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 25)}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('25');filter.setCost(25)">$25 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(25);filter.setCost(25)">$25 or less</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '50')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 50)}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('50');filter.setCost(50)">$50 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(50);filter.setCost(50)">$50 or less</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, '100')}" >
+        <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 100)}" >
           <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickCostFilter('100');filter.setCost(100)">$100 or less</button>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(100);filter.setCost(100)">$100 or less</button>
         </div>
       </div>
       <!-- Filter By Location:4 -->
