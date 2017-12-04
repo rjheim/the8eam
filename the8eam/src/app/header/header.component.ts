@@ -20,8 +20,7 @@ export class HeaderComponent implements OnInit {
     this.showFilters = !this.showFilters;
   }
   ngOnInit() {
-    // called after the constructor and called after the first ngOnChanges() call (which itself is called when input/output values change)
-    // put all logic for this component in here
+    // Took this from https://codepen.io/frosdqy/pen/grbxGW
     $('.has-clear input[type="text"]').on('input propertychange', function() {
       var $this = $(this);
       var visible = Boolean($this.val());
