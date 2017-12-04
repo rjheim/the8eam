@@ -13,9 +13,9 @@
     <div class="card-title">
       <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Location: </span>{{eventItem.location}}</h4>
       <div class="d-flex w-100 flex-wrap">
-        <h4 *ngIf="eventItem.time"><span class="font-weight-bold">Date: </span>{{eventItem.time}}</h4>
+        <h4 *ngIf="eventItem.time" class="mr-4"><span class="font-weight-bold">Date: </span>{{eventItem.time}}</h4>
         <h4>
-          <span *ngIf="eventItem.cost!=null" class="font-weight-bold ml-lg-4">Cost: </span>
+          <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
           <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
           <span *ngIf="eventItem.cost==0">Free</span>
         </h4>
