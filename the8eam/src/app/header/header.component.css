@@ -73,6 +73,10 @@
   .options-toggle{
     margin-right: 5px;
   }
+  .form-control-clear{
+    bottom: 3px;
+    right: 20px;
+  }
 }
 /* Large devices >= 992 */
 @media (min-width: 992px){

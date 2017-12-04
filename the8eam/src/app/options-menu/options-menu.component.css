@@ -21,7 +21,7 @@ a.filter-tab.active, a.filter-tab.active:hover{
 #filter-tabs{ border: none; }
 .filter-container{
   border: solid 2px var(--light-bg);
-  border-radius: 0 0 0.5em 0.5em;
+
 }
 .filter-container{
   -webkit-flex-flow: row wrap;
@@ -40,29 +40,33 @@ a.filter-tab.active, a.filter-tab.active:hover{
   min-width: 100px;
   height : 40px;
   font-size:1.1em;
-  font-weight: bold;
+  font-weight: lighter;
   color: var(--light-bg);
   background-color: transparent;
-  -webkit-border-radius: 0.2em;
-  -moz-border-radius: 0.2em;
-  border-radius: 0.2em;
   border-color: var(--light-bg);
 }
-.filter-btn:hover{
-  border-color: #C21F39;
-}
 .filter-btn:focus{
+  border-color: inherit;
   box-shadow: none;
   outline:none;
+}
+.filter-btn:hover, .filter-btn:active{
+  border-color: var(--red);
+}
+.selection-bar{
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  left:0;
+  top: 1px;
+  background-color: #66CC44;
+  display: none;
+}
 
+.selection-bar.filterOn{
+  display: block;
 }
-.oi-circle-check{
-  position : absolute;
-  top:6px;
-  left:80px;
-  color: #64A77E;
-  display : none;
-}
+span.selection-bar::before{  content: '';}
 .filterOn>span{
   display: inherit;
 }
@@ -78,6 +82,10 @@ li.clear-filters{
 }
 div.clear-filters{ display: none; }
 div.clear-filters.filtering{  display: block;}
+/*** BREAKPOINTS ***/
+@media (min-width: 576px){
+
+}
 @media (min-width: 768px){
   #options-menu.showFilters{
     max-width: 750px;
