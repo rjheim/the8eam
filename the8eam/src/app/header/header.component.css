@@ -5,15 +5,14 @@
 }
 .options-toggle{
   padding: 3px 10px;
+  background-color: var(--light-blue);
   color: var(--dark-bg);
+}
+.options-toggle:hover, .options-toggle:active{
+  border-color: var(--blue) !important;
+  background-color: var(--blue);
+}
 
-}
-.options-toggle:focus{
-  box-shadow: none;
-}
-.options-toggle:hover, .options-toggle:active, .showFilters{
-  box-shadow: none;
-}
 .nav-options>div, .nav-options>button{
   display: inline-block;
 }

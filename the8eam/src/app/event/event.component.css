@@ -27,7 +27,7 @@ h5{  font-size: 1.0rem;  }
 
 .fbk-icon{
   display: inline-block;
-  color: var(--red);
+  color: var(--dark-red);
   font-size: 1.1em;
   line-height: 19px;
   font-weight: bold;
@@ -36,13 +36,13 @@ h5{  font-size: 1.0rem;  }
   margin-right: -2px;
   width: 22px;
   height: 22px;
-  border: 2px solid var(--red);
+  border: 2px solid var(--dark-red);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
 .fbk-icon:hover, .fbk-icon:active, .fbk-icon:focus{
-  background-color: var(--red);
+  background-color: var(--dark-red);
   color: var(--light-bg);
 }
 .fbk-button{
@@ -107,5 +107,13 @@ span#toggleIcon.showInfo{
     margin: 5px 15px;
   }
   .fbk-icon{  display: none; }
-  .fbk-button{ display: inline-block; }
+  .fbk-button{
+    background-color: var(--red);
+    border: none;
+    color: var(--light-text);
+    display: inline-block;
+  }
+  .fbk-button:hover,.fbk-button:active, .fbk-button:focus{
+    background-color: var(--dark-red);
+  }
 }

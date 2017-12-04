@@ -16,73 +16,93 @@
       <!-- Filter By Genre:1 -->
       <div *ngSwitchCase="1"  class="d-flex filter-container">
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Art')}" >
-          <button type="button" class="filter-btn" (click)="clickGenreFilter('Art');filter.setArt()"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Art')}" aria-hidden="true"></span>Art</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Art')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Art');filter.setArt()">Art</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Music')}" >
-          <button type="button" class="filter-btn" (click)="clickGenreFilter('Music');filter.setMusic()"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Music')}" aria-hidden="true"></span>Music</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Music')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Music');filter.setMusic()">Music</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Dance')}" >
-          <button type="button" class="filter-btn" (click)="clickGenreFilter('Dance');filter.setDance()"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Dance')}" aria-hidden="true"></span>Dance</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Dance')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Dance');filter.setDance()">Dance</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Food')}" >
-          <button type="button" class="filter-btn" (click)="clickGenreFilter('Food');filter.setFood()"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Food')}" aria-hidden="true"></span>Food</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Food')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Food');filter.setFood()">Food</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Spoken Word')}" >
-          <button type="button" class="filter-btn" (click)="clickGenreFilter('Spoken Word');filter.setSW()"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Spoken Word')}" aria-hidden="true"></span>Spoken Word</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Spoken Word')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Spoken Word');filter.setSW()">Spoken Word</button>
         </div>
       </div>
       <!-- Filter By Date:2 -->
       <div *ngSwitchCase="2" class="d-flex filter-container">
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Today')}" >
-          <button type="button" class="filter-btn" (click)="clickDateFilter('Today');filter.setDate(0)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Today')}" aria-hidden="true"></span>Today</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Today')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Today');filter.setDate(0)">Today</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Week')}" >
-          <button type="button" class="filter-btn" (click)="clickDateFilter('Week');filter.setDate(7)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Week')}" aria-hidden="true"></span>This Week</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Week')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Week');filter.setDate(7)">This Week</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Month')}" >
-          <button type="button" class="filter-btn" (click)="clickDateFilter('Month');filter.setDate(100)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Month')}" aria-hidden="true"></span>This Month</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Month')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Month');filter.setDate(100)">This Month</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '3Months')}" >
-          <button type="button" class="filter-btn" (click)="clickDateFilter('3Months');filter.setDate(300)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, '3Months')}" aria-hidden="true"></span>3 Months</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, '3Months')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('3Months');filter.setDate(300)">3 Months</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Year')}" >
-          <button type="button" class="filter-btn" (click)="clickDateFilter('Year');filter.setDate(10000)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Year')}" aria-hidden="true"></span>This Year</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Year')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('Year');filter.setDate(10000)">This Year</button>
         </div>
       </div>
       <!-- Filter By Cost:3 -->
       <div *ngSwitchCase="3" class="d-flex filter-container">
         <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 0)}" >
-          <button type="button" class="filter-btn" (click)="clickCostFilter(0);filter.setCost(0)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 0)}" aria-hidden="true"></span>Free</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 0)}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(0);filter.setCost(0)">Free</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 10)}" >
-          <button type="button" class="filter-btn" (click)="clickCostFilter(10);filter.setCost(10)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 10)}" aria-hidden="true"></span>$10 or less</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 10)}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(10);filter.setCost(10)">$10 or less</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 25)}" >
-          <button type="button" class="filter-btn" (click)="clickCostFilter(25);filter.setCost(25)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 25)}" aria-hidden="true"></span>$25 or less</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 25)}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(25);filter.setCost(25)">$25 or less</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 50)}" >
-          <button type="button" class="filter-btn" (click)="clickCostFilter(50);filter.setCost(50)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 50)}" aria-hidden="true"></span>$50 or less</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 50)}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(50);filter.setCost(50)">$50 or less</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(costFilter, 100)}" >
-          <button type="button" class="filter-btn" (click)="clickCostFilter(100);filter.setCost(100)"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 100)}" aria-hidden="true"></span>$100 or less</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(costFilter, 100)}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickCostFilter(100);filter.setCost(100)">$100 or less</button>
         </div>
       </div>
       <!-- Filter By Location:4 -->
       <div *ngSwitchCase="4" class="d-flex filter-container">
         <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" >
-          <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" aria-hidden="true"></span>Union South</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');">Union South</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" >
-          <button type="button" class="filter-btn" (click)="clickLocFilter('State Capitol');"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" aria-hidden="true"></span>State Capitol</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickLocFilter('State Capitol');">State Capitol</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" >
-          <button type="button" class="filter-btn" (click)="clickLocFilter('The Overture Center');"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" aria-hidden="true"></span>Overture Center</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickLocFilter('The Overture Center');">Overture Center</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" >
-          <button type="button" class="filter-btn" (click)="clickLocFilter('Henry Vilas Zoo');"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" aria-hidden="true"></span>Henry Vilas Zoo</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickLocFilter('Henry Vilas Zoo');">Henry Vilas Zoo</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" >
-          <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');"><span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" aria-hidden="true"></span>Memorial Union</button>
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');">Memorial Union</button>
         </div>
       </div>
     </ng-container>

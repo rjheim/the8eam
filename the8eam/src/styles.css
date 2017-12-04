@@ -3,11 +3,22 @@
 :root{
   --dark-bg: #002642;
   --light-bg: #EDEDF4;
-  --red: #A20021;
+  --dark-blue: #002642;
+  --blue: #006CB5;
+  --light-blue: #2892D7;
+  --green: #66CC44;
+  --dark-red: #A20021;
+  --red: #CC0028;
   --dark-text: #000;
   --light-text: #EDEDF4;
 }
-
+/* Gets rid of sticky hover styles on mobile devices, added specific element id's/classes if needed to this */
+html.can-touch a:hover, html.can-touch button:hover{
+  border-color: inherit !important;
+}
+html.can-touch .options-toggle:hover {
+  background-color: var(--light-blue) !important;
+}
 /* Use this class to get rid of right/left padding from bootstrap columns */
 .no-gutter{
   padding-left: 0;
@@ -17,9 +28,14 @@ body{
   background-color: #EDEDF4;
 }
 a{
-  color: var(--red);
+  color: var(--dark-red);
 }
 button {
   border-style: solid;
+}
+/* some bootstrap bs */
+button:focus, button:active, button:hover{
+  box-shadow: none !important;
+  outline: none !important;
 }
 
