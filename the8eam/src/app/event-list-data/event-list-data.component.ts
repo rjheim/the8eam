@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FilterVarsService } from '../filter-vars.service'
 import { DataAccessLayerService } from '../data-access-layer.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'app-event-list-data',
@@ -10,11 +10,19 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./event-list-data.component.css']
 })
 export class EventListDataComponent {
-  listItems: Observable<any>;
+  eventList: Observable<any>;
+  interval : number;
+  loadedList : Observable<any>;
   report: Event;
 
   constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
-    this.listItems = dal.getList();
+    this.interval = 20;
+    this.eventList = dal.getList();//.bufferCount(this.interval);
   }
+  loadOnScroll(){
+    this.interval += this.interval;
+    this.loadedList = this.eventList.bufferCount(this.interval);
+  }
+
 
 }

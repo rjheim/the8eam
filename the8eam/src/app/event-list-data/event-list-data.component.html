@@ -1,4 +1,4 @@
-<div class="app-event" *ngFor="let event of listItems | async | report | musicGenre:filter.gMusic | danceGenre:filter.gDance
+<div class="app-event" *ngFor="let event of eventList | async | report | musicGenre:filter.gMusic | danceGenre:filter.gDance
              | foodGenre:filter.gFood | artGenre:filter.gArt | spokenWordGenre:filter.gSW
              | cost:filter.cost | date:filter.date:filter.curDate | search:filter.searchTxt">
      <app-event [eventItem] = 'event'></app-event>

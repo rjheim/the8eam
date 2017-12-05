@@ -26,6 +26,7 @@ import { DataAccessLayerService } from "./data-access-layer.service";
 import { DatePipe } from './date.pipe';
 import { SearchPipe } from './search.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 // Must export the config
 export const firebaseConfig = {
@@ -64,7 +65,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule
   ],
   providers: [FilterVarsService, DataAccessLayerService],
   bootstrap: [AppComponent]
