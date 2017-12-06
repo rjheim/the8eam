@@ -49,8 +49,8 @@ export class RssService {
   }
 
   testRSS() {
-    //this.getIsthmusEvents();
-    this.getUWEvents();
+    this.getIsthmusEvents();
+    //this.getUWEvents();
     //this.testiCal();
     //let list: Array<Event> = [];
     /*var promise = new Promise((resolve, reject) => {
@@ -136,7 +136,7 @@ export class RssService {
       case  'December':
         month = 12;
         break;
-      case  'Dec':
+      case "Dec":
         month = 12;
         break;
       default:
@@ -147,7 +147,7 @@ export class RssService {
     // day
 
     //console.log("Date parsing the length of the second field :" + splitted[1].length);
-    if (splitted[1].length == 2) {
+    if (splitted[1].length == 3) {
       day = splitted[1].substring(0,2);
     }
     else {
@@ -159,6 +159,7 @@ export class RssService {
     //var year = +splitted[2];
     var year = 2017;
     var date = "" + year + month + day;
+    //console.log(date);
     return +date;
   }
 
@@ -543,8 +544,11 @@ export class RssService {
               let toAdd: boolean = true;
 
               var title = items[key]["title"];
+              //console.log(title);
               var titleIndex = title.indexOf(" - ");
               //console.log("Title Index Is  "  +  titleIndex);
+
+
 
               /*
               var timeIndex = titleIndex - 2;
@@ -556,6 +560,19 @@ export class RssService {
               // parse in the event NAME
               var eventName = title.substring(titleIndex + 3);
               eventToAdd.title = eventName;
+
+
+              // parse date
+              var rawDate = title.substring(0, titleIndex);
+              var dateInstring = rawDate.split(" ", 5) ;
+              /*for(var i = 0; i < dateInstring.length; ++i)
+              {
+                console.log( dateInstring[i] + " , " ) ;
+              }*/
+              //console.log( dateInstring[0] + " , " + dateInstring[1] );
+
+              //console.log(" Date in number : " );
+
 
 
               // parse the event TIME
@@ -680,8 +697,10 @@ export class RssService {
 
               }
 
-              //parse cost
 
+              var fullTime = "" + that.date(dateInstring) + eventToAdd.time;
+
+              eventToAdd.date = +fullTime;
               // if "Free" follows "Cost:"
               /*
               if(costIndex != -1 && (description.indexOf("Free.") <= costIndex + 8))
@@ -722,6 +741,24 @@ export class RssService {
               //var keys = description.split(" ", 100);
 
 
+
+              //console.log(description);
+              if (description.indexOf("<a href") != -1) {
+                for (var i = description.indexOf("</"); i > 0; i--) {
+                  if (description.charAt(i) == '>') {
+                    //console.log(description.substring(i + 1, description.indexOf("</")));
+                    eventToAdd.location = description.substring(i + 1, description.indexOf("</"));
+                    var toReplace = description.substring(description.indexOf("<a"), description.indexOf("a>") + 2);
+
+                    eventToAdd.description = description.replace(toReplace, eventToAdd.location);
+                    //console.log(eventToAdd.description);
+                  }
+
+                }
+              } else {
+                console.log(description);
+              }
+
               // ADD CATEGORIES HERE
               description = description.toUpperCase();
               eventName = eventName.toUpperCase();
@@ -732,24 +769,39 @@ export class RssService {
                 toAdd = false;
               }
 
-
+              /*
               if (i > 9) {
                 var assembleDate = "" + year + month + i + eventToAdd.time;
               } else {
                 var assembleDate = "" + year + month + "0" + i + eventToAdd.time;
               }
+
               eventToAdd.date = +assembleDate;
+              */
+
+              // parse date
+
+
               //console.log(eventToAdd.date);
               // set default report value to ZERO
               eventToAdd.report = 0;
               //console.log(eventToAdd);
-              console.log(i);
-              console.log("This is the below events' date: " + eventToAdd.date);
-              console.log(eventToAdd);
-              if (toAdd) {
-                if (list.indexOf(eventToAdd) == -1) {
 
-                  list.push(eventToAdd);
+
+
+
+
+
+
+              if (eventToAdd.genre == "" || eventToAdd.genre == "family;") {
+
+              } else {
+                if (list.indexOf(eventToAdd) == -1) {
+                  if (!isNaN(eventToAdd.date)) {
+                    list.push(eventToAdd);
+                    //console.log("This is the below events' date: " + eventToAdd.date);
+                    //console.log(eventToAdd);
+                  }
                 }
               }
 
@@ -760,10 +812,9 @@ export class RssService {
             //Add everything from the list to the database
             for (var events of list) {
 
-
               // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
-              console.log("This is the below events' date: " + events.date);
-              console.log(events);
+              //console.log("This is the below events' date: " + events.date);
+              //console.log(events);
               // check for duplicates here
               /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
                 this.dupObserve.subscribe(data => {
@@ -772,7 +823,8 @@ export class RssService {
                 }
 
               })*/
-              //this.dal.addToList(toAdd);
+              //that.dal.addToList(events);
+              //console.log(events);
 
             }
 
@@ -819,10 +871,14 @@ export class RssService {
 
           var splitted = time.split(" ", 5);
 
-          eventToAdd.date = that.date(splitted);
+          var tempDate = that.date(splitted);
+
           eventToAdd.time = +that.timeFunc(splitted);
+          var timeStr = "" + eventToAdd.time;
+          var fullDate = "" + tempDate + timeStr;
+          eventToAdd.date = +fullDate;
 
-
+          console.log(eventToAdd.date);
           // parse and add the LOCATION
           eventToAdd.location = that.location(title.substring(timeIndex + 3))
 
@@ -837,7 +893,7 @@ export class RssService {
           eventToAdd.link = link;
 
           // parse and add the event COST
-          eventToAdd.cost = that.cost(description);
+          eventToAdd.cost = +that.cost(description);
 
 
           //var keys = description.split(" ", 100);
@@ -873,7 +929,7 @@ export class RssService {
 
 
           // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
-          //console.log(events);
+          console.log(events);
           // check for duplicates here
           /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
            this.dupObserve.subscribe(data => {
@@ -882,7 +938,7 @@ export class RssService {
            }
 
            })*/
-          //this.dal.addToList(toAdd);
+          //that.dal.addToList(events);
 
         }
 
