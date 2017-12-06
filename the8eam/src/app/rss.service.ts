@@ -33,10 +33,10 @@ let foodSet: Set<string> = new Set<string>(foodArray);
 var familyArray = ["DAYCARE","KID", "KIDS", "CHILD", "PARENTAL","PARENT", "MOM","DAD", "CHILDREN","LEGO", "PARENTS","MOTHER","FATHER", "CARE", "KINDERGARTEN","ELEMENTARY", "SCHOOL", "MIDDLE","TOY", "PLAYGROUND", "FAMILY", "FAMILIES"]
 let familySet: Set<string> = new Set<string>(familyArray);
 
-var theaterArray = ["THEATER", "STAGE", "DRAMA", "MUSICAL", "SHAKESPEARE", "THEATRE", "THEATRICAL", "ACT", "ACTING", "ACTRESS", "COMEDY", "TRAGEDY", "ACTORS", "OPERA", "PLAY"]
+var theaterArray = ["STAGE", "DRAMA", "MUSICAL", "SHAKESPEARE", "THEATRICAL", "ACT", "ACTING", "ACTRESS", "COMEDY", "TRAGEDY", "ACTORS", "OPERA", "PLAY"]
 let theaterSet: Set<string> = new Set<string>(theaterArray);
 
-var filmArray = ["MOVIE", "FILM", "ACTRESS","FILMING","THEATER", "ACTOR","ACTORS","ACTRESSES", "ACTION","ADVENTURE","COMEDY","THRILLER", "DRAMA","HOLLYWOOD","BOLLYWOOD","DIRECTOR","TRAILER", "WUD","UNION", "CINEMA","CARTOON","ANIME","SOUNDTRACK","COSTUME","DOCUDRAMA","DOCUMENTARY","FILMSTRIP"]
+var filmArray = ["MOVIE", "FILM", "ACTRESS","FILMING", "ACTOR","ACTORS","ACTRESSES", "ACTION","ADVENTURE","COMEDY","THRILLER", "DRAMA","HOLLYWOOD","BOLLYWOOD","DIRECTOR","TRAILER", "CINEMA","CARTOON","ANIME","SOUNDTRACK","COSTUME","DOCUDRAMA","DOCUMENTARY","FILMSTRIP"]
 let filmSet: Set<string> = new Set<string>(filmArray);
 
 
@@ -49,8 +49,8 @@ export class RssService {
   }
 
   testRSS() {
-    this.getIsthmusEvents();
-    //this.getUWEvents();
+    //this.getIsthmusEvents();
+    this.getUWEvents();
     //this.testiCal();
     //let list: Array<Event> = [];
     /*var promise = new Promise((resolve, reject) => {
@@ -63,7 +63,7 @@ export class RssService {
   // DATE FUNCTION
   date(splitted) {
     // month
-    let month = 0;
+    let month = '';
     let day = '';
 
 
@@ -71,73 +71,73 @@ export class RssService {
     //console.log("Date parsing length the first field :" + splitted[0].length);
     switch (splitted[0]) {
       case 'Jan':
-        month = 1;
+        month = '01';
         break;
       case 'January':
-        month = 1;
+        month = '01';
         break;
       case 'Feb':
-        month = 2;
+        month = '02';
         break;
       case 'February':
-        month = 2;
+        month = '02';
         break;
       case 'Mar':
-        month = 3;
+        month = '03';
         break;
       case 'March':
-        month = 3;
+        month = '03';
         break;
       case 'Apr':
-        month = 4;
+        month = '04';
         break;
       case 'April':
-        month = 4;
+        month = '04';
         break;
       case 'May':
-        month = 5;
+        month = '05';
         break;
       case 'Jun':
-        month = 6;
+        month = '06';
         break;
       case 'June':
-        month = 6;
+        month = '06';
         break;
       case 'Jul':
-        month = 7;
+        month = '07';
         break;
       case 'July':
-        month = 7;
+        month = '07';
         break;
       case 'Aug':
-        month = 8;
+        month = '08';
         break;
       case 'August':
-        month = 8;
+        month = '08';
         break;
       case 'Sep':
-        month = 9;
+        month = '09';
         break;
       case 'September':
-        month = 9;
+        month = '09';
         break;
       case 'Oct':
-        month = 10;
+        month = '10';
         break;
       case 'October':
-        month = 10;
+        month = '10';
         break;
       case 'Nov':
-        month = 11;
+        month = '11';
         break;
       case 'November':
-        month = 11;
+        month = '11';
         break;
       case  'December':
-        month = 12;
+        month = '12';
         break;
       case "Dec":
-        month = 12;
+        month = '12';
         break;
       default:
         break;
@@ -163,24 +163,29 @@ export class RssService {
     return +date;
   }
 
-  // TIME FUNCTION
+  /*
+    *** TIME FUNCTION ***
+    *                0      1     2       3        4
+    * splitted ex: [ "Dec", "6,", "2017", "12:00", "PM" ]
+   */
   timeFunc(splitted) {
-    var specTime = "";
+    let specTime : string;
+    let isMorn : boolean;
+    let hour, minute, timeSplit;
+
     // CHECK TO MAKE SURE THERE IS A TIME
     if (splitted[3]) {
 
       // TIME
-      var specTime = "" + splitted[3];
-
-      let isMorn: boolean = false;
+      specTime = "" + splitted[3]; //Cast to string just in case splitted[3] is only numbers
+      isMorn = false;
 
       if (splitted[4] == "AM") {
         isMorn = true;
       }
 
       // for the hour, then minute
-      var timeSplit = specTime.split(':', 2);
-      var hour, minute = "";
+      timeSplit = specTime.split(':', 2);
 
       // add 12 for 24 hour time if we need to
       hour = timeSplit[0];
@@ -193,60 +198,55 @@ export class RssService {
         hour = "0" + hour;
 
       }
-
       // MINUTE TIMEEEEEEEEEE
       minute = "" + timeSplit[1];
       specTime = hour + minute;
-      //console.log(specTime);
+      console.log(specTime);
     } else {
       specTime = "0000";
     }
 
     return specTime;
   }
-
-  firstProcessorUW(rawString){
+  parseUWTime(rawString){
 
     //console.log("rawString : " + rawString);
-    var rawStringarr = [];
-    var rawresultString = "";
-    var chari = "";
+    let splitChars = [];
+    let rawresultString = "";
+    let chari = "";
 
-    var delicateresultString = "";
-    var timeInnumber = 0;
+    let delicateresultString = "";
+    let time = 0;
 
-
-    for(var i = 0; i < rawString.length; ++i)
+    // Check for keywords first
+    if (rawString.toUpperCase().includes("MIDNIGHT")) {
+      time = 0;
+      return time;
+    }
+    else if(rawString.toUpperCase().includes("NOON")) {
+      time = 1200;
+      return time;
+    }
+    console.log(rawString);
+    for(let i = 0; i < rawString.length; ++i)
     {
         chari = "" + rawString.charAt(i);
 
-        rawStringarr.push(chari);
+        splitChars.push(chari);
 
     }
 
-    for(var i = 0; i < rawStringarr.length; ++i)
+    for(let i = 0; i < splitChars.length; ++i)
     {
-      //console.log(" " + rawStringarr + " ");
-    }
-
-    for(var i = 0; i < rawStringarr.length; ++i)
-    {
-      if(rawStringarr[i] == "0" || rawStringarr[i] == "1" || rawStringarr[i] == "2" || rawStringarr[i] == "3" ||
-        rawStringarr[i] == "4" || rawStringarr[i] == "5" || rawStringarr[i] == "6" || rawStringarr[i] == "7" ||
-        rawStringarr[i] == "8" || rawStringarr[i] == "9" || rawStringarr[i] == "-")
+      if(splitChars[i] == "0" || splitChars[i] == "1" || splitChars[i] == "2" || splitChars[i] == "3" ||
+        splitChars[i] == "4" || splitChars[i] == "5" || splitChars[i] == "6" || splitChars[i] == "7" ||
+        splitChars[i] == "8" || splitChars[i] == "9" || splitChars[i] == "-")
       {
-        rawresultString = rawresultString + rawStringarr[i];
+        rawresultString = rawresultString + splitChars[i];
       }
       else {
-        rawStringarr[i] = "|";
+        splitChars[i] = "|";
       }
-    }
-
-
-
-    for(var i = 0; i < rawStringarr.length; ++i)
-    {
-      //console.log(" " + rawStringarr + " ");
     }
 
     //console.log("first round process " + rawresultString);
@@ -262,43 +262,21 @@ export class RssService {
 
     if(delicateresultString.length == 1)
     {
-      timeInnumber = parseInt(delicateresultString);
-      timeInnumber = timeInnumber * 100;
+      time = parseInt(delicateresultString);
+      time = time * 100;
     }
 
     else if (delicateresultString.length == 3)
     {
-      timeInnumber = parseInt(delicateresultString);
+      time = parseInt(delicateresultString);
     }
 
-    if(rawString.indexOf("-") != -1) {
-      if (rawString.includes("Midnight") && rawString.indexOf("Midnight") < rawString.indexOf("-")) {
-        timeInnumber = 0;
-        return timeInnumber;
-      }
-
-      if (rawString.includes("Noon") && rawString.indexOf("Noon") < rawString.indexOf("-")) {
-        timeInnumber = 1200;
-        return timeInnumber;
-      }
-    }
-    else{
-      if (rawString.includes("Midnight")) {
-        timeInnumber = 0;
-        return timeInnumber;
-      }
-
-      if (rawString.includes("Noon")) {
-        timeInnumber = 1200;
-        return timeInnumber;
-      }
-    }
 
     if(rawString.includes("p.m."))
     {
-      timeInnumber = timeInnumber + 1200;
+      time = time + 1200;
     }
-    return timeInnumber;
+    return time;
 
 
   }
@@ -528,127 +506,89 @@ export class RssService {
         if (i < 10) {
           var url = "https://today.wisc.edu/events/day/" + year + "-" + month + "-0" + i + ".rss2";
         }
-        console.log(url);
+
         rssGet.load(proxy + url, function (err, rss) {
           // get the specific items (go one layer down)
-          var items = rss["items"];
+          let items = rss["items"];
           let list: Array<Event> = [];
-          var promise = new Promise((resolve, reject) => {
-            var mySet = new Set();
+          let promise = new Promise((resolve, reject) => {
 
 
-            for (var key in items) {
+            for (let key in items) {
               //console.log(items[key]);
-
-              var eventToAdd = {} as Event;
+              let title, time, titleIndex, eventName, dateString, description, timeDenoter, costIndex, endLink, iAM, iPM, iColon;
+              let eventToAdd = {} as Event;
               let toAdd: boolean = true;
 
-              var title = items[key]["title"];
+              title = items[key]["title"];
               //console.log(title);
-              var titleIndex = title.indexOf(" - ");
+              titleIndex = title.indexOf(" - ");
               //console.log("Title Index Is  "  +  titleIndex);
 
 
-
-              /*
-              var timeIndex = titleIndex - 2;
-              console.log("Time Index Is  "  +  timeIndex)
-              if (timeIndex == -1) {
-                timeIndex = title.length;
-              }
-              */
               // parse in the event NAME
-              var eventName = title.substring(titleIndex + 3);
+              eventName = title.substring(titleIndex + 3);
               eventToAdd.title = eventName;
 
 
               // parse date
-              var rawDate = title.substring(0, titleIndex);
-              var dateInstring = rawDate.split(" ", 5) ;
-              /*for(var i = 0; i < dateInstring.length; ++i)
-              {
-                console.log( dateInstring[i] + " , " ) ;
-              }*/
-              //console.log( dateInstring[0] + " , " + dateInstring[1] );
+              dateString = title.substring(0, titleIndex).split(" ", 5) ;
 
-              //console.log(" Date in number : " );
-
-
-
-              // parse the event TIME
-              /*
-              var time = title.substring(timeIndex + 2, 0);
-              //eventToAdd.time = time;
-
-              var splitted = time.split(" ", 5);
-              console.log(splitted);
-              eventToAdd.date = that.date(splitted);
-              console.log("Date parsing result " + that.date(splitted));
-              eventToAdd.time = +that.timeFunc(splitted);
-
-
-              // parse and add the LOCATION
-              eventToAdd.location = that.location(title.substring(timeIndex + 3))
-              */
 
               // parse and add the event DESCRIPTION
-              var description = items[key]["description"];
+              description = items[key]["description"];
               //console.log(description);
-              var timeDenoterbasedOnInformationtag = description.indexOf("Information:");
+              timeDenoter = description.indexOf("Information:");
 
-              var costIndex = description.indexOf("Cost:");
+              costIndex = description.indexOf("Cost:");
 
-              var linkEndindex = description.indexOf("a>.");
+              endLink = description.indexOf("a>.");
 
-              var amIndex = description.indexOf("a.m.");
-              var pmIndex = description.indexOf("p.m.");
+              iAM = description.indexOf("a.m.");
+              iPM = description.indexOf("p.m.");
 
-              var timecolonIndex = description.indexOf(":");
+              iColon = description.indexOf(":");
 
 
               eventToAdd.description = description;
 
 
-              //parse time
 
+              /* Parse Time */
+              if (endLink != -1) {
 
-              if (linkEndindex != -1) {
                 // has information, no cost
-                if (timeDenoterbasedOnInformationtag != -1 && costIndex == -1) {
-                  var time = description.substring(linkEndindex + 4, timeDenoterbasedOnInformationtag);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
+                if (timeDenoter != -1 && costIndex == -1) {
+                  time = description.substring(endLink + 4, timeDenoter);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.firstProcessorUW(time);
+                  eventToAdd.time = that.parseUWTime(time);
                 }
-
                 // has information, has cost
-                else if (timeDenoterbasedOnInformationtag != -1 && costIndex != -1) {
-                  var time = description.substring(linkEndindex + 4, costIndex);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
+                else if (timeDenoter != -1 && costIndex != -1) {
+                  time = description.substring(endLink + 4, costIndex);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-
-                  eventToAdd.time = that.firstProcessorUW(time);
+                  eventToAdd.time = that.parseUWTime(time);
                 }
                 // no information, has cost
-                else if (timeDenoterbasedOnInformationtag == -1 && costIndex != -1) {
-                  var time = description.substring(linkEndindex + 4, costIndex);
+                else if (timeDenoter == -1 && costIndex != -1) {
+                  time = description.substring(endLink + 4, costIndex);
                   //console.log("time parsed with both information and Cost is : " + time);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
-                  eventToAdd.time = that.firstProcessorUW(time);
-
+                  eventToAdd.time = that.parseUWTime(time);
                 }
-
                 // no information, no cost
-                else if (timeDenoterbasedOnInformationtag != -1 && costIndex != -1) {
-                  var time = description.substring(linkEndindex + 4, description.length - 1);
+                else if (timeDenoter != -1 && costIndex != -1) {
+                  time = description.substring(endLink + 4, description.length - 1);
                   //console.log("time parsed with both information and Cost is : " + time);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
-                  eventToAdd.time = that.firstProcessorUW(time);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
+                  eventToAdd.time = that.parseUWTime(time);
                 }
 
-                else if (amIndex == -1 && pmIndex == -1) {
+                else if (iAM == -1 && iPM == -1) {
                   time = "See description";
 
                   eventToAdd.time = time;
@@ -657,48 +597,41 @@ export class RssService {
               else {
 
                 // has am, with or without pm
-                if (amIndex != -1 && timecolonIndex == -1) {
-                  time = description.substring(amIndex - 3, amIndex + 4);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
-                  eventToAdd.time = that.firstProcessorUW(time);
-                }
-                else if (amIndex != -1 && timecolonIndex != -1) {
-                  time = description.substring(amIndex - 6, amIndex + 4);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
-                  eventToAdd.time = that.firstProcessorUW(time);
-                }
-                // has am, no pm
-                /*
-              else if (amIndex != -1 && pmIndex == -1 )
-              {
+                if (iAM != -1 && iColon == -1) {
+                  time = description.substring(iAM - 3, iAM + 4);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-              }
-              */
+                  eventToAdd.time = that.parseUWTime(time);
+                }
+                else if (iAM != -1 && iColon != -1) {
+                  time = description.substring(iAM - 6, iAM + 4);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
+
+                  eventToAdd.time = that.parseUWTime(time);
+                }
                 // no am, has pm
-                else if (amIndex == -1 && pmIndex != -1 && timecolonIndex == -1) {
-                  time = description.substring(pmIndex - 3, pmIndex + 4);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
-                  eventToAdd.time = that.firstProcessorUW(time);
-                }
+                else if (iAM == -1 && iPM != -1 && iColon == -1) {
+                  time = description.substring(iPM - 3, iPM + 4);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                else if (amIndex == -1 && pmIndex != -1 && timecolonIndex != -1) {
-                  time = description.substring(pmIndex - 6, pmIndex + 4);
-                  //console.log("Time striped of non numbers : " + that.firstProcessorUW(time));
-                  eventToAdd.time = that.firstProcessorUW(time);
+                  eventToAdd.time = that.parseUWTime(time);
                 }
+                else if (iAM == -1 && iPM != -1 && iColon != -1) {
+                  time = description.substring(iPM - 6, iPM + 4);
+                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
+                  eventToAdd.time = that.parseUWTime(time);
+                }
                 // no am , no pm
-                else if (amIndex == -1 && pmIndex == -1) {
+                else if (iAM == -1 && iPM == -1) {
                   time = "See description";
 
                   eventToAdd.time = time;
                 }
-
-
               }
 
 
-              var fullTime = "" + that.date(dateInstring) + eventToAdd.time;
+              var fullTime = "" + that.date(dateString) + eventToAdd.time;
 
               eventToAdd.date = +fullTime;
               // if "Free" follows "Cost:"
@@ -718,13 +651,13 @@ export class RssService {
               }
 
               // has "Information"
-              else if (costIndex != -1 && timeDenoterbasedOnInformationtag != -1) {
-                var cost = description.substring(costIndex + 6, timeDenoterbasedOnInformationtag);
+              else if (costIndex != -1 && timeDenoter != -1) {
+                var cost = description.substring(costIndex + 6, timeDenoter);
 
                 eventToAdd.cost = parseInt(cost.substring(1, cost.length));
               }
               // no "Information
-              else if (costIndex != -1 && timeDenoterbasedOnInformationtag == -1) {
+              else if (costIndex != -1 && timeDenoter == -1) {
                 var cost = description.substring(costIndex + 6, description.length - 1);
                 eventToAdd.cost = parseInt(cost.substring(1, cost.length));
               }
@@ -755,8 +688,6 @@ export class RssService {
                   }
 
                 }
-              } else {
-                console.log(description);
               }
 
               // ADD CATEGORIES HERE
@@ -799,8 +730,8 @@ export class RssService {
                 if (list.indexOf(eventToAdd) == -1) {
                   if (!isNaN(eventToAdd.date)) {
                     list.push(eventToAdd);
-                    //console.log("This is the below events' date: " + eventToAdd.date);
-                    //console.log(eventToAdd);
+                    console.log(eventToAdd);
+                    //console.log("this ^^^ date: " + eventToAdd.date);
                   }
                 }
               }
@@ -867,7 +798,6 @@ export class RssService {
 
           // parse the event TIME
           var time = title.substring(titleIndex + 3, timeIndex);
-          //eventToAdd.time = time;
 
           var splitted = time.split(" ", 5);
 
