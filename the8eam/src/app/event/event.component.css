@@ -17,7 +17,6 @@ h5{  font-size: 1.0rem;  }
   margin: 5px 8px;
   padding: 0.65rem;
 }
-
 .eventDesc {
   text-align : left;
 }
@@ -28,7 +27,7 @@ h5{  font-size: 1.0rem;  }
 
 .fbk-icon{
   display: inline-block;
-  color: var(--red);
+  color: var(--dark-red);
   font-size: 1.1em;
   line-height: 19px;
   font-weight: bold;
@@ -37,13 +36,13 @@ h5{  font-size: 1.0rem;  }
   margin-right: -2px;
   width: 22px;
   height: 22px;
-  border: 2px solid var(--red);
+  border: 2px solid var(--dark-red);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
 .fbk-icon:hover, .fbk-icon:active, .fbk-icon:focus{
-  background-color: var(--red);
+  background-color: var(--dark-red);
   color: var(--light-bg);
 }
 .fbk-button{
@@ -54,8 +53,6 @@ h5{  font-size: 1.0rem;  }
   font-size:.7rem;
   line-height: .9rem;
   text-align:center;
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
 }
 .infoToggle>a{
   margin: 0 auto 20px auto;
@@ -69,11 +66,9 @@ h5{  font-size: 1.0rem;  }
   opacity: 0;
   -webkit-transition: max-height 0.5s linear, opacity 0.6s linear;
   -moz-transition: max-height 0.5s linear, opacity 0.6s linear;
+  -ms-transition: max-height 0.5s linear, opacity 0.6s linear;
   -o-transition: max-height 0.5s linear, opacity 0.6s linear;
   transition: max-height 0.5s linear, opacity 0.6s linear;
-  -webkit-backface-visibility: hidden;
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
 }
 /* ...until they are shown */
 .moreInfo.showInfo{
@@ -84,11 +79,10 @@ h5{  font-size: 1.0rem;  }
 span#toggleIcon{
   -webkit-transition: 0.4s linear;
   -moz-transition: 0.4s linear;
+  -ms-transition: 0.4s linear;
   -o-transition: 0.4s linear;
   transition: 0.4s linear;
   transform-style: preserve-3d;
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
 }
 span#toggleIcon.showInfo{
   -webkit-transform: rotateX(180deg);
@@ -96,7 +90,6 @@ span#toggleIcon.showInfo{
   -ms-transform: rotateX(180deg);
   -o-transform: rotateX(180deg);
   transform: rotateX(180deg);
-
 }
 
 /*** BREAKPOINTS ***/
@@ -114,5 +107,13 @@ span#toggleIcon.showInfo{
     margin: 5px 15px;
   }
   .fbk-icon{  display: none; }
-  .fbk-button{ display: inline-block; }
+  .fbk-button{
+    background-color: var(--red);
+    border: none;
+    color: var(--light-text);
+    display: inline-block;
+  }
+  .fbk-button:hover,.fbk-button:active, .fbk-button:focus{
+    background-color: var(--dark-red);
+  }
 }
