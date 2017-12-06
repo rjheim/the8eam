@@ -13,19 +13,22 @@
     <div class="card-title">
       <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Location: </span>{{eventItem.location}}</h4>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-8">
           <h4 *ngIf="eventItem.time"><span class="font-weight-bold">Date: </span>{{eventItem.time}}</h4>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <h4>
             <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
             <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
             <span *ngIf="eventItem.cost==0">Free</span>
           </h4>
         </div>
+        <h5 class="col-12">
+          <span class="font-weight-bold">Genres: </span>
+          <ng-container *ngFor="let genre of genres">{{genre}} </ng-container>
+        </h5>
       </div>
     </div>
-    <span>Genres: [ {{eventItem.genre}} ]</span>
     <div class="infoToggle"  (click)="toggleInfo()">
       <a>
         <span>More Info</span>
