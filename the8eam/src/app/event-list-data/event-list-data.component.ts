@@ -11,17 +11,16 @@ import {Observable} from "rxjs/Rx";
 })
 export class EventListDataComponent {
   eventList: Observable<any>;
-  interval : number;
-  loadedList : Observable<any>;
+  loadNum: number;
   report: Event;
 
-  constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
-    this.interval = 20;
-    this.eventList = dal.getList();//.bufferCount(this.interval);
+  constructor ( public dal: DataAccessLayerService , public filter: FilterVarsService ) {
+    this.loadNum = 15;
+    this.eventList= this.dal.getList();
   }
-  loadOnScroll(){
-    this.interval += this.interval;
-    this.loadedList = this.eventList.bufferCount(this.interval);
+
+  loadOnScroll () {
+    this.loadNum+= 15;
   }
 
 
