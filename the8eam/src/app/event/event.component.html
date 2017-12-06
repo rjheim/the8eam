@@ -11,15 +11,13 @@
   </div>
   <div class="eventBody card-body">
     <div class="card-title">
-      <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Location: </span>{{eventItem.location}}</h4>
-      <div class="row">
-        <h4 *ngIf="eventItem.time"><span class="font-weight-bold col-xs-6 col-lg-12">Date:</span>{{eventItem.time}}</h4>
-        <h4 class="col-xs-6 col-lg-12">
-          <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
-          <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
-          <span *ngIf="eventItem.cost==0">Free</span>
-        </h4>
-      </div>
+      <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Where: </span>{{eventItem.location}}</h4>
+      <h4 *ngIf="eventItem.time"><span class="font-weight-bold">When: </span>{{eventItem.time}}</h4>
+      <h4>
+        <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
+        <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
+        <span *ngIf="eventItem.cost==0">Free</span>
+      </h4>
     </div>
     <span>Genres: [ {{eventItem.genre}} ]</span>
     <div class="infoToggle"  (click)="toggleInfo()">
