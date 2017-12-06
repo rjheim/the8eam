@@ -8,13 +8,13 @@
       <div class="modal-header feedback-header">
         <div class="container-fluid">
           <div class="row">
-            <h3 class="col-11" style="padding-left:15px;">Feedback</h3>
-            <div class="col-1">
+            <h3 class="col-10" style="padding-left:15px;">Feedback</h3>
+            <div class="col-2">
               <button (click)="hide()" class="close close-feedback" aria-label="Close" type="button">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <h4 class="col-12 event-feedback" style="margin: 0 0 5px 0;"><small>{{eventItem.title}}</small></h4>
+            <h4 class="col-12 event-feedback text-center" style="margin: 0 0 5px 0;"><small>{{eventItem.title}}</small></h4>
           </div>
         </div>
       </div>
@@ -50,8 +50,11 @@
 
       </div>
       <div class="modal-footer">
-        <div class = "button">
+        <div class="button">
           <button (click)="submitFeedback()" type="submit" id ="submitbutton" class="btn btn-primary btn-block">Submit</button>
+        </div>
+        <div class="button">
+          <button (click)="hide()" type="button" class="btn btn-secondary btn-block">Close</button>
         </div>
       </div>
     </div>
