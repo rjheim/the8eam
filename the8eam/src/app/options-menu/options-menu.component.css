@@ -5,7 +5,6 @@
   display: block;
   margin: 0 15px;
 }
-
 .filter-tab{
   color: var(--light-bg);
   border-bottom: none;
@@ -19,6 +18,8 @@ a.filter-tab.active, a.filter-tab.active:hover{
   color: #A20021;
 }
 #filter-tabs{ border: none; }
+.tab-icon{  display: inline;  }
+.tab-text{ display: none; }
 .filter-container{
   border: solid 2px var(--light-bg);
 
@@ -95,7 +96,8 @@ div.clear-filters{ display: none; }
 div.clear-filters.filtering{  display: block;}
 /*** BREAKPOINTS ***/
 @media (min-width: 576px){
-
+  .tab-icon{ display: none; }
+  .tab-text{ display: inline; }
 }
 @media (min-width: 768px){
   #options-menu.showFilters{
