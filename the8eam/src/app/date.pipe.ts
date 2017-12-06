@@ -88,15 +88,7 @@ export class DatePipe implements PipeTransform {
       }
       let eventDate = event.date.toString();
       let trimmedEventDate: number;
-      if (eventDate.length === 11) {
-        trimmedEventDate = +eventDate.slice(0, -3);
-      }
-      else if (eventDate.length === 12) {
-        trimmedEventDate = +eventDate.slice(0, -4);
-      }
-      else {
-        trimmedEventDate = +eventDate;
-      }
+      trimmedEventDate = +eventDate.substring(0, 8);
       console.log("trimmed date = " + trimmedEventDate + " curNum = " + curNum);
       return trimmedEventDate <= curNum;
     });
