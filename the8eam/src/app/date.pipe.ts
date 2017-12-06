@@ -86,8 +86,11 @@ export class DatePipe implements PipeTransform {
         cur = y + m + d;
         curNum = +cur;
       }
-      console.log("Edited date: " + curNum + ", events.date: " + event.date);
-      return event.date <= curNum;
+      let eventDate = event.date.toString();
+      let trimmedEventDate: number;
+      trimmedEventDate = +eventDate.substring(0, 8);
+      console.log("trimmed date = " + trimmedEventDate + " curNum = " + curNum);
+      return trimmedEventDate <= curNum;
     });
   }
 }
