@@ -10,8 +10,10 @@ export class EventComponent implements OnInit {
   @Input()
   eventItem: Event;
   showInfo : boolean;
+  report: boolean;
   constructor() {
     this.showInfo = false;
+    this.report = false;
   }
 
   ngOnInit() {
@@ -19,5 +21,8 @@ export class EventComponent implements OnInit {
 
   toggleInfo(){
     this.showInfo = !this.showInfo;
+  }
+  toggleReport(event : boolean){
+    this.report = event;
   }
 }

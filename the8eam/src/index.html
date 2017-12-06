@@ -6,40 +6,49 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
   <!--This Script prevents "sticky hovering" on mobile devices when using :hover pseudo element-->
   <script>
-
-    ;(function(){
-      var isTouch = false //var to indicate current input type (is touch versus no touch)
-      var isTouchTimer
-      var curRootClass = '' //var indicating current document root class ("can-touch" or "")
-
-      function addtouchclass(e){
-        clearTimeout(isTouchTimer)
-        isTouch = true
-        if (curRootClass != 'can-touch'){ //add "can-touch' class if it's not already present
-          curRootClass = 'can-touch'
-          document.documentElement.classList.add(curRootClass)
-        }
-        //maintain "istouch" state for 1001ms so removetouchclass doesn't get fired immediately following a touch event
-        isTouchTimer = setTimeout(function(){isTouch = false}, 1001) // 1001 because some devices use onLongPress event which lasts 1000ms
+    var noScroll = function() {
+      if (document.getElementById("feedback-modal")) {
+        document.body.classList.add("noScrollForYou");
+        //document.html.classList.add("noScrollForYou");
       }
-
-      function removetouchclass(e){
-        if (!isTouch && curRootClass == 'can-touch'){ //remove 'can-touch' class if not triggered by a touch event and class is present
-          isTouch = false
-          curRootClass = ''
-          document.documentElement.classList.remove('can-touch')
-        }
+      else {
+        document.body.classList.remove("noScrollForYou");
+        //document.html.classList.remove("noScrollForYou");
       }
+    };
 
-      document.addEventListener('touchstart', addtouchclass, false) //this event only gets called when input type is touch
-      document.addEventListener('mouseover', removetouchclass, false) //this event gets called when input type is everything from touch to mouse/ trackpad
-    })();
+    window.addEventListener("click",noScroll);
 
+//    (function(){
+//      var isTouch = false;//var to indicate current input type (is touch versus no touch)
+//      var isTouchTimer;
+//      var curRootClass = '' ;//var indicating current document root class ("can-touch" or "")
+//
+//      function addtouchclass(e){
+//        clearTimeout(isTouchTimer);
+//        isTouch = true;
+//        if (curRootClass != 'can-touch'){ //add "can-touch' class if it's not already present
+//          curRootClass = 'can-touch';
+//          document.documentElement.classList.add(curRootClass)
+//        }
+//        //maintain "istouch" state for 1001ms so removetouchclass doesn't get fired immediately following a touch event
+//        isTouchTimer = setTimeout(function(){isTouch = false}, 1001) // 1001 because some devices use onLongPress event which lasts 1000ms
+//      }
+//
+//      function removetouchclass(e){
+//        if (!isTouch && curRootClass == 'can-touch'){ //remove 'can-touch' class if not triggered by a touch event and class is present
+//          isTouch = false;
+//          curRootClass = '';
+//          document.documentElement.classList.remove('can-touch')
+//        }
+//      }
+//
+//      document.addEventListener('touchstart', addtouchclass, false) //this event only gets called when input type is touch
+//      document.addEventListener('mouseover', removetouchclass, false) //this event gets called when input type is everything from touch to mouse/ trackpad
+//    })();
   </script>
-
 </head>
 <body>
   <!-- This is where our app's html is injected into the DOM -->
