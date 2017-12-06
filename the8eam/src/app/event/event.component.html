@@ -3,7 +3,7 @@
   <div class="card-header eventHeader">
     <div class="d-flex w-100 justify-content-between">
       <h4 class="font-weight-bold">{{eventItem.title}}</h4>
-      <div class="fdk-toggle" (click)="reportModal.show()">
+      <div class="fdk-toggle" (click)="toggleReport(true)">
         <span class="fbk-icon">!</span>
         <button class="fbk-button btn btn-sm btn-danger" >Feedback</button>
       </div>
@@ -12,12 +12,18 @@
   <div class="eventBody card-body">
     <div class="card-title">
       <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Location: </span>{{eventItem.location}}</h4>
-      <h4 *ngIf="eventItem.time"><span class="font-weight-bold">Date: </span>{{eventItem.time}}</h4>
-      <h4>
-        <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
-        <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
-        <span *ngIf="eventItem.cost==0">Free</span>
-      </h4>
+      <div class="row">
+        <div class="col-sm-6">
+          <h4 *ngIf="eventItem.time"><span class="font-weight-bold">Date: </span>{{eventItem.time}}</h4>
+        </div>
+        <div class="col-sm-6">
+          <h4>
+            <span *ngIf="eventItem.cost!=null" class="font-weight-bold">Cost: </span>
+            <span *ngIf="eventItem.cost">${{eventItem.cost}}</span>
+            <span *ngIf="eventItem.cost==0">Free</span>
+          </h4>
+        </div>
+      </div>
     </div>
     <span>Genres: [ {{eventItem.genre}} ]</span>
     <div class="infoToggle"  (click)="toggleInfo()">
@@ -36,7 +42,7 @@
     </div>
   </div>
 </div>
-
-<app-report [eventItem] = 'eventItem' #reportModal></app-report>
-
+<ng-container *ngIf="report">
+  <app-report [eventItem] = 'eventItem' (reporting)="toggleReport($event)" #reportModal></app-report>
+</ng-container>
 

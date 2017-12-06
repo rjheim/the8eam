@@ -1,16 +1,21 @@
 /* Extra Small Devices */
-.no-scroll-on-modal{
-  height:100%;
-  overflow: hidden;
-}
+
 #feedback-modal {
   max-width:98vw;
   margin:auto;
-
+  min-width: 100vw;
+  min-height: 100vh;
 }
+
+#modal-container{
+  overflow: scroll;
+}
+
 @media (min-width: 768px) {
   #feedback-modal {
-    top: 20%;
+    margin: auto;
+    min-width: 10px;
+    min-height: 10px;
     max-width: 50vw;
   }
 }

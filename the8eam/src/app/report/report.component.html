@@ -1,7 +1,7 @@
 
 
 
-<div (click)="onContainerClicked($event)"  class="modal fade" data-backdrop="true" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+<div (click)="onContainerClicked($event)" class="modal fade" id="modal-container" data-backdrop="true" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
      [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
 
     <div class="modal-content" id="feedback-modal" >
@@ -22,30 +22,36 @@
 
         <div class="form-group">
           <label >Feedback Type</label>
-          <select class="form-control">
-            <!--This doesn't work right now-->
-            <option (click)="reasNum = 0">Inaccurate Information</option>
-            <option (click)="reasNum = 1">Inappropriate</option>
-            <option (click)="reasNum = 2">Duplicate Item</option>
-            <option (click)="reasNum = 3">This isn't an Art Event</option>
+          <select id="reasonSelected" class="form-control" #type (change)="updateReason(type.options[type.options.selectedIndex].text)">
+            <option *ngFor="let r of reason">{{r}}</option>
           </select>
         </div>
 
         <div class="form-group">
           <label  for="description">Description (Required)</label>
-          <textarea [value]="description" (keyup)="description = $event.target.value" class = "form-control" id = "description"></textarea>
+          <textarea [value]="description" (keyup)="description = $event.target.value" class = "form-control" id = "description" required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Email (Optional for response from administrator)</label>
           <input [value]="email" (keyup)="email = $event.target.value"
                   class = "form-control" type = "email" id = "email">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="showAlert1">
+          <strong>No Reason Selected!</strong> Please select a valid reason from the drop down menu.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="showAlert2">
+          <strong>Blank Description!</strong> Please add a description describing your report.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="showAlert3">
+          <strong>Bad Email!</strong> Please enter a valid email address or leave the input blank.
         </div>
 
       </div>
       <div class="modal-footer">
         <div class = "button">
-          <button (click)="submitFeedback(eventItem.id)" type="submit" id ="submitbutton" class="btn btn-primary btn-block">Submit</button>
+          <button (click)="submitFeedback()" type="submit" id ="submitbutton" class="btn btn-primary btn-block">Submit</button>
         </div>
       </div>
     </div>

@@ -15,3 +15,18 @@ body{
   --dark-text: #000;
   --light-text: #EDEDF4;
 }
+
+.noScrollForYou {
+  overflow: hidden;
+}
+body.noScrollForYou:after{
+  content: ' ';
+  background-color: #EDEDF4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  opacity: 0.6;
+}
