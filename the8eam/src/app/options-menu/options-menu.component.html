@@ -62,9 +62,9 @@
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Month')}" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickDateFilter('Month');filter.setDate(100)">This Month</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '3Months')}" >
-          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, '3Months')}" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickDateFilter('3Months');filter.setDate(300)">3 Months</button>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, '3Mo')}" >
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, '3Mo')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickDateFilter('3Mo');filter.setDate(300)">3 Months</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(dateFilter, 'Year')}" >
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(dateFilter, 'Year')}" aria-hidden="true"></span>
