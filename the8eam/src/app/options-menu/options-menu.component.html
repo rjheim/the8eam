@@ -47,6 +47,10 @@
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Spoken Word')}" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickGenreFilter('Spoken Word');filter.setSW()">Spoken Word</button>
         </div>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Family')}" >
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Family')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Family');filter.setFamily()">Family</button>
+        </div>
       </div>
       <!-- Filter By Date:2 -->
       <div *ngSwitchCase="2" class="d-flex filter-container">

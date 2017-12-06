@@ -7,6 +7,7 @@ export class FilterVarsService {
    gFood: boolean;
    gSW: boolean;
    gDance: boolean;
+   gFamily: boolean;
    cost: number;
    date: number;
    searchTxt: string;
@@ -18,6 +19,7 @@ export class FilterVarsService {
     this.gFood = false;
     this.gSW = false;
     this.gDance = false;
+    this.gFamily = false;
     this.cost = -1;
     this.date = -1;
     this.searchTxt = "";
@@ -38,6 +40,9 @@ export class FilterVarsService {
   }
   setDance(){
     this.gDance = !this.gDance;
+  }
+  setFamily(){
+    this.gFamily = !this.gFamily;
   }
 
   setCost(cost: number){

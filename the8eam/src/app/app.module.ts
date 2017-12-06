@@ -26,6 +26,7 @@ import { DatePipe } from './date.pipe';
 import { SearchPipe } from './search.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { FamilyPipe } from './family.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -56,7 +57,8 @@ export const firebaseConfig = {
     CostPipe,
     DatePipe,
     SearchPipe,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    FamilyPipe
   ],
   imports: [
     BrowserModule,

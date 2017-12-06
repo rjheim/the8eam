@@ -23,7 +23,6 @@ export class EventComponent implements OnInit {
       return str.charAt(0).toUpperCase() + str.slice(1);
     });
     this.genres = this.genres.slice(0, this.genres.length - 1); // remove tail element cause it's always empty
-    console.log(this.genres);
   }
 
   toggleInfo(){
