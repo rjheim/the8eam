@@ -58,7 +58,7 @@
     margin: 0 auto;
 
   }
-  #main-view, #calendar-view {
+  #main-view {
     max-width: 750px;
     margin-left: auto;
     margin-right: auto;

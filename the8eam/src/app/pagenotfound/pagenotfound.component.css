@@ -1,11 +1,12 @@
 #pagenotfound{
-  background-color: transparent;
+  background-color: var(--light-bg);
   color: var(--dark-text);
+  width: 100%;
+  max-width: 768px;
   text-align: center;
+  padding: 30px 40px;
+  -webkit-border-radius: .25rem;
+  -moz-border-radius: .25rem;
+  border-radius: .25rem;
 }
 
-@media (min-width: 768px){
-  #pagenotfound{
-    color: var(--light-text);
-  }
-}
