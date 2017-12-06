@@ -1,3 +1,9 @@
+/*@font-face {*/
+  /*font-family: Audrey;*/
+  /*src: url('/open-iconic/font/fonts/Audrey/Audrey-Bold.otf');*/
+  /*font-weight: 500;*/
+/*}*/
+
 #app-header{
   padding-bottom: 10px;
   background-color: var(--dark-bg);
@@ -27,7 +33,10 @@
 .brand-text{
   display: none;
   color: var(--light-text);
+  font-family: "Avenir Next", sans-serif;
+  font-size: x-large;
 }
+
 .search-bar:focus{
   box-shadow: none;
   border-color:transparent;
