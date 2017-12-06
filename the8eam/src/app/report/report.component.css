@@ -2,11 +2,11 @@
 
 #feedback-modal {
   min-width:98vw;
-  min-height: 98vh;
+  min-height:98vh;
 }
 
 #modal-container{
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
