@@ -18,8 +18,10 @@
 .nav-options>div, .nav-options>button{
   display: inline-block;
 }
-
 /* Extra small devices <576 */
+.app-brand, .app-brand:hover{
+    text-decoration: none;
+}
 .brand-icon{
   display: inline-block;
   color: var(--light-text);
@@ -54,14 +56,12 @@
   .brand-text {
     display: inline-block;
   }
+  a.app-brand:active, a.app-brand:hover{ border-bottom: 1px solid var(--light-text) }
   .search-bar{
     width:167px;
     margin-right: 8px;
   }
-  .app-brand{
-    margin-left: 10px;
-    padding: 0;
-  }
+
 }
 @media (min-width: 768px) {
   .app-brand{

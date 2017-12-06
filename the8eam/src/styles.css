@@ -15,12 +15,9 @@
   --red: #CC0028;
 }
 /* use the html.can-touch selector to rid of sticky hover styles on mobile devices, add specific element id's/classes if needed to this */
-html.can-touch a:hover, html.can-touch button:hover{
-  border-color: inherit !important;
-}
-html.can-touch .options-toggle:hover {
-  background-color: var(--light-blue) !important;
-}
+html.can-touch a:hover, html.can-touch button:hover{  border-color: inherit !important;  }
+html.can-touch .app-brand:hover{ border: none !important; }
+html.can-touch .options-toggle:hover {  background-color: var(--light-blue) !important;  }
 /* Use this class to get rid of right/left padding from bootstrap columns */
 .no-gutter{
   padding-left: 0;

@@ -111,6 +111,7 @@ span#toggleIcon.showInfo{
     background-color: var(--red);
     border: none;
     color: var(--light-text);
+    margin-left: 8px;
     display: inline-block;
   }
   .fbk-button:hover,.fbk-button:active, .fbk-button:focus{

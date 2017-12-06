@@ -1,40 +1,47 @@
 /* Extra Small Devices */
 
 #feedback-modal {
-  min-width:98vw;
-  min-height:98vh;
+  min-width:100vw;
+  min-height:90vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  position: relative;
+  z-index: 1050;
+}
+#modal-container:before{
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #EDEDF4;
+  z-index: 1040;
+  opacity: 0.6;
 }
 
 #modal-container{
   overflow-y: scroll;
 }
+.feedback-header{
+  padding:0;
+}
+.close-feedback{
+  padding: 15px 15px 0 0;
+}
+.event-feedback{
+}
+
 
 @media (min-width: 768px) {
   #feedback-modal {
-    margin: auto;
-    min-width: 10px;
-    min-height: 10px;
-    max-width: 50vw;
+    min-width: 0;
+    min-height: 0;
+    max-width: 70vw;
+    margin-top: 5vh;
   }
 }
-/*.feedback-header{*/
-  /*padding:0;*/
-/*}*/
-/*.close-feedback{*/
-  /*padding: 15px 15px 0 0;*/
-/*}*/
-/*.event-feedback{*/
-  /*max-height:40px; !*two lines*!*/
-  /*overflow:hidden;*/
-/*}*/
-/*.event-feedback:after{*/
-  /*content: "";*/
-  /*text-align: right;*/
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*right: 0;*/
-  /*width: 70%;*/
-  /*height: 20px;*/
-  /*background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);*/
-/*}*/
-
+@media (min-width: 992px) {
+  #feedback-modal {  max-width: 60vw;  }
+}

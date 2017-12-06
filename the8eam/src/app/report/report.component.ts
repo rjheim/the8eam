@@ -81,7 +81,7 @@ export class ReportComponent implements OnInit {
 
   hide(): void {
     this.visibleAnimate = false;
-    this.reporting.emit(false);
+    setTimeout(() => this.reporting.emit(false), 300);
     setTimeout(() => this.visible = false, 300);
   }
 
