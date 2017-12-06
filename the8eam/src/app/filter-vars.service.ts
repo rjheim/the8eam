@@ -73,6 +73,7 @@ export class FilterVarsService {
     this.gFood = false;
     this.gSW = false;
     this.gDance = false;
+    this.gFamily = false;
     this.cost = -1;
     this.date = -1;
     //need to be able to clear the visual text as well
