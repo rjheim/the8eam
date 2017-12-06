@@ -9,6 +9,7 @@ import {Observable} from 'rxjs/Observable';
 import * as ical from 'ical';
 import { DataAccessLayerService } from './data-access-layer.service';
 import {timeInterval} from "rxjs/operator/timeInterval";
+import {isDefined} from "@angular/compiler/src/util";
 //import * as parser from 'xml2js-parser';
 //import * as iCal from 'node-ical';
 //import * as converter from 'ical2json';
@@ -50,25 +51,18 @@ export class RssService {
 
   testRSS() {
     //this.getIsthmusEvents();
-    this.getUWEvents();
+    //this.getUWEvents();
     //this.testiCal();
-    //let list: Array<Event> = [];
-    /*var promise = new Promise((resolve, reject) => {
-      var mySet = new Set();
 
-    });*/
 
   }
 
   // DATE FUNCTION
+  // EXAMPLE ["Dec", "6,", "2017", "8:00", "PM"]
   date(splitted) {
     // month
     let month = '';
     let day = '';
-
-
-    //console.log("Date parsing  the first field :" + splitted[0]);
-    //console.log("Date parsing length the first field :" + splitted[0].length);
     switch (splitted[0]) {
       case 'Jan':
         month = '01';
@@ -142,24 +136,17 @@ export class RssService {
       default:
         break;
     }
-    //console.log("Month? : " + month);
+    if (splitted[1].charAt(splitted[1].length) == ",") {
 
-    // day
-
-    //console.log("Date parsing the length of the second field :" + splitted[1].length);
-    if (splitted[1].length == 3) {
-      day = splitted[1].substring(0,2);
+      day = splitted[1].substring(0,splitted[1].length - 1);
     }
     else {
       day = `0` + splitted[1].substr(0, 1);
     }
-    //console.log(month + ', ' + day);
 
     // year
-    //var year = +splitted[2];
     var year = 2017;
     var date = "" + year + month + day;
-    //console.log(date);
     return +date;
   }
 
@@ -201,7 +188,7 @@ export class RssService {
       // MINUTE TIMEEEEEEEEEE
       minute = "" + timeSplit[1];
       specTime = hour + minute;
-      console.log(specTime);
+      //console.log(specTime);
     } else {
       specTime = "0000";
     }
@@ -210,7 +197,6 @@ export class RssService {
   }
   parseUWTime(rawString){
 
-    //console.log("rawString : " + rawString);
     let splitChars = [];
     let rawresultString = "";
     let chari = "";
@@ -227,7 +213,7 @@ export class RssService {
       time = 1200;
       return time;
     }
-    console.log(rawString);
+
     for(let i = 0; i < rawString.length; ++i)
     {
         chari = "" + rawString.charAt(i);
@@ -249,7 +235,6 @@ export class RssService {
       }
     }
 
-    //console.log("first round process " + rawresultString);
 
 
     if(rawresultString.indexOf("-") != -1)
@@ -276,8 +261,8 @@ export class RssService {
     {
       time = time + 1200;
     }
-    return time;
 
+    return time;
 
   }
 
@@ -325,11 +310,6 @@ export class RssService {
     let film: number = 0;
     let theater: number = 0;
 
-    // trim the punctuation
-
-
-
-
     var descr = description.split(" ");
 
     for (var inds in descr) {
@@ -348,82 +328,25 @@ export class RssService {
       word = word.toUpperCase();
 
 
-      // CHECK MUSIC SET
-      /*
-      musicSet.forEach(function (item) {
-        if (description.indexOf(item) != -1) {
-          music = true;
-
-        }
-        if (eventName.indexOf(item) != -1) {
-          music = true;
-        }
-      }, this);
-      */
 
       if (musicSet.has(word)) {
         ++music;
       }
 
-      // CHECK SPOKEN WORD SET
-      /*
-      spokenWordSet.forEach(function (item) {
-        if (description.indexOf(item) != -1) {
-          spokenWord = true;
-        }
-        if (eventName.indexOf(item) != -1) {
-          spokenWord = true;
-        }
-      }, this);
-      */
       if (literarySet.has(word)) {
         ++literary;
       }
 
-      // CHECK FOOD SET
-      /*
-      foodSet.forEach(function (item) {
-        if (description.indexOf(item) != -1) {
-          food = true;
-        }
-        if (eventName.indexOf(item) != -1) {
-          food = true;
-        }
-      }, this);
-      */
 
       if (foodSet.has(word)) {
         ++food;
       }
 
-      // CHECK ART SET
-      /*
-      artSet.forEach(function (item) {
-        if (description.indexOf(item) != -1) {
-          art = true;
-        }
-        if (eventName.indexOf(item) != -1) {
-          art = true;
-        }
-      }, this);
-    */
 
       if (artSet.has(word)) {
         ++art;
       }
 
-      // CHECK DANCE SET
-
-      /*
-      danceSet.forEach(function (item) {
-        if (description.indexOf(item) != -1) {
-          dance = true;
-        }
-        if (eventName.indexOf(item) != -1) {
-          dance = true;
-        }
-      }, this);
-    */
 
       if (danceSet.has(word)) {
         ++dance;
@@ -515,15 +438,12 @@ export class RssService {
 
 
             for (let key in items) {
-              //console.log(items[key]);
               let title, time, titleIndex, eventName, dateString, description, timeDenoter, costIndex, endLink, iAM, iPM, iColon;
               let eventToAdd = {} as Event;
               let toAdd: boolean = true;
 
               title = items[key]["title"];
-              //console.log(title);
               titleIndex = title.indexOf(" - ");
-              //console.log("Title Index Is  "  +  titleIndex);
 
 
               // parse in the event NAME
@@ -537,7 +457,6 @@ export class RssService {
 
               // parse and add the event DESCRIPTION
               description = items[key]["description"];
-              //console.log(description);
               timeDenoter = description.indexOf("Information:");
 
               costIndex = description.indexOf("Cost:");
@@ -560,36 +479,30 @@ export class RssService {
                 // has information, no cost
                 if (timeDenoter != -1 && costIndex == -1) {
                   time = description.substring(endLink + 4, timeDenoter);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 // has information, has cost
                 else if (timeDenoter != -1 && costIndex != -1) {
                   time = description.substring(endLink + 4, costIndex);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 // no information, has cost
                 else if (timeDenoter == -1 && costIndex != -1) {
                   time = description.substring(endLink + 4, costIndex);
-                  //console.log("time parsed with both information and Cost is : " + time);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 // no information, no cost
                 else if (timeDenoter != -1 && costIndex != -1) {
                   time = description.substring(endLink + 4, description.length - 1);
-                  //console.log("time parsed with both information and Cost is : " + time);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
 
                 else if (iAM == -1 && iPM == -1) {
-                  time = "See description";
+                  time = "0000";
 
                   eventToAdd.time = time;
                 }
@@ -599,49 +512,108 @@ export class RssService {
                 // has am, with or without pm
                 if (iAM != -1 && iColon == -1) {
                   time = description.substring(iAM - 3, iAM + 4);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 else if (iAM != -1 && iColon != -1) {
                   time = description.substring(iAM - 6, iAM + 4);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 // no am, has pm
                 else if (iAM == -1 && iPM != -1 && iColon == -1) {
                   time = description.substring(iPM - 3, iPM + 4);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 else if (iAM == -1 && iPM != -1 && iColon != -1) {
                   time = description.substring(iPM - 6, iPM + 4);
-                  //console.log("Time striped of non numbers : " + that.parseUWTime(time));
 
-                  eventToAdd.time = that.parseUWTime(time);
+                  eventToAdd.time = "" + that.parseUWTime(time);
                 }
                 // no am , no pm
                 else if (iAM == -1 && iPM == -1) {
-                  time = "See description";
+                  time = "0000";
 
                   eventToAdd.time = time;
                 }
               }
 
 
-              var fullTime = "" + that.date(dateString) + eventToAdd.time;
 
-              eventToAdd.date = +fullTime;
-              // if "Free" follows "Cost:"
-              /*
-              if(costIndex != -1 && (description.indexOf("Free.") <= costIndex + 8))
-              {
-                cost = 0;
-                eventToAdd.cost = cost;
+              var fullTime = "" + eventToAdd.time;
+              if (+eventToAdd.time < 1000 && eventToAdd.time != "0" && eventToAdd.time != "0000") {
+                fullTime = "0" + fullTime;
+
+              } else if (+eventToAdd.time < 1000 && eventToAdd.time == "0") {
+
+                fullTime = "000" + fullTime;
               }
-              */
+
+
+              fullTime = "" + that.date(dateString) + fullTime;
+              eventToAdd.date = +fullTime;
+
+              // TIME TO CONSTRUCT THE TIME AS A STRING
+
+              var strTime = "";
+
+              var toParse = "" + eventToAdd.date;
+              var year = toParse.substring(0, 4);
+              var month = toParse.substring(4, 6);
+              var day = toParse.substring(6, 8);
+
+              var hour = toParse.substring(8, 10);
+              var minute = toParse.substring(10, 12);
+
+
+
+
+              var after = "AM"
+
+              if (+hour > 11) {
+                var temp = +hour - 12;
+                hour = "0" + temp;
+                after = "PM";
+              }
+
+              // new Date(year, month, day, hours, minutes, seconds, milliseconds)
+              var date = new Date(+year, (+month - 1), +day, +hour, +minute, 0, 0);
+
+              var testString = date.toString();
+
+              // EXAMPLE “Wed, Dec 27 2017 at 12:37PM”
+              // EXAMPLE OBJECT Sat Dec 30 2017 00:00:00 GMT-0600 (CST)
+
+              var objSplit = testString.split(" ");
+              var dayOfWeek = objSplit[0];
+              var monthVal = objSplit[1];
+              var dayNum = objSplit[2];
+              var yearNum = objSplit[3];
+
+              var timeNum = objSplit[4];
+
+              timeNum = timeNum.substring(0, 5);
+
+              if (after) {
+
+                timeNum = timeNum + "PM ";
+
+              } else {
+                timeNum = timeNum + "AM ";
+              }
+
+              if (timeNum[0] == "0") {
+                timeNum = timeNum.substring(1, timeNum.length);
+              }
+              console.log(timeNum);
+              if (timeNum.substring(0, 4) == "0:00") {
+                timeNum = "midnight";
+              }
+
+              eventToAdd.time = dayOfWeek + ", " + monthVal + " " + dayNum + " " + yearNum + " at " + timeNum;
+              // if "Free" follows "Cost:"
+
               if (costIndex == -1 || (description.indexOf("Free") <= costIndex + 8 && description.indexOf("Free") != -1) ||
                 (description.indexOf("free") <= costIndex + 8 && description.indexOf("free") != -1) ||
                 (description.indexOf("FREE") <= costIndex + 8 && description.indexOf("FREE") != -1)) {
@@ -668,14 +640,8 @@ export class RssService {
               eventToAdd.link = link;
 
               // parse and add the event COST
-              //eventToAdd.cost = that.cost(description);
 
 
-              //var keys = description.split(" ", 100);
-
-
-
-              //console.log(description);
               if (description.indexOf("<a href") != -1) {
                 for (var i = description.indexOf("</"); i > 0; i--) {
                   if (description.charAt(i) == '>') {
@@ -700,38 +666,17 @@ export class RssService {
                 toAdd = false;
               }
 
-              /*
-              if (i > 9) {
-                var assembleDate = "" + year + month + i + eventToAdd.time;
-              } else {
-                var assembleDate = "" + year + month + "0" + i + eventToAdd.time;
-              }
 
-              eventToAdd.date = +assembleDate;
-              */
-
-              // parse date
-
-
-              //console.log(eventToAdd.date);
               // set default report value to ZERO
               eventToAdd.report = 0;
-              //console.log(eventToAdd);
-
-
-
-
-
-
 
               if (eventToAdd.genre == "" || eventToAdd.genre == "family;") {
 
               } else {
                 if (list.indexOf(eventToAdd) == -1) {
                   if (!isNaN(eventToAdd.date)) {
-                    list.push(eventToAdd);
-                    console.log(eventToAdd);
-                    //console.log("this ^^^ date: " + eventToAdd.date);
+                      //console.log(eventToAdd);
+                      list.push(eventToAdd);
                   }
                 }
               }
@@ -745,7 +690,7 @@ export class RssService {
 
               // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
               //console.log("This is the below events' date: " + events.date);
-              //console.log(events);
+              console.log(events);
               // check for duplicates here
               /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
                 this.dupObserve.subscribe(data => {
@@ -777,7 +722,6 @@ export class RssService {
 
 
         for (var key in items) {
-          //console.log(items[key]);
 
           var eventToAdd = {} as Event;
           let toAdd: boolean = true;
@@ -796,6 +740,14 @@ export class RssService {
           eventToAdd.title = eventName;
 
 
+
+
+
+
+
+
+
+
           // parse the event TIME
           var time = title.substring(titleIndex + 3, timeIndex);
 
@@ -803,19 +755,43 @@ export class RssService {
 
           var tempDate = that.date(splitted);
 
-          eventToAdd.time = +that.timeFunc(splitted);
+          eventToAdd.time = "" + that.timeFunc(splitted);
           var timeStr = "" + eventToAdd.time;
           var fullDate = "" + tempDate + timeStr;
+
+
+
           eventToAdd.date = +fullDate;
 
-          console.log(eventToAdd.date);
+
+          // new Date(year, month, day, hours, minutes, seconds, milliseconds)
+          // EXAMPLE ["Dec", "6,", "2017", "8:00", "PM"]
+          // DATE example 201712061630
+          var year = splitted[2];
+          var month = splitted[0];
+          var tempNum = "" + eventToAdd.date;
+          var numMonth = tempNum.substring(4,6);
+          var day = tempNum.substring(6, 8);
+          var hour = tempNum.substring(8, 10);
+          var minute = tempNum.substring(10, 12);
+
+          var date = new Date(year, +numMonth - 1, +day, +hour, +minute, 0, 0);
+
+          var getDate = date.toString();
+
+          // obj example Wed Dec 06 2017 19:15:00 GMT-0600 (CST)
+
+          var full = getDate.split(" ");
+
+          // todo CHANGE TO BE DYNAMIC
+          eventToAdd.time = full[0] + ", " + full[1] + " " + full[2] + ", " + full[3] + " at " + splitted[3] + splitted[4];
+
           // parse and add the LOCATION
           eventToAdd.location = that.location(title.substring(timeIndex + 3))
 
 
           // parse and add the event DESCRIPTION
           var description = items[key]["description"];
-          //console.log(description);
           eventToAdd.description = description;
 
           // parse and add the event LINK
@@ -825,8 +801,6 @@ export class RssService {
           // parse and add the event COST
           eventToAdd.cost = +that.cost(description);
 
-
-          //var keys = description.split(" ", 100);
 
 
           // ADD CATEGORIES HERE
@@ -850,7 +824,6 @@ export class RssService {
             }
           }
 
-          //console.log(list);
         }
         resolve();
       }).then(() => {
@@ -859,7 +832,7 @@ export class RssService {
 
 
           // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
-          console.log(events);
+          //console.log(events);
           // check for duplicates here
           /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
            this.dupObserve.subscribe(data => {
