@@ -36,18 +36,20 @@
   z-index: 1;
 }
 @media (min-width: 768px){
-
   #app-bg{
     display: block;
     position: fixed;
     left: 0;
     top: 0;
+    max-width: 100%;
     width: 100%;
     height: 100%;
     opacity: 0.6;
     z-index: 0;
     background: var(--light-bg) url("../assets/night-skyline-colored.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
   }
   #view-toggle{
