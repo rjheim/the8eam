@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
 export class FilterVarsService {
    gMusic: boolean;
    gArt: boolean;
+   gFilm: boolean;
    gFood: boolean;
-   gSW: boolean;
+   gLit: boolean;
    gDance: boolean;
    gFamily: boolean;
    cost: number;
@@ -16,8 +17,9 @@ export class FilterVarsService {
   constructor() {
     this.gMusic = false;
     this.gArt = false;
+    this.gFilm = false;
     this.gFood = false;
-    this.gSW = false;
+    this.gLit = false;
     this.gDance = false;
     this.gFamily = false;
     this.cost = -1;
@@ -32,11 +34,14 @@ export class FilterVarsService {
   setArt(){
     this.gArt = !this.gArt;
   }
+  setFilm(){
+    this.gFilm = !this.gFilm;
+  }
   setFood(){
     this.gFood = !this.gFood;
   }
-  setSW(){
-    this.gSW = !this.gSW;
+  setLit(){
+    this.gLit = !this.gLit;
   }
   setDance(){
     this.gDance = !this.gDance;
@@ -71,11 +76,14 @@ export class FilterVarsService {
     this.gMusic = false;
     this.gArt = false;
     this.gFood = false;
-    this.gSW = false;
+    this.gLit = false;
     this.gDance = false;
     this.gFamily = false;
+    this.gFilm = false;
     this.cost = -1;
     this.date = -1;
+    this.searchTxt = '';
+
     //need to be able to clear the visual text as well
     //this.searchTxt = "";
   }

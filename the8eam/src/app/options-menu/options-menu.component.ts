@@ -96,7 +96,7 @@ export class OptionsMenuComponent implements OnInit {
     if(this.locFilter.length > 0) f = true;
     return f;
   }
-  clearFilters(){
+  public clearFilterBtns(){
     this.genreFilters = "";
     this.dateFilter = "";
     this.costFilter = -1;

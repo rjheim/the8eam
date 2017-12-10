@@ -29,7 +29,7 @@ describe('FilterVarsService', () => {
     expect(service.gFood).toBeTruthy();
   });
   it('should set SW to false if first true (and vice versa)', () => {
-    service.setSW();
+    service.setLit();
     expect(service.gSW).toBeTruthy();
   });
   it('should set dance to false if first true (and vice versa)', () => {

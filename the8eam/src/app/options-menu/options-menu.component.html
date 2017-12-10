@@ -20,7 +20,7 @@
           <span class="tab-icon oi oi-compass"></span>
         </a></li>
       </div>
-      <div class="nav nav-tabs clear-filters" (click)="clearFilters()" [ngClass]="{filtering : filtering()}">
+      <div class="nav nav-tabs clear-filters" (click)="clearFilterBtns()" [ngClass]="{filtering : filtering()}">
         <li class="nav-item font-weight-bold clear-filters"><a class="nav-link clear-filters">Reset</a></li>
       </div>
     </div>
@@ -30,6 +30,10 @@
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Art')}" >
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Art')}" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickGenreFilter('Art');filter.setArt()">Art</button>
+        </div>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Film')}" >
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Film')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Film');filter.setFilm()">Film</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Music')}" >
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Music')}" aria-hidden="true"></span>
@@ -43,9 +47,9 @@
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Food')}" aria-hidden="true"></span>
           <button type="button" class="filter-btn" (click)="clickGenreFilter('Food');filter.setFood()">Food</button>
         </div>
-        <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Spoken Word')}" >
-          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Spoken Word')}" aria-hidden="true"></span>
-          <button type="button" class="filter-btn" (click)="clickGenreFilter('Spoken Word');filter.setSW()">Spoken Word</button>
+        <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Literature')}" >
+          <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Literature')}" aria-hidden="true"></span>
+          <button type="button" class="filter-btn" (click)="clickGenreFilter('Literature');filter.setLit()">Word</button>
         </div>
         <div class="filter" [ngClass]="{filterOn : isFiltered(genreFilters, 'Family')}" >
           <span class="selection-bar" [ngClass]="{filterOn : isFiltered(genreFilters, 'Family')}" aria-hidden="true"></span>
