@@ -11,7 +11,4 @@ export class EventCalendarDataComponent implements OnInit {
 
   ngOnInit() {
   }
-  refresh() {
-    location.reload ();
-  }
 }
