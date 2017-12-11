@@ -107,45 +107,45 @@
         <div class="d-flex">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');">Union South</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');filter.setLoc(0)">Union South</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('State Capitol');">State Capitol</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('State Capitol');filter.setLoc(1)">State Capitol</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('The Overture Center');">Overture Center</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('The Overture Center');filter.setLoc(2)">Overture Center</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('Henry Vilas Zoo');">Henry Vilas Zoo</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('Henry Vilas Zoo');filter.setLoc(3)">Henry Vilas Zoo</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');">Memorial Union</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');filter.setLoc(4)">Memorial Union</button>
           </div>
         </div>
         <div class="d-flex">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'halfmile')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('halfmile');">Half Mile</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('halfmile');filter.setDist(.5)">Half Mile</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'onemile')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('onemile');">One Mile</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('onemile');filter.setDist(1)">One Mile</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'twomile')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('twomile');">Two Miles</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('twomile');filter.setDist(2)">Two Miles</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'fivemile')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('fivemile');">Five Miles</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('fivemile');filter.setDist(5)">Five Miles</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'tenmile')}" >
             <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('tenmile');">Ten Miles</button>
+            <button type="button" class="filter-btn" (click)="clickLocFilter('tenmile');filter.setDist(10)">Ten Miles</button>
           </div>
         </div>
       </div>
