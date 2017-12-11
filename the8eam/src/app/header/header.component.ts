@@ -16,6 +16,11 @@ export class HeaderComponent implements OnInit {
     // called first time before the ngOnInit()
 
   }
+
+  refresh(){
+    location.reload();
+  }
+
   filterMenu() {
     this.showFilters = !this.showFilters;
   }
