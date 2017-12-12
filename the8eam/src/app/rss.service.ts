@@ -10,6 +10,7 @@ import * as ical from 'ical';
 import { DataAccessLayerService } from './data-access-layer.service';
 import {timeInterval} from "rxjs/operator/timeInterval";
 import {isDefined} from "@angular/compiler/src/util";
+import {first} from 'rxjs/operator/first';
 //import * as parser from 'xml2js-parser';
 //import * as iCal from 'node-ical';
 //import * as converter from 'ical2json';
@@ -51,7 +52,7 @@ export class RssService {
 
   testRSS() {
     //this.getIsthmusEvents();
-    //this.getUWEvents();
+    this.getUWEvents();
     //this.testiCal();
 
 
@@ -298,6 +299,14 @@ export class RssService {
     return cost;
   }
 
+  UWlocationCornercase(rawlocation)
+  {
+    var firstcomma = rawlocation.indexOf(".");
+    var firstRound = rawlocation.substring(firstcomma + 2);
+    var secondcomma = firstRound.indexOf(".");
+    var secondRound = firstRound.substring(0,secondcomma);
+    return secondRound;
+  }
   categorizer(description, eventName) {
 
 
@@ -421,7 +430,7 @@ export class RssService {
     month = month + 1;
     var year = today.getFullYear();
 
-    for (var i = day; i <= 31; i++) {
+    for (var i = day; i <= 12; i++) {
         if (i >= 10) {
           var url = "https://today.wisc.edu/events/day/" + year + "-" + month + "-" + i + ".rss2";
         }
@@ -653,6 +662,23 @@ export class RssService {
                     //console.log(eventToAdd.description);
                   }
 
+                }
+              }
+              else {
+                var rawlocation;
+                var betterlocation
+                if(iAM != -1) {
+                  rawlocation = description.substring(iAM - 30, iAM);
+                  betterlocation = that.UWlocationCornercase(rawlocation)
+                  console.log("Raw location " + betterlocation);
+                  eventToAdd.location = rawlocation;
+                }
+                else if(iAM == -1 && iPM != -1)
+                {
+                  rawlocation = description.substring(iPM - 30, iPM);
+                  betterlocation = that.UWlocationCornercase(rawlocation)
+                  console.log("Raw location " + betterlocation);
+                  eventToAdd.location = rawlocation;
                 }
               }
 
