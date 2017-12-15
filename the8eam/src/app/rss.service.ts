@@ -10,6 +10,7 @@ import { DataAccessLayerService } from './data-access-layer.service';
 import {UW} from './parsers/UW';
 import {Majestic} from "./parsers/Majestic";
 import {Isthmus} from "./parsers/Isthmus";
+import {MPL} from "./parsers/MPL";
 
 
 
@@ -20,6 +21,7 @@ export class RssService {
   uw = new UW();
   maj = new Majestic();
   isth = new Isthmus();
+  publib = new MPL();
   eventsToAdd : Array<Event>;
 
   constructor(private dal: DataAccessLayerService) {
@@ -28,6 +30,10 @@ export class RssService {
 
   testRSS() {
     let that = this;
+
+
+
+
     this.uw.getUWEvents(function(events){
       // console.log(events);
       //check for duplicates here
@@ -36,7 +42,7 @@ export class RssService {
         that.dupObserve.subscribe(data => {
           if (data.length < 1) {
             console.log("Added " + events[event]);
-            that.dal.addToList(events[event]);
+            //that.dal.addToList(events[event]);
           }
         })
       }
@@ -45,7 +51,7 @@ export class RssService {
 
 
 
-    this.isth.getIsthmusEvents(function(events){
+    that.isth.getIsthmusEvents(function(events){
       // console.log(events);
       // check for duplicates here
       for (let event in events) {
@@ -53,7 +59,7 @@ export class RssService {
         that.dupObserve.subscribe(data => {
           if (data.length < 1) {
             console.log("Added " + events[event]);
-            that.dal.addToList(events[event]);
+            //that.dal.addToList(events[event]);
           }
         })
       }
@@ -61,8 +67,11 @@ export class RssService {
 
 
 
-    this.maj.testiCal(function(events){
+
+
       // console.log(events);
+    this.maj.testiCal(function(events){
+      console.log(events);
       // check for duplicates here
       for (let event in events) {
         console.log(events[event]);
@@ -71,15 +80,29 @@ export class RssService {
           if (data.length < 1) {
             console.log("below");
             console.log("Added " + events[event]);
-            that.dal.addToList(events[event]);
+            //that.dal.addToList(events[event]);
           }
         })
       }
     });
 
+    this.publib.getMPLEvents(function(events){
+      //console.log(events);
+      // check for duplicates here
+      for (let event in events) {
+        console.log(events[event]);
+        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+        that.dupObserve.subscribe(data => {
+          if (data.length < 1) {
+            //console.log("below");
+            //console.log("Added " + events[event]);
+            //that.dal.addToList(events[event]);
+          }
+        })
+      }
 
-    //this.testiCal();
-    // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
+
+    });
 
 
   }
