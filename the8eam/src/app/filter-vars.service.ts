@@ -88,7 +88,6 @@ export class FilterVarsService {
   }
 
   setSearch(search: string){
-    console.log("set search text: " + search);
     this.searchTxt = search;
   }
 
@@ -103,7 +102,7 @@ export class FilterVarsService {
     this.cost = -1;
     this.date = -1;
     this.loc = -1;
-    this.dist = 0.5
+    this.dist = 0.5;
     this.searchTxt = '';
 
     //need to be able to clear the visual text as well
