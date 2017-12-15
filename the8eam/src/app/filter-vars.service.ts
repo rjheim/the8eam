@@ -13,7 +13,7 @@ export class FilterVarsService {
    date: number;
    searchTxt: string;
    curDate: Date;
-   loc: number;
+   loc: boolean[];
    dist: number;
 
   constructor() {
@@ -26,7 +26,7 @@ export class FilterVarsService {
     this.gFamily = false;
     this.cost = -1;
     this.date = -1;
-    this.loc = -1;
+    this.loc = [false, false, false, false, false, false];
     this.dist = 0.5;
     this.searchTxt = "";
     this.curDate = new Date();
@@ -55,11 +55,12 @@ export class FilterVarsService {
   }
 
   setLoc(location: number){
-    if (this.loc == location){
-      this.loc = -1;
+    if (this.loc[location] == true){
+      this.loc[location] = false;
     }
     else
-      this.loc = location;
+      this.loc[location] = true;
+    console.log(this.loc);
   }
 
   setDist(distance: number){
@@ -68,6 +69,7 @@ export class FilterVarsService {
     }
     else
       this.dist = distance;
+    console.log(this.dist);
   }
 
   setCost(cost: number){
@@ -101,7 +103,7 @@ export class FilterVarsService {
     this.gFilm = false;
     this.cost = -1;
     this.date = -1;
-    this.loc = -1;
+    this.loc = [false, false, false, false, false, false];
     this.dist = 0.5;
     this.searchTxt = '';
 
