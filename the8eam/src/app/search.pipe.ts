@@ -18,7 +18,9 @@ export class SearchPipe implements PipeTransform {
           check = true;
           for (let word of wordArray) {
             check = (event.description.toLowerCase().includes(word.toLowerCase()) && check) ||
-              (event.title.toLowerCase().includes(word.toLowerCase()) && check);
+              (event.title.toLowerCase().includes(word.toLowerCase()) && check) ||
+              (event.location.toLowerCase().includes(word.toLowerCase()) && check) ||
+              (event.genre.toLowerCase().includes(word.toLowerCase()) && check);
           }
           if (check) {
             return event
