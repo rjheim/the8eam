@@ -29,8 +29,15 @@
 .filter-container{
   border-top: solid 2px var(--black);
   margin-top: 1px;
+  -webkit-flex-flow: row wrap;
+  flex-flow:row wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: space-around;
+  align-content: space-around;
 }
-.filter-container{
+#locations, #distances {
+  max-width: 100%;
   -webkit-flex-flow: row wrap;
   flex-flow:row wrap;
   -webkit-align-items: center;
@@ -103,6 +110,7 @@ li.clear-filters{
 }
 div.clear-filters{ display: none; }
 div.clear-filters.filtering{  display: block;}
+
 /*** BREAKPOINTS ***/
 @media (min-width: 576px){
   .tab-icon{ display: none; }

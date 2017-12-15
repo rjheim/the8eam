@@ -76,7 +76,7 @@ export class OptionsMenuComponent implements OnInit {
     if(this.distFilter != filterName)
       this.distFilter = filterName;
     else
-      this.distFilter = "";
+      this.distFilter = "halfmile";
   }
 
   isFiltered( filterCtg, filterName ){

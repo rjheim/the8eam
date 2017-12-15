@@ -103,8 +103,8 @@
         </div>
       </div>
       <!-- Filter By Location:4 -->
-      <div *ngSwitchCase="4" class="filter-container">
-        <div class="d-flex">
+      <div *ngSwitchCase="4">
+        <div class="d-flex filter-container">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');filter.setLoc(0)">Union South</button>
@@ -126,7 +126,7 @@
             <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');filter.setLoc(4)">Memorial Union</button>
           </div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex filter-container">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'halfmile')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'halfmile')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickDistFilter('halfmile');filter.setDist(.5)">Half Mile</button>
