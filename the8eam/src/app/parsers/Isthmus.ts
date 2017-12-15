@@ -2,6 +2,7 @@ import {Event} from '../event';
 import {rss} from 'rss-to-json/src/rss';
 import * as rssGet from 'rss-to-json';
 import {Parser} from "./functions";
+import GoogleDistanceMatrix from 'google-distance-matrix';
 
 export class Isthmus {
   parse = new Parser();
@@ -37,15 +38,6 @@ export class Isthmus {
           let eventName = title.substring(0, titleIndex);
           eventToAdd.title = eventName;
 
-
-
-
-
-
-
-
-
-
           // parse the event TIME
           let time = title.substring(titleIndex + 3, timeIndex);
 
@@ -56,8 +48,6 @@ export class Isthmus {
           eventToAdd.time = "" + that.parse.timeFunc(splitted);
           let timeStr = "" + eventToAdd.time;
           let fullDate = "" + tempDate + timeStr;
-
-
 
           eventToAdd.date = +fullDate;
 
@@ -85,8 +75,81 @@ export class Isthmus {
           eventToAdd.time = full[0] + ", " + full[1] + " " + full[2] + ", " + full[3] + " at " + splitted[3] + splitted[4];
 
           // parse and add the LOCATION
-          eventToAdd.location = that.parse.location(title.substring(timeIndex + 3))
+          let parseLocation = that.parse.location(title.substring(timeIndex + 3));
+          eventToAdd.location = parseLocation;
+          if (parseLocation.indexOf('Capitol') != -1){
+            parseLocation = '2 E Main St, Madison, WI 53703';
+          }
 
+          let origins = [ parseLocation ];
+          let destinations = [ '66 W Towne Mall, Madison, WI 53719', '1308 W Dayton St, Madison, WI 53715',
+            '800 Langdon St, Madison, WI 53706', '2 E Main St, Madison, WI 53703',
+            '1414 E Johnson St, Madison, WI 53703', '89 E Towne Mall, Madison, WI 53704'];
+          let distData: number [] = [];
+          GoogleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
+            if (err) {
+              return console.log(err);
+            }
+            if (!distances) {
+              return console.log('no distances');
+            }
+            if (distances.status == 'OK') {
+              for (let j = 0; j < destinations.length; j++) {
+                let distance = -1;
+                if (distances.rows[0].elements[j].status == 'OK') {
+                  let distanceInit = distances.rows[0].elements[j].distance.text;
+                  if (distanceInit.indexOf("ft") != -1) {
+                    distance = (parseFloat(distanceInit) / 5280);
+                  }
+                  else {
+                    distance = parseFloat(distanceInit);
+                  }
+                } else {
+                  distance = -1;
+                }
+                distData.push(distance);
+              }
+            }
+            if ((distData[0] == distData[3]) || distData[0]>50) {
+              console.log("in if");
+              distData = [];
+              parseLocation = parseLocation + ', WI';
+              origins = [parseLocation];
+              GoogleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
+                if (err) {
+                  return console.log(err);
+                }
+                if (!distances) {
+                  return console.log('no distances');
+                }
+                if (distances.status == 'OK') {
+                  for (let j = 0; j < destinations.length; j++) {
+                    let distance = -1;
+                    if (distances.rows[0].elements[j].status == 'OK') {
+                      let distanceInit = distances.rows[0].elements[j].distance.text;
+                      if (distanceInit.indexOf("ft") != -1) {
+                        distance = (parseFloat(distanceInit) / 5280);
+                      }
+                      else {
+                        distance = parseFloat(distanceInit);
+                      }
+                    } else {
+                      distance = -1;
+                    }
+                    distData.push(distance);
+                  }
+                }
+                eventToAdd.locDist = distData;
+                console.log(parseLocation);
+                console.log(distData);
+              });
+            }
+            else {
+              eventToAdd.locDist = distData;
+              console.log(parseLocation);
+              console.log(distData);
+            }
+          });
 
           // parse and add the event DESCRIPTION
           let description = items[key]["description"];

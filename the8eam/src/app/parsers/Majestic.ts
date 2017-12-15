@@ -3,6 +3,7 @@ import {rss} from 'rss-to-json/src/rss';
 import * as rssGet from 'rss-to-json';
 import {Parser} from "./functions";
 import * as ical from 'ical';
+import GoogleDistanceMatrix from 'google-distance-matrix';
 
 export class Majestic {
   parse = new Parser();
@@ -65,15 +66,12 @@ export class Majestic {
 
           //eventToAdd.location = ical[event].location;
 
-          let curLocation = events[event].location;
-          eventToAdd.location = curLocation;
-          /*if (curLocation.indexOf('Memorial') != -1){
-            curLocation = '800 Langdon St, Madison, WI 53706';
-          }*/
-          /*let origins = [ curLocation ];
-          let destinations = [ 'West Towne Mall, Madison WI', 'Union South',
-            '800 Langdon St, Madison, WI 53706', 'Wisconsin State Capitol', 'Tenney Park, Madison WI',
-            'East Towne Mall, Madison WI'];
+          let parseLocation = events[event].location;
+          eventToAdd.location = parseLocation;
+          let origins = [ parseLocation ];
+          let destinations = [ '66 W Towne Mall, Madison, WI 53719', '1308 W Dayton St, Madison, WI 53715',
+            '800 Langdon St, Madison, WI 53706', '2 E Main St, Madison, WI 53703',
+            '1414 E Johnson St, Madison, WI 53703', '89 E Towne Mall, Madison, WI 53704'];
           let distData: number [] = [];
           GoogleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
             if (err) {
@@ -87,10 +85,10 @@ export class Majestic {
                 let distance = -1;
                 if (distances.rows[0].elements[j].status == 'OK') {
                   let distanceInit = distances.rows[0].elements[j].distance.text;
-                  if (distanceInit.indexOf("ft") != -1){
-                    distance = (parseFloat(distanceInit)/5280);
+                  if (distanceInit.indexOf("ft") != -1) {
+                    distance = (parseFloat(distanceInit) / 5280);
                   }
-                  else{
+                  else {
                     distance = parseFloat(distanceInit);
                   }
                 } else {
@@ -99,9 +97,46 @@ export class Majestic {
                 distData.push(distance);
               }
             }
+            if ((distData[0] == distData[3]) || distData[0]>50) {
+              console.log("in if");
+              distData = [];
+              parseLocation = parseLocation + ', WI';
+              origins = [parseLocation];
+              GoogleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
+                if (err) {
+                  return console.log(err);
+                }
+                if (!distances) {
+                  return console.log('no distances');
+                }
+                if (distances.status == 'OK') {
+                  for (let j = 0; j < destinations.length; j++) {
+                    let distance = -1;
+                    if (distances.rows[0].elements[j].status == 'OK') {
+                      let distanceInit = distances.rows[0].elements[j].distance.text;
+                      if (distanceInit.indexOf("ft") != -1) {
+                        distance = (parseFloat(distanceInit) / 5280);
+                      }
+                      else {
+                        distance = parseFloat(distanceInit);
+                      }
+                    } else {
+                      distance = -1;
+                    }
+                    distData.push(distance);
+                  }
+                }
+                eventToAdd.locDist = distData;
+                console.log(parseLocation);
+                console.log(distData);
+              });
+            }
+            else {
+              eventToAdd.locDist = distData;
+              console.log(parseLocation);
+              console.log(distData);
+            }
           });
-
-          eventToAdd.locDist = distData;*/
 
           eventToAdd.report = 0;
 

@@ -9,4 +9,5 @@ export class Event {
 	report: number;
 	time: string;
 	id: string;
+	locDist: number[];
 }

@@ -28,55 +28,56 @@ export class RssService {
 
   testRSS() {
     let that = this;
-    /*this.uw.getUWEvents(function(events){
-      console.log(events);
+    this.uw.getUWEvents(function(events){
+      // console.log(events);
+      //check for duplicates here
+      for (let event in events) {
+        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+        that.dupObserve.subscribe(data => {
+          if (data.length < 1) {
+            console.log("Added " + events[event]);
+            that.dal.addToList(events[event]);
+          }
+        })
+      }
+
+    });
+
+
+
+    this.isth.getIsthmusEvents(function(events){
+      // console.log(events);
       // check for duplicates here
       for (let event in events) {
         that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
         that.dupObserve.subscribe(data => {
           if (data.length < 1) {
             console.log("Added " + events[event]);
-            //that.dal.addToList(events[event]);
+            that.dal.addToList(events[event]);
           }
         })
       }
+    });
 
 
-    });*/
-
-    /*this.isth.getIsthmusEvents(function(events){
-      console.log(events);
-      // check for duplicates here
-      for (let event in events) {
-        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
-        that.dupObserve.subscribe(data => {
-          if (data.length < 1) {
-            console.log("Added " + events[event]);
-            //that.dal.addToList(events[event]);
-          }
-        })
-      }
-
-
-    });*/
 
     this.maj.testiCal(function(events){
-      console.log(events);
+      // console.log(events);
       // check for duplicates here
       for (let event in events) {
         console.log(events[event]);
         that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
         that.dupObserve.subscribe(data => {
           if (data.length < 1) {
-            //console.log("below");
-            //console.log("Added " + events[event]);
-            //that.dal.addToList(events[event]);
+            console.log("below");
+            console.log("Added " + events[event]);
+            that.dal.addToList(events[event]);
           }
         })
       }
-
-
     });
+
+
     //this.testiCal();
     // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
 

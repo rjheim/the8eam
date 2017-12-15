@@ -3,6 +3,7 @@ import {rss} from 'rss-to-json/src/rss';
 import * as rssGet from 'rss-to-json';
 import {Parser} from "./functions";
 import {isUndefined} from "ngx-bootstrap/bs-moment/utils/type-checks";
+import GoogleDistanceMatrix from 'google-distance-matrix';
 
 export class UW {
 
@@ -255,15 +256,15 @@ export class UW {
 
             // parse and add the event COST
 
-
+            let parseLocation: string;
             if (description.indexOf("<a href") != -1) {
               for (var i = description.indexOf("</"); i > 0; i--) {
                 if (description.charAt(i) == '>') {
                   //console.log(description.substring(i + 1, description.indexOf("</")));
-                  eventToAdd.location = description.substring(i + 1, description.indexOf("</"));
+                  parseLocation = description.substring(i + 1, description.indexOf("</"));
                   var toReplace = description.substring(description.indexOf("<a"), description.indexOf("a>") + 2);
 
-                  eventToAdd.description = description.replace(toReplace, eventToAdd.location);
+                  eventToAdd.description = description.replace(toReplace, parseLocation);
                   //console.log(eventToAdd.description);
                 }
 
@@ -271,21 +272,64 @@ export class UW {
             }
             else {
               let rawlocation;
-              let betterlocation
+              let betterlocation;
               if(iAM != -1) {
                 rawlocation = description.substring(iAM - 30, iAM);
-                betterlocation = that.UWlocationCornercase(rawlocation)
+                betterlocation = that.UWlocationCornercase(rawlocation);
                 //console.log("Raw location " + betterlocation);
-                eventToAdd.location = rawlocation;
+                parseLocation = rawlocation;
               }
               else if(iAM == -1 && iPM != -1)
               {
                 rawlocation = description.substring(iPM - 30, iPM);
-                betterlocation = that.UWlocationCornercase(rawlocation)
+                betterlocation = that.UWlocationCornercase(rawlocation);
                 //console.log("Raw location " + betterlocation);
-                eventToAdd.location = rawlocation;
+                parseLocation = rawlocation;
               }
             }
+            eventToAdd.location = parseLocation;
+
+            // UW distance formula
+
+            if (parseLocation.indexOf('Memorial') != -1){
+              parseLocation = '800 Langdon St, Madison, WI 53706';
+            }
+            if (parseLocation.indexOf('Natatorium') != -1){
+              parseLocation = '2000 Observatory Dr, Madison, WI 53706';
+            }
+            let origins = [ parseLocation ];
+            let destinations = [ '66 W Towne Mall, Madison, WI 53719', '1308 W Dayton St, Madison, WI 53715',
+              '800 Langdon St, Madison, WI 53706', '2 E Main St, Madison, WI 53703',
+              '1414 E Johnson St, Madison, WI 53703', '89 E Towne Mall, Madison, WI 53704'];
+            let distData: number [] = [];
+            GoogleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
+              if (err) {
+                return console.log(err);
+              }
+              if (!distances) {
+                return console.log('no distances');
+              }
+              if (distances.status == 'OK') {
+                for (let j = 0; j < destinations.length; j++) {
+                  let distance = -1;
+                  if (distances.rows[0].elements[j].status == 'OK') {
+                    let distanceInit = distances.rows[0].elements[j].distance.text;
+                    if (distanceInit.indexOf("ft") != -1){
+                      distance = (parseFloat(distanceInit)/5280);
+                    }
+                    else{
+                      distance = parseFloat(distanceInit);
+                    }
+                  } else {
+                    distance = -1;
+                  }
+                  distData.push(distance);
+                }
+              }
+              console.log(parseLocation);
+              console.log(distData);
+              eventToAdd.locDist = distData;
+            });
 
             // ADD CATEGORIES HERE
             description = description.toUpperCase();
