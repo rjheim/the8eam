@@ -8,11 +8,13 @@ h5{  font-size: 1.0rem;  }
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  background-color: var(--light-bg);
+  background-color: var(--light-grey);
   font-size: 0.9rem;
-  color: var(--dark-text);
+  color: var(--black);
 }
-.eventHeader{ padding-bottom: 6px; }
+.eventHeader{
+  padding-bottom: 6px;
+}
 .eventBody{
   margin: 5px 8px;
   padding: 0.65rem;
@@ -43,7 +45,7 @@ h5{  font-size: 1.0rem;  }
 }
 .fbk-icon:hover, .fbk-icon:active, .fbk-icon:focus{
   background-color: var(--dark-red);
-  color: var(--light-bg);
+  color: var(--secondary-bg);
 }
 .fbk-button{
   display: none;
@@ -56,9 +58,9 @@ h5{  font-size: 1.0rem;  }
 }
 .infoToggle>a{
   margin: 0 auto 20px auto;
-  color: var(--dark-text);
+  color: var(--black);
   text-decoration: none;
-  text-decoration-color: var(--dark-text);
+  text-decoration-color: var(--black);
 }
 /* Description and Link are hidden... */
 .moreInfo{
@@ -111,7 +113,7 @@ span#toggleIcon.showInfo{
   .fbk-button{
     background-color: var(--red);
     border: none;
-    color: var(--light-text);
+    color: var(--white);
     margin-left: 8px;
     display: inline-block;
   }

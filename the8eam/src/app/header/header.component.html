@@ -1,24 +1,23 @@
 <div id="app-header">
   <div>
     <nav class="navbar navbar-dark" id="app-nav">
-      <div class="navbar-brand app-brand">
+      <div class="navbar-brand" style="margin-right: 0">
         <a class="app-brand" routerLink="/list-view" (click)="refresh()">
-          <span class="brand-text"><h3 style="margin-top: 0; margin-bottom: -5px;">TuneIn Madison</h3></span>
-          <span class="oi oi-home brand-icon" data-glyph="home" title="home" aria-hidden="true" ></span>
+          <span><h1 class="brand-icon heading" style="margin-top: 0; margin-bottom: -5px;">tunedIn <span class="text brand-text" style="font-size:20px">Madison</span></h1></span>
         </a>
         <br>
-        <span class="brand-text">Arts & Events Calendar</span>
+        <span class="app-brand brand-text text">Arts & Events Calendar</span>
       </div>
       <div class="nav-options">
         <div style="position: relative" class="has-clear">
           <input [value]="words" (keyup)="words = $event.target.value;filter.setSearch(words)" type="text"
-                 class="form-control form-control-sm search-bar"
+                 class="form-control form-control-sm search-bar text"
                  placeholder="search">
            <button (click)="filter.setSearch('')" class="form-control-clear close hide-close" aria-label="Close" type="button">
                 <span aria-hidden="true">&times;</span>
            </button>
         </div>
-        <button type="button" class="btn options-toggle" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filter</button>
+        <button type="button" class="btn options-toggle text" [ngClass]="{showFilters : showFilters}" (click)="filterMenu()">Filter</button>
       </div>
     </nav>
     <app-options-menu [showFilters] = "showFilters"></app-options-menu>

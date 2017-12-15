@@ -9,7 +9,7 @@ declare var $ :any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  showFilters = false;
+  showFilters = true;
   words: string;
   constructor(public filter: FilterVarsService) {
     this.words = '';

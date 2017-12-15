@@ -1,7 +1,7 @@
 
 
 
-<div (click)="onContainerClicked($event)" class="modal fade" id="modal-container" data-backdrop="true" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+<div (click)="onContainerClicked($event)" class="modal fade text" id="modal-container" data-backdrop="true" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
      [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
 
     <div class="modal-content" id="feedback-modal" >
@@ -51,10 +51,10 @@
       </div>
       <div class="modal-footer">
         <div class="button">
-          <button (click)="submitFeedback()" type="submit" id ="submitbutton" class="btn btn-primary btn-block">Submit</button>
+          <button (click)="submitFeedback()" type="submit" id ="submitbutton" class="btn btn-block">Submit</button>
         </div>
         <div class="button">
-          <button (click)="hide()" type="button" class="btn btn-secondary btn-block">Close</button>
+          <button (click)="hide()" type="button" class="btn btn-block">Close</button>
         </div>
       </div>
     </div>

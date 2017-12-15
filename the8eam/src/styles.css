@@ -1,29 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Arima+Madurai|Open+Sans');
 
-/* Custom Color Properties */
+/*** Custom Color Properties ***/
 :root{
-  --dark-bg: #002642;
-  --light-bg: #EDEDF4;
-  --dark-text: #000;
-  --light-text: #EDEDF4;
-  --links: #A20021;
+  --background: #84AFC6;
+  --secondary-bg: #D7D7D7;
+  --links: #BE381E;
 
-  --dark-blue: #002642;
-  --blue: #006CB5;
-  --light-blue: #2892D7;
-  --green: #66CC44;
-  --dark-red: #A20021;
-  --red: #CC0028;
+  --light-grey: #E8E8E8;
+  --black: #0A100D;
+  --white: #F7FFF6;
+  --dark-blue: #1F265A;
+  --blue: #84AFC6;
+  --light-blue: #A2CEE1;
+  --turq: #19647E;
+  --zomp: #379392;
+  --lime: #C2EABD;
+  --tan: #D3954E;
+  --fawn: #E6AC69;
+  ---yellow: #FEDA85;
+  --carrot: #FBA94C;
+  --burnt-o: #BE381E;
+  --dark-red: #A80120;
+  --red: #C60126;
 }
+/*** Fonts ***/
+.heading{ font-family: 'Arima Madurai', cursive; }
+.text { font-family: 'Open Sans', sans-serif; }
+
 /* use the html.can-touch selector to rid of sticky hover styles on mobile devices, add specific element id's/classes if needed to this */
 html.can-touch a:hover, html.can-touch button:hover{  border-color: inherit !important;  }
 html.can-touch .app-brand:hover{ border: none !important; }
-html.can-touch .options-toggle:hover {  background-color: var(--light-blue) !important;  }
+html.can-touch .options-toggle:hover {
+  background-color: var(--carrot) !important;
+  border-color: var(--carrot) !important;
+}
+html.can-touch .options-toggle:active {
+  background-color: var(--burnt-o) !important;
+  border-color: var(--burnt-o) !important;
+}
 /* Use this class to get rid of right/left padding from bootstrap columns */
 .no-gutter{
   padding-left: 0;
   padding-right: 0;
 }
-body{  background-color: #EDEDF4;  }
+body{  background-color: var(--background);  }
 a, a:hover{  color: var(--links);  }
 button {
   border-style: solid;

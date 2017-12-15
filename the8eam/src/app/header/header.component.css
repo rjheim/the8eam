@@ -1,44 +1,42 @@
+h1{
+  font-size: 1.7rem;
+}
 #app-header{
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100vw;
   z-index: 1;
-  padding-bottom: 10px;
-  background-color: var(--dark-bg);
-  color: var(--light-text);
+  padding: 10px 0;
+  background-color: var(--background);
+  color: var(--white);
 }
 .options-toggle{
   padding: 3px 10px;
-  background-color: var(--light-blue);
-  color: var(--dark-bg);
+  background-color: var(--carrot);
+  color: var(--white);
 }
 .options-toggle:hover, .options-toggle:active{
-  border-color: var(--blue) !important;
-  background-color: var(--blue);
+  border-color: var(--burnt-o) !important;
+  background-color: var(--burnt-o);
 }
 
 .nav-options>div, .nav-options>button{
   display: inline-block;
 }
+.app-brand{ color: var(--black); }
+
 /* Extra small devices <576 */
 .app-brand, .app-brand:hover{
     text-decoration: none;
 }
-.brand-icon{
-  display: inline-block;
-  color: var(--light-text);
-  font-size: 1.3em;
-  margin-left: 5px;
-}
-.brand-text{
-  display: none;
-  color: var(--light-text);
-  font-family: Verdana;
-}
+.brand-icon{ display: inline-block; }
+.brand-text{ display: none; }
 .search-bar:focus{
   box-shadow: none;
   border-color:transparent;
 }
 .search-bar{
-  width:130px;
+  width:115px;
   margin-right: 5px;
 }
 .form-control-clear{
@@ -51,13 +49,16 @@
 .hide-close{ display: none; }
 /*** BREAKPOINTS ***/
 @media (min-width: 576px) {
-  .brand-icon {
-    display: none;
+  h1{
+    font-size: 2.5rem;
   }
   .brand-text {
     display: inline-block;
   }
-  a.app-brand:active, a.app-brand:hover{ border-bottom: 1px solid var(--light-text) }
+  .app-brand{
+    margin-left: 20px;
+  }
+  .brand-icon:active, .brand-icon:hover{ text-decoration: none; }
   .search-bar{
     width:167px;
     margin-right: 8px;
@@ -65,8 +66,8 @@
 
 }
 @media (min-width: 768px) {
-  .app-brand{
-    margin-top: 10px;
+  #app-header{
+    padding: 16px 0;
   }
   .search-bar{
     min-width: 290px;

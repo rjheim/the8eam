@@ -5,11 +5,11 @@
       <h4 class="font-weight-bold">{{eventItem.title}}</h4>
       <div class="fdk-toggle" (click)="toggleReport(true)">
         <span class="fbk-icon">!</span>
-        <button class="fbk-button btn btn-sm" >Feedback</button>
+        <button class="fbk-button btn btn-sm text" >Feedback</button>
       </div>
     </div>
   </div>
-  <div class="eventBody card-body">
+  <div class="eventBody card-body text">
     <div class="card-title">
       <h4 *ngIf="eventItem.location"><span class="font-weight-bold">Location: </span>{{eventItem.location}}</h4>
       <div class="row">
