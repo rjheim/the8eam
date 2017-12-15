@@ -6,8 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class LocationPipe implements PipeTransform {
 
   transform(events: any, loc: boolean[], dist: number): any {
-    if(events == null) return events;
-    console.log("filtering");
+    if(events == null || dist == -1) return events;
     return events.filter(function(event){
       let place: number;
       if (loc[0]){
@@ -20,14 +19,12 @@ export class LocationPipe implements PipeTransform {
         place = 1;
         if( !event.locDist[place] ) return;
         if( event.locDist[place] == -1) return;
-        console.log("This events distance: " + event.locDist[place]);
         return event.locDist[place] <= dist;
       }
       if (loc[2]){
         place = 2;
         if( !event.locDist[place] ) return;
         if( event.locDist[place] == -1) return;
-        console.log("This events distance: " + event.locDist[place]);
         return event.locDist[place] <= dist;
       }
       if (loc[3]){
