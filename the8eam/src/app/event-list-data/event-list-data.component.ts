@@ -15,7 +15,7 @@ export class EventListDataComponent {
 
   constructor(public dal: DataAccessLayerService, public filter: FilterVarsService) {
     this.listItems = dal.getList();
-    console.log(dal.getList());
+    //console.log(dal.getList());
   }
 
 }
