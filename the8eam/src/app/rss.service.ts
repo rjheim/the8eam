@@ -41,7 +41,7 @@ export class RssService {
         that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
         that.dupObserve.subscribe(data => {
           if (data.length < 1) {
-            console.log("Added " + events[event]);
+
             //that.dal.addToList(events[event]);
           }
         })
@@ -51,7 +51,7 @@ export class RssService {
 
 
 
-    that.isth.getIsthmusEvents(function(events){
+    /*that.isth.getIsthmusEvents(function(events){
       // console.log(events);
       // check for duplicates here
       for (let event in events) {
@@ -102,7 +102,7 @@ export class RssService {
       }
 
 
-    });
+    });*/
 
 
   }

@@ -150,7 +150,7 @@ export class UW {
 
             } else if (+eventToAdd.time < 1000 && eventToAdd.time == "0") {
 
-              fullTime = "000" + fullTime;
+              fullTime = "9999"
             }
 
 
@@ -220,10 +220,13 @@ export class UW {
             }
             //console.log(timeNum);
             if (timeNum.substring(0, 4) == "0:00") {
-              timeNum = "midnight";
+              timeNum = "9999";
+              eventToAdd.time = dayOfWeek + ", " + monthVal + " " + dayNum + " " + yearNum
+            } else {
+              eventToAdd.time = dayOfWeek + ", " + monthVal + " " + dayNum + " " + yearNum + " at " + timeNum;
             }
 
-            eventToAdd.time = dayOfWeek + ", " + monthVal + " " + dayNum + " " + yearNum + " at " + timeNum;
+
 
             /*** --------COST-------- ***/
 
@@ -356,7 +359,7 @@ export class UW {
               }
             }
 
-            //console.log(list);
+            console.log(list);
           }
           adder(list);
             //console.log(eventsToAdd);
