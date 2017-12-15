@@ -12,8 +12,8 @@ describe('SpokenWordGenrePipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it ('Filters to only show spokenword genre items', () => {
-    testEvent1.genre = "spokenword";
+  it ('Filters to only show literature genre items', () => {
+    testEvent1.genre = "literature";
     testEvent2.genre = "dance";
     inputList.push(testEvent2);
     inputList.push(testEvent1);
@@ -22,7 +22,7 @@ describe('SpokenWordGenrePipe', () => {
   });
 
   it ('False so don\'t filter', () => {
-    testEvent1.genre = "spokenword";
+    testEvent1.genre = "literature";
     testEvent2.genre = "dance";
     inputList.push(testEvent2);
     inputList.push(testEvent1);

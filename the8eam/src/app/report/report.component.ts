@@ -1,10 +1,13 @@
-import {Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation} from '@angular/core';
 import { Event } from '../event';
 import { Report } from '../report';
 import {DataAccessLayerService} from '../data-access-layer.service';
+declare var jquery :any;
+declare var $ :any;
 
 @Component({
   selector: 'app-report',
+  encapsulation: ViewEncapsulation.None,
   providers: [DataAccessLayerService],
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
@@ -83,6 +86,7 @@ export class ReportComponent implements OnInit {
     this.visibleAnimate = false;
     setTimeout(() => this.reporting.emit(false), 300);
     setTimeout(() => this.visible = false, 300);
+    setTimeout(() => $('body').removeClass('noScrollForYou'), 50);
   }
 
   onContainerClicked(event: MouseEvent): void {
@@ -90,4 +94,5 @@ export class ReportComponent implements OnInit {
       this.hide();
     }
   }
+
 }

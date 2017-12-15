@@ -31,6 +31,7 @@
 .brand-text{
   display: none;
   color: var(--light-text);
+  font-family: Verdana;
 }
 .search-bar:focus{
   box-shadow: none;

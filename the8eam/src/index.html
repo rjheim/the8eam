@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>The8eam</title>
+  <title>TuneIn Madison</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!--This Script prevents "sticky hovering" on mobile devices when using :hover pseudo element-->
+
   <script>
-    var noScroll = function() {
-      if (document.getElementById("feedback-modal")) {
-        document.body.classList.add("noScrollForYou");
-        //document.html.classList.add("noScrollForYou");
-      }
-      else {
-        document.body.classList.remove("noScrollForYou");
-        //document.html.classList.remove("noScrollForYou");
-      }
+
+    // This Script removes and adds scrolling on the body when the modal is open/closed
+    function noScroll() {
+        var el = document.getElementById("feedback-modal");
+        if (el) {
+          //setTimeout(function(){document.body.classList.add("noScrollForYou")}, 10);
+          document.body.classList.add("noScrollForYou");
+        }
+        else {
+          //setTimeout(function(){document.body.classList.remove("noScrollForYou")}, 100);
+          document.body.classList.remove("noScrollForYou");
+        }
     };
 
     window.addEventListener("click",noScroll);
 
+
+    // This Script prevents "sticky hovering" on mobile devices when using :hover pseudo element
     (function(){
       var isTouch = false;//var to indicate current input type (is touch versus no touch)
       var isTouchTimer;

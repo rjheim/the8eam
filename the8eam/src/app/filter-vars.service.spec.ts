@@ -30,7 +30,7 @@ describe('FilterVarsService', () => {
   });
   it('should set SW to false if first true (and vice versa)', () => {
     service.setLit();
-    expect(service.gSW).toBeTruthy();
+    expect(service.gLit).toBeTruthy();
   });
   it('should set dance to false if first true (and vice versa)', () => {
     service.setDance();

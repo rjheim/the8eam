@@ -37,7 +37,7 @@ describe('OptionsMenuComponent', () => {
     activeTabEl = fixture.debugElement.query(By.css('a.filter-tab.active'));
     el = activeTabEl.nativeElement;
     fixture.detectChanges();
-    expect(el.textContent).toBe('Genre');
+    expect(el.textContent.replace(/\s/g,'')).toBe('Genre');
   });
   it('should show corresponding tab when passed a valid tab number', () => {
     let el : HTMLElement;
@@ -46,6 +46,6 @@ describe('OptionsMenuComponent', () => {
     activeTabEl = fixture.debugElement.query(By.css('a.filter-tab.active'));
     el = activeTabEl.nativeElement;
     fixture.detectChanges();
-    expect(el.textContent).toBe('Date');
+    expect(el.textContent.replace(/\s/g,'')).toBe('Date');
   });
 });
