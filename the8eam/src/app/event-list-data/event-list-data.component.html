@@ -1,8 +1,9 @@
 <div id="scroll-div" class="h-100" infiniteScroll (scrolled)="loadOnScroll()">
-  <ng-container *ngFor="let event of eventList | async | report | musicGenre:filter.gMusic | danceGenre:filter.gDance
-               | foodGenre:filter.gFood | artGenre:filter.gArt | filmGenre:filter.gFilm | litGenre:filter.gLit
-               | family:filter.gFamily| cost:filter.cost | date:filter.date:filter.curDate | search:filter.searchTxt
-               | location:filter.loc:filter.dist ; let i = index">
+  <ng-container *ngFor="let event of eventList | async | report | oldDate
+               | musicGenre:filter.gMusic | danceGenre:filter.gDance | foodGenre:filter.gFood
+               | artGenre:filter.gArt | filmGenre:filter.gFilm | litGenre:filter.gLit
+               | family:filter.gFamily| cost:filter.cost | date:filter.date:filter.curDate
+               | search:filter.searchTxt| location:filter.loc:filter.dist ; let i = index">
     <div *ngIf="i < loadNum" class="app-event" >
        <app-event [eventItem] = 'event'></app-event>
     </div>

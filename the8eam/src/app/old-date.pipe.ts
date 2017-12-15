@@ -28,7 +28,7 @@ export class OldDatePipe implements PipeTransform {
       else {
         d = tempDay.toString();
       }
-      let cur = y + m + d;
+      let cur = y + m + d + '0000';
       let curNum = +cur;
 
       return event.date >= curNum;
