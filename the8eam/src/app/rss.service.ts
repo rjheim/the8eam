@@ -51,7 +51,7 @@ export class RssService {
 
 
 
-    /*that.isth.getIsthmusEvents(function(events){
+    that.isth.getIsthmusEvents(function(events){
       // console.log(events);
       // check for duplicates here
       for (let event in events) {
@@ -102,7 +102,7 @@ export class RssService {
       }
 
 
-    });*/
+    });
 
 
   }
