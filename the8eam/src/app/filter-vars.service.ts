@@ -26,6 +26,8 @@ export class FilterVarsService {
     this.gFamily = false;
     this.cost = -1;
     this.date = -1;
+    this.loc = -1;
+    this.dist = 0.5;
     this.searchTxt = "";
     this.curDate = new Date();
   }
@@ -62,7 +64,7 @@ export class FilterVarsService {
 
   setDist(distance: number){
     if (this.dist == distance){
-      this.dist = -1;
+      this.dist = 0.5;
     }
     else
       this.dist = distance;
@@ -100,6 +102,8 @@ export class FilterVarsService {
     this.gFilm = false;
     this.cost = -1;
     this.date = -1;
+    this.loc = -1;
+    this.dist = 0.5
     this.searchTxt = '';
 
     //need to be able to clear the visual text as well

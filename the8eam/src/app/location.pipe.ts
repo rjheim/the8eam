@@ -8,6 +8,7 @@ export class LocationPipe implements PipeTransform {
   transform(events: any, loc: number, dist: number): any {
     if(events == null || loc == -1 || dist == -1) return events;
     return events.filter(function(event){
+      if( !event.locDist[loc] ) return false;
       return event.locDist[loc] <= dist;
     });
   }

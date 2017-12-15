@@ -106,46 +106,46 @@
       <div *ngSwitchCase="4" class="filter-container">
         <div class="d-flex">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Union South')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickLocFilter('Union South');filter.setLoc(0)">Union South</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'State Capitol')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickLocFilter('State Capitol');filter.setLoc(1)">State Capitol</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Overture Center')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickLocFilter('The Overture Center');filter.setLoc(2)">Overture Center</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Henry Vilas Zoo')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickLocFilter('Henry Vilas Zoo');filter.setLoc(3)">Henry Vilas Zoo</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(locFilter, 'Memorial Union')}" aria-hidden="true"></span>
             <button type="button" class="filter-btn" (click)="clickLocFilter('Memorial Union');filter.setLoc(4)">Memorial Union</button>
           </div>
         </div>
         <div class="d-flex">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'halfmile')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('halfmile');filter.setDist(.5)">Half Mile</button>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'halfmile')}" aria-hidden="true"></span>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('halfmile');filter.setDist(.5)">Half Mile</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'onemile')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('onemile');filter.setDist(1)">One Mile</button>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'onemile')}" aria-hidden="true"></span>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('onemile');filter.setDist(1)">One Mile</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'twomile')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('twomile');filter.setDist(2)">Two Miles</button>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'twomile')}" aria-hidden="true"></span>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('twomile');filter.setDist(2)">Two Miles</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'fivemile')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('fivemile');filter.setDist(5)">Five Miles</button>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'fivemile')}" aria-hidden="true"></span>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('fivemile');filter.setDist(5)">Five Miles</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'tenmile')}" >
-            <span class="oi oi-circle-check" title="circle-check" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickLocFilter('tenmile');filter.setDist(10)">Ten Miles</button>
+            <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'tenmile')}" aria-hidden="true"></span>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('tenmile');filter.setDist(10)">Ten Miles</button>
           </div>
         </div>
       </div>

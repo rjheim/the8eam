@@ -20,6 +20,7 @@ export class OptionsMenuComponent implements OnInit {
   dateFilter : string;
   costFilter : number;
   locFilter : string; // more than one location can be selected
+  distFilter : string;
 
   constructor(filter: FilterVarsService) {
     this.filter = filter;
@@ -29,6 +30,7 @@ export class OptionsMenuComponent implements OnInit {
     this.dateFilter = "";
     this.costFilter = -1;
     this.locFilter = "";
+    this.distFilter = "halfmile";
   }
 
   /*
@@ -70,6 +72,12 @@ export class OptionsMenuComponent implements OnInit {
     else
       this.locFilter += filterName;
   }
+  clickDistFilter( filterName:string){
+    if(this.distFilter != filterName)
+      this.distFilter = filterName;
+    else
+      this.distFilter = "";
+  }
 
   isFiltered( filterCtg, filterName ){
     if(axis.isNumber(filterCtg)) {
@@ -98,6 +106,7 @@ export class OptionsMenuComponent implements OnInit {
     this.dateFilter = "";
     this.costFilter = -1;
     this.locFilter = "";
+    this.distFilter = "halfmile";
     this.filter.clearFilters();
   }
 
