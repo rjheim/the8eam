@@ -13,6 +13,8 @@ export class FilterVarsService {
    date: number;
    searchTxt: string;
    curDate: Date;
+   loc: number;
+   dist: number;
 
   constructor() {
     this.gMusic = false;
@@ -48,6 +50,22 @@ export class FilterVarsService {
   }
   setFamily(){
     this.gFamily = !this.gFamily;
+  }
+
+  setLoc(location: number){
+    if (this.loc == location){
+      this.loc = -1;
+    }
+    else
+      this.loc = location;
+  }
+
+  setDist(distance: number){
+    if (this.dist == distance){
+      this.dist = -1;
+    }
+    else
+      this.dist = distance;
   }
 
   setCost(cost: number){

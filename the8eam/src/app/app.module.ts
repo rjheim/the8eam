@@ -28,6 +28,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { FamilyPipe } from './family.pipe';
 import { FilmGenrePipe } from './film-genre.pipe';
+import { LocationPipe } from './location.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -60,7 +61,8 @@ export const firebaseConfig = {
     SearchPipe,
     PagenotfoundComponent,
     FamilyPipe,
-    FilmGenrePipe
+    FilmGenrePipe,
+    LocationPipe
   ],
   imports: [
     BrowserModule,

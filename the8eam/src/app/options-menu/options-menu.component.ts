@@ -21,9 +21,6 @@ export class OptionsMenuComponent implements OnInit {
   costFilter : number;
   locFilter : string; // more than one location can be selected
 
-
-
-
   constructor(filter: FilterVarsService) {
     this.filter = filter;
     // Genre is the default view

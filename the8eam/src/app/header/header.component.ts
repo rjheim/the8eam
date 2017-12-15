@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  refresh(){
+  refresh() {
     location.reload();
   }
 

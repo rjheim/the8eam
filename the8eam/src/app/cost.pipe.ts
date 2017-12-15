@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CostPipe implements PipeTransform {
 
-  transform(event: any, cost: number): any {
-    if(event == null || cost == -1) return event;
-    return event.filter(function(event){
+  transform(events: any, cost: number): any {
+    if(events == null || cost == -1) return events;
+    return events.filter(function(event){
       return event.cost <= cost;
     });
   }
