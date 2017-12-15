@@ -6,7 +6,7 @@ import {Parser} from "./functions";
 export class Isthmus {
   parse = new Parser();
 
-  getIsthmusEvents() : Array<Event>{
+  getIsthmusEvents(adder){
     let that = this;
     //var proxy = 'https://cors-anywhere.herokuapp.com/'
     let eventsToAdd : Array<Event> = [];
@@ -15,26 +15,26 @@ export class Isthmus {
       // get the specific items (go one layer down)
       let items = rss["items"];
       let list: Array<Event> = [];
-      return new Promise((resolve, reject) => {
+
         let mySet = new Set();
 
 
-        for (var key in items) {
+        for (let key in items) {
 
-          var eventToAdd = {} as Event;
+          let eventToAdd = {} as Event;
           let toAdd: boolean = true;
 
-          var title = items[key]["title"];
-          var titleIndex = title.indexOf(" - ");
+          let title = items[key]["title"];
+          let titleIndex = title.indexOf(" - ");
 
 
-          var timeIndex = title.indexOf(" @ ");
+          let timeIndex = title.indexOf(" @ ");
           if (timeIndex == -1) {
             timeIndex = title.length;
           }
 
           // parse in the event NAME
-          var eventName = title.substring(0, titleIndex);
+          let eventName = title.substring(0, titleIndex);
           eventToAdd.title = eventName;
 
 
@@ -47,15 +47,15 @@ export class Isthmus {
 
 
           // parse the event TIME
-          var time = title.substring(titleIndex + 3, timeIndex);
+          let time = title.substring(titleIndex + 3, timeIndex);
 
-          var splitted = time.split(" ", 5);
+          let splitted = time.split(" ", 5);
 
-          var tempDate = that.parse.date(splitted);
+          let tempDate = that.parse.date(splitted);
 
           eventToAdd.time = "" + that.parse.timeFunc(splitted);
-          var timeStr = "" + eventToAdd.time;
-          var fullDate = "" + tempDate + timeStr;
+          let timeStr = "" + eventToAdd.time;
+          let fullDate = "" + tempDate + timeStr;
 
 
 
@@ -65,21 +65,21 @@ export class Isthmus {
           // new Date(year, month, day, hours, minutes, seconds, milliseconds)
           // EXAMPLE ["Dec", "6,", "2017", "8:00", "PM"]
           // DATE example 201712061630
-          var year = splitted[2];
-          var month = splitted[0];
-          var tempNum = "" + eventToAdd.date;
-          var numMonth = tempNum.substring(4,6);
-          var day = tempNum.substring(6, 8);
-          var hour = tempNum.substring(8, 10);
-          var minute = tempNum.substring(10, 12);
+          let year = splitted[2];
+          let month = splitted[0];
+          let tempNum = "" + eventToAdd.date;
+          let numMonth = tempNum.substring(4,6);
+          let day = tempNum.substring(6, 8);
+          let hour = tempNum.substring(8, 10);
+          let minute = tempNum.substring(10, 12);
 
-          var date = new Date(year, +numMonth - 1, +day, +hour, +minute, 0, 0);
+          let date = new Date(year, +numMonth - 1, +day, +hour, +minute, 0, 0);
 
-          var getDate = date.toString();
+          let getDate = date.toString();
 
           // obj example Wed Dec 06 2017 19:15:00 GMT-0600 (CST)
 
-          var full = getDate.split(" ");
+          let full = getDate.split(" ");
 
           // todo CHANGE TO BE DYNAMIC
           eventToAdd.time = full[0] + ", " + full[1] + " " + full[2] + ", " + full[3] + " at " + splitted[3] + splitted[4];
@@ -89,11 +89,11 @@ export class Isthmus {
 
 
           // parse and add the event DESCRIPTION
-          var description = items[key]["description"];
+          let description = items[key]["description"];
           eventToAdd.description = description;
 
           // parse and add the event LINK
-          var link = items[key]["link"];
+          let link = items[key]["link"];
           eventToAdd.link = link;
 
           // parse and add the event COST
@@ -123,12 +123,8 @@ export class Isthmus {
           }
 
         }
-        resolve(list);
-      });
-    }).then(function(list){
-      eventsToAdd = list;
-    });
 
-    return eventsToAdd;
+        adder(list);
+      });
   }
 }

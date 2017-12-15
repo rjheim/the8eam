@@ -28,7 +28,7 @@ export class RssService {
 
   testRSS() {
     //this.isth.getIsthmusEvents();
-    var that = this;
+    let that = this;
     this.uw.getUWEvents(function(events){
       console.log(events);
       // check for duplicates here
@@ -37,9 +37,25 @@ export class RssService {
         that.dupObserve.subscribe(data => {
           if (data.length < 1) {
             console.log("Added " + events[event]);
+            //that.dal.addToList(events[event]);
           }
         })
-        //that.dal.addToList(events[event]);
+      }
+
+
+    });
+
+    this.isth.getIsthmusEvents(function(events){
+      console.log(events);
+      // check for duplicates here
+      for (let event in events) {
+        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+        that.dupObserve.subscribe(data => {
+          if (data.length < 1) {
+            console.log("Added " + events[event]);
+            //that.dal.addToList(events[event]);
+          }
+        })
       }
 
 
