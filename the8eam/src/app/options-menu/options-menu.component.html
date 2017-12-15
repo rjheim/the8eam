@@ -129,23 +129,23 @@
         <div class="d-flex filter-container">
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'halfmile')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'halfmile')}" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickDistFilter('halfmile');filter.setDist(.5)">Half Mile</button>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('halfmile');filter.setDist(.5)">1/2 Mile</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'onemile')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'onemile')}" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickDistFilter('onemile');filter.setDist(1)">One Mile</button>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('onemile');filter.setDist(1)">1 Mile</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'twomile')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'twomile')}" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickDistFilter('twomile');filter.setDist(2)">Two Miles</button>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('twomile');filter.setDist(2)">2 Miles</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'fivemile')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'fivemile')}" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickDistFilter('fivemile');filter.setDist(5)">Five Miles</button>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('fivemile');filter.setDist(5)">5 Miles</button>
           </div>
           <div class="filter" [ngClass]="{filterOn : isFiltered(locFilter, 'tenmile')}" >
             <span class="selection-bar" [ngClass]="{filterOn : isFiltered(distFilter, 'tenmile')}" aria-hidden="true"></span>
-            <button type="button" class="filter-btn" (click)="clickDistFilter('tenmile');filter.setDist(10)">Ten Miles</button>
+            <button type="button" class="filter-btn" (click)="clickDistFilter('tenmile');filter.setDist(10)">10 Miles</button>
           </div>
         </div>
       </div>
