@@ -8,7 +8,7 @@ export class UW {
 
   parse = new Parser();
 
-  getUWEvents() : Array<Event> {
+  getUWEvents(adder) {
     let that = this;
     let proxy = 'https://cors-anywhere.herokuapp.com/'
 
@@ -306,7 +306,7 @@ export class UW {
             } else {
               if (list.indexOf(eventToAdd) == -1) {
                 if (!isNaN(eventToAdd.date)) {
-                  console.log(eventToAdd);
+                  //console.log(eventToAdd);
                   list.push(eventToAdd);
                 }
               }
@@ -314,14 +314,11 @@ export class UW {
 
             //console.log(list);
           }
-            eventsToAdd = eventsToAdd.concat(list);
+          adder(list);
             //console.log(eventsToAdd);
 
       });
     }
-    //console.log("reached it");
-   // console.log(eventsToAdd);
-    return eventsToAdd;
   }
 
   parseUWTime(rawString : string) : number {

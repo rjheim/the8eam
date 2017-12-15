@@ -108,12 +108,14 @@ export class Parser {
       default:
         break;
     }
-    if (splitted[1].charAt(splitted[1].length) == ",") {
 
-      day = splitted[1].substring(0,splitted[1].length - 1);
+    day = splitted[1];
+    if (day.indexOf(',') != -1) {
+
+      day = day.substring(0, day.length - 1);
     }
-    else {
-      day = `0` + splitted[1].substr(0, 1);
+    if (day.length == 1) {
+      day = `0` + day;
     }
 
     // year

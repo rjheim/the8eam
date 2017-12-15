@@ -28,22 +28,25 @@ export class RssService {
 
   testRSS() {
     //this.isth.getIsthmusEvents();
-    this.eventsToAdd.concat( this.uw.getUWEvents() );
+    var that = this;
+    this.uw.getUWEvents(function(events){
+      console.log(events);
+      // check for duplicates here
+      for (let event in events) {
+        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+        that.dupObserve.subscribe(data => {
+          if (data.length < 1) {
+            console.log("Added " + events[event]);
+          }
+        })
+        //that.dal.addToList(events[event]);
+      }
+
+
+    });
     //this.testiCal();
     // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
-    //console.log(events);
-    // check for duplicates here
-    /*this.dupObserve = this.dal.whereTitleAndDate(toAdd.title, toAdd.date);
-     this.dupObserve.subscribe(data => {
-     if (data.length < 1) {
-     console.log("Added it ^^^");
-     }
-     })*/
-    //that.dal.addToList(events);
-    for (let event of this.eventsToAdd) {
-      console.log("testRSS");
-      console.log(event);
-    }
+
 
   }
 
