@@ -35,34 +35,40 @@ export class RssService {
 
 
     this.uw.getUWEvents(function(events){
-      // console.log(events);
-      //check for duplicates here
-      for (let event in events) {
-        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
-        that.dupObserve.subscribe(data => {
-          if (data.length < 1) {
+      setTimeout(function(){
+        // console.log(events);
+        //check for duplicates here
+        for (let event in events) {
+          that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+          that.dupObserve.subscribe(data => {
+            if (data.length < 1) {
 
-            //that.dal.addToList(events[event]);
-          }
-        })
-      }
+              that.dal.addToList(events[event]);
+            }
+          })
+        }
+
+      }, 20000);
 
     });
 
 
 
     that.isth.getIsthmusEvents(function(events){
-      // console.log(events);
-      // check for duplicates here
-      for (let event in events) {
-        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
-        that.dupObserve.subscribe(data => {
-          if (data.length < 1) {
-            console.log("Added " + events[event]);
-            //that.dal.addToList(events[event]);
-          }
-        })
-      }
+      setTimeout(function(){
+        // console.log(events);
+        // check for duplicates here
+        for (let event in events) {
+          that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+          that.dupObserve.subscribe(data => {
+            if (data.length < 1) {
+              console.log("Added " + events[event]);
+              that.dal.addToList(events[event]);
+            }
+          })
+        }
+      }, 20000);
+
     });
 
 
@@ -71,40 +77,42 @@ export class RssService {
 
       // console.log(events);
     this.maj.testiCal(function(events){
-      console.log(events);
-      // check for duplicates here
-      for (let event in events) {
-        console.log(events[event]);
-        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
-        that.dupObserve.subscribe(data => {
-          if (data.length < 1) {
-            console.log("below");
-            console.log("Added " + events[event]);
-            //that.dal.addToList(events[event]);
-          }
-        })
-      }
+      setTimeout(function(){
+        console.log(events);
+        // check for duplicates here
+        for (let event in events) {
+          console.log(events[event]);
+          that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+          that.dupObserve.subscribe(data => {
+            if (data.length < 1) {
+              console.log("below");
+              console.log("Added " + events[event]);
+              that.dal.addToList(events[event]);
+            }
+          })
+        }
+      }, 20000);
+
     });
 
     this.publib.getMPLEvents(function(events){
-      //console.log(events);
-      // check for duplicates here
-      for (let event in events) {
-        console.log(events[event]);
-        that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
-        that.dupObserve.subscribe(data => {
-          if (data.length < 1) {
-            //console.log("below");
-            //console.log("Added " + events[event]);
-            //that.dal.addToList(events[event]);
-          }
-        })
-      }
-
+      setTimeout(function(){
+        //console.log(events);
+        // check for duplicates here
+        for (let event in events) {
+          console.log(events[event]);
+          that.dupObserve = that.dal.whereTitleAndDate(events[event].title, events[event].date);
+          that.dupObserve.subscribe(data => {
+            if (data.length < 1) {
+              console.log("below");
+              console.log("Added " + events[event]);
+              that.dal.addToList(events[event]);
+            }
+          })
+        }
+      }, 20000);
 
     });
-
-
   }
 
   testiCal() {

@@ -2,6 +2,7 @@ import {Event} from '../event';
 import {rss} from 'rss-to-json/src/rss';
 import * as rssGet from 'rss-to-json';
 import {Parser} from "./functions";
+import GoogleDistanceMatrix from 'google-distance-matrix';
 
 export class MPL {
   parse = new Parser();
@@ -102,10 +103,46 @@ export class MPL {
       while (description.charAt(end) != '<') {
         end++;
       }
-      eventToAdd.location = description.substring(start + 10, end);
 
 
 
+      let parseLocation = description.substring(start + 10, end);
+      eventToAdd.location = parseLocation;
+      let parse2 = parseLocation.toLowerCase().split("library");
+      parseLocation = parse2[0] + 'Library, Madison WI';
+      let origins = [ parseLocation ];
+      let destinations = [ '66 W Towne Mall, Madison, WI 53719', '1308 W Dayton St, Madison, WI 53715',
+        '800 Langdon St, Madison, WI 53706', '2 E Main St, Madison, WI 53703',
+        '1414 E Johnson St, Madison, WI 53703', '89 E Towne Mall, Madison, WI 53704'];
+      let distData: number [] = [];
+      GoogleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
+        if (err) {
+          return console.log(err);
+        }
+        if (!distances) {
+          return console.log('no distances');
+        }
+        if (distances.status == 'OK') {
+          for (let j = 0; j < destinations.length; j++) {
+            let distance = -1;
+            if (distances.rows[0].elements[j].status == 'OK') {
+              let distanceInit = distances.rows[0].elements[j].distance.text;
+              if (distanceInit.indexOf("ft") != -1){
+                distance = (parseFloat(distanceInit)/5280);
+              }
+              else{
+                distance = parseFloat(distanceInit);
+              }
+            } else {
+              distance = -1;
+            }
+            distData.push(distance);
+          }
+        }
+        console.log(parseLocation);
+        console.log(distData);
+        eventToAdd.locDist = distData;
+      });
 
 
 
