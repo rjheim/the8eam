@@ -9,7 +9,9 @@
   position: relative;
   z-index: 1050;
 }
-
+#feedback-modal * {
+  background-color: var(--white);
+}
 #modal-container:before{
   position: absolute;
   content: '';
@@ -31,12 +33,10 @@
 }
 .close-feedback{
   padding: 15px 15px 0 0;
-
 }
-.event-feedback{
-
-}
-
+#submit-button{ color: var(--light-grey); background-color: var(--red); border:none;}
+#submit-button:hover, #submit-button:active, #submit-button:focus{ background-color: var(--dark-red); border: none;}
+#close-button{ background-color: var(--gray); color:var(--white); }
 
 @media (min-width: 768px) {
   #feedback-modal {

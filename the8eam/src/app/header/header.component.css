@@ -10,14 +10,24 @@ h1{
   background-color: var(--background);
   color: var(--white);
 }
+#app-header:after{
+  content: '';
+  position: absolute;
+  top:100%;
+  left: 0;
+  width: 100%;
+  min-height: 12px;
+  z-index: 10;
+  background: linear-gradient(to bottom, var(--background), transparent);
+}
 .options-toggle{
   padding: 3px 10px;
-  background-color: var(--carrot);
-  color: var(--white);
+  background-color: var(--yellow);
+  color: var(--black);
 }
 .options-toggle:hover, .options-toggle:active{
-  border-color: var(--burnt-o) !important;
-  background-color: var(--burnt-o);
+  border-color: var(--carrot) !important;
+  background-color: var(--carrot);
 }
 
 .nav-options>div, .nav-options>button{
@@ -47,6 +57,9 @@ h1{
   outline: none;
 }
 .hide-close{ display: none; }
+
+
+
 /*** BREAKPOINTS ***/
 @media (min-width: 576px) {
   h1{

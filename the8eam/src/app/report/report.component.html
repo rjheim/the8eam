@@ -10,7 +10,7 @@
           <div class="row mt-2">
             <h3 class="col-10 pl-2"> Event Feedback</h3>
             <div class="col-2">
-              <button (click)="hide()" class="close close-feedback" aria-label="Close" type="button">
+              <button (click)="hide()" class="close close-feedback" aria-label="Close" type="button" style="background-color: transparent">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -51,10 +51,10 @@
       </div>
       <div class="modal-footer">
         <div class="button">
-          <button (click)="submitFeedback()" type="submit" id ="submitbutton" class="btn btn-block">Submit</button>
+          <button (click)="submitFeedback()" type="submit" id ="submit-button" class="btn btn-block">Submit</button>
         </div>
         <div class="button">
-          <button (click)="hide()" type="button" class="btn btn-block">Close</button>
+          <button (click)="hide()" type="button" id="close-button" class="btn btn-block">Close</button>
         </div>
       </div>
     </div>

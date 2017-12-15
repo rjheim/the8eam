@@ -17,7 +17,7 @@
   --lime: #C2EABD;
   --tan: #D3954E;
   --fawn: #E6AC69;
-  ---yellow: #FEDA85;
+  --yellow: #FFDA83;
   --carrot: #FBA94C;
   --burnt-o: #BE381E;
   --dark-red: #A80120;
@@ -31,13 +31,14 @@
 html.can-touch a:hover, html.can-touch button:hover{  border-color: inherit !important;  }
 html.can-touch .app-brand:hover{ border: none !important; }
 html.can-touch .options-toggle:hover {
+  background-color: var(--yellow) !important;
+  border-color: var(--yellow) !important;
+}
+html.can-touch .options-toggle:active {
   background-color: var(--carrot) !important;
   border-color: var(--carrot) !important;
 }
-html.can-touch .options-toggle:active {
-  background-color: var(--burnt-o) !important;
-  border-color: var(--burnt-o) !important;
-}
+html.can-touch #submit-button:hover{ background-color: var(--red); }
 /* Use this class to get rid of right/left padding from bootstrap columns */
 .no-gutter{
   padding-left: 0;
