@@ -1,4 +1,5 @@
-
-<div *ngFor="let event of listItems | async" class="row">
+<ng-container *ngFor="let event of listItems | async | report | musicGenre:filter.gMusic | danceGenre:filter.gDance
+             | foodGenre:filter.gFood | artGenre:filter.gArt | spokenWordGenre:filter.gSW
+             | cost:filter.cost | date:filter.date:filter.curDate">
      <app-event [eventItem] = 'event'></app-event>
-</div>
+</ng-container>

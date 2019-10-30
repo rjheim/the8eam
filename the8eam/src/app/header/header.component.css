@@ -1,111 +1,39 @@
-div.app-header, div.view-tabs{
-  font-size:2em;
-  font-style:bold;
-  display : block;
-  width : 100%;
+#app-header{
+  padding-bottom: 10px;
 }
-
-.headerBar{
-  padding-bottom: 5px;
-  padding-top: 5px;
-  background-color: red;
+.options-toggle{
+  padding: 3px 10px;
+  background-color: #64A77E;
+  color: #EDEDF4;
 }
-
-
-ul.app-header {
-  list-style-type : none;
-  margin : 0;
-  padding : 0 0 5px 0;
-
-}
-
-ul.app-header i{
-  display : inline;
-
-}
-.dropdown{
-  text-align: right;
-}
-.dropdown-menu{
-  text-align: right;
-}
-
-ul.app-header li a { padding : 4px; }
-
-ul.view-tabs {
-  list-style-type : none;
-  margin : 0;
-  padding : 0 0 5px 0;
-}
-ul.view-tabs li {
-  display : inline;
-  border : 2px solid black;
-}
-ul.view-tabs li a{ padding : 4px; }
-
-/* Mobile View */
-[class*="col-"]{
-  width:100%;
-}
-
-@media only screen and (min-width:786px){
-
-}
-.search-form{
-  padding-top:10px;
-}
-.search-form .form-group {
-  float: right;
-  transition: all 0.35s, border-radius 0s;
-  width: 32px;
-  height: 32px;
-  background-color: #2d2e30;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-  border-radius: 25px;
-
-  display: inline-block;
-
-}
-.search-form .form-group input.form-control {
-  border: 0 none;
-  background: transparent;
+.options-toggle:focus{
   box-shadow: none;
-  display:inline-block;
 }
-.search-form .form-group input.form-control::-webkit-input-placeholder {
-  display: none;
+.options-toggle:hover, .options-toggle:active, .showFilters{
+  background-color: #7BBD94;
+  box-shadow: none;
 }
-.search-form .form-group input.form-control:-moz-placeholder {
-  /* Firefox 18- */
-  display: none;
-}
-.search-form .form-group input.form-control::-moz-placeholder {
-  /* Firefox 19+ */
-  display: none;
-}
-.search-form .form-group input.form-control:-ms-input-placeholder {
-  display: none;
-}
-.search-form .form-group:hover,
-.search-form .form-group.hover {
-  width: 100%;
-  border-radius: 4px 25px 25px 4px;
-
-}
-
-.search-form .form-group span.form-control-feedback {
-  position: absolute;
-  top: -1px;
-  right: -2px;
-  z-index: 2;
+.nav-options>div, .nav-options>button{
   display: inline-block;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-  text-align: center;
-  color: white;
-  left: initial;
-  font-size: 14px;
 }
 
+/* Extra small devices <576 */
+.brand-icon{
+  display: inline-block;
+  color: #EDEDF4;
+  font-size: 1.3em;
+  margin-left: 5px;
+}
+.brand-text{
+  display: none;
+}
+/* Small devices >=576 */
+@media (min-width: 576px) {
+  .brand-icon {
+    display: none;
+  }
 
+  .brand-text {
+    display: inline-block;
+  }
+}

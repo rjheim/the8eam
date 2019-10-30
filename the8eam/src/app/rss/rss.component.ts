@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataAccessLayerComponent } from '../data-access-layer/data-access-layer.component';
-import { Event } from '../data-access-layer/event';
+import { DataAccessLayerService } from '../data-access-layer.service';
+import { Event } from '../event';
 import { rss } from 'rss-to-json/src/rss';
 import { xml2js } from 'xml2js';
 import { request } from 'request';
@@ -9,28 +9,47 @@ import * as rssGet from 'rss-to-json'
 
 @Component({
   selector: 'app-rss',
-  providers: [DataAccessLayerComponent],
+  providers: [DataAccessLayerService],
   templateUrl: './rss.component.html',
   styleUrls: ['./rss.component.css']
 })
 export class RssComponent implements OnInit {
 
-  constructor(private dal: DataAccessLayerComponent) {
+  constructor(public dal: DataAccessLayerService) {
 
   }
 
   testRSS() {
 
     // rssGet = require('rss-to-json');
+    // ALL OF THE SETS WE WILL BE COMPARING DESCRIPTIONS TO
+    var musicArray = ["MUSIC", "SONG", "SINGING", "JAZZ", "ROCK", "PIANO", "GUITAR", "DRUMS", "CONCERT", "SING-ALONG", "OPEN MIC"];
+    let musicSet: Set<string> = new Set<string>(musicArray);
+
+    var spokenWordArray = ["SPOKEN", "WORD", "SLAM", "POETRY", "POET"];
+    let spokenWordSet: Set<string> = new Set<string>(spokenWordArray);
+
+    var artArray = ["ARCHITECTURE", "CERAMICS", "COLLAGE", "DESIGN", "DRAWING", " CHALK", "CHARCOAL", "PASTEL", "GRAFFITI", "GRAPHIC", "GRAPHICS", "ILLUSTRATION", "JEWELLERY", "METALWORK", "MOSAIC", "PAINT", "PAINTING", "PAINTER", "ART", "ARTIST", "ACRYLICS", "OILS", "OIL", "PHOTO", "PHOTOGRAPHY", "PRINT", "ENGRAVING", "SCULPTURE", "STAINED GLASS", "TAPESTRY", "ABSTRACT", "PORTRAIT", "LANDSCAPE", "IMPRESSIONISM", "POST-IMPRESSIONISM", "CUBISM", "SURREALISM"];
+      let artSet: Set<string> = new Set<string>(artArray);
+
+    var danceArray = ["WALTZ", "TANGO", "CHACHA", "CHA-CHA", "RUMBA", "SAMBA", "MAMBO", "QUICKSTEP", "JIVE", "BOLERO", "CHARLESTON", "SWING", "TAP", "BOOGIE", "SALSA", "FLAMENCO", "LAMBADA", "POLKA", "JIVE", "CAPOERIA", "LINE DACE", "BELLY DANCE", "FOLK DANCE", "BALLET", "CONTEMPORARY DANCE", "MODERN DANCE", "DISCO", "BOLLYWOOD", "BREAKDANCE", "BALLROOM", "IRISH", "HUSTLE", "JITTERBUG", "FOXTROT", "MERENGUE", "ZUMBA", "POLE DANCE", "DANCE"];
+      let danceSet: Set<string> = new Set<string>(danceArray);
+
+    var foodArray = ["MARKET", "BREAKFAST", "BRUNCH", "LUNCH", "TEA", "DINNER", "SUPPER", "SNACK", "MEAL", "DESSERT", "HORS D’OEUVRE", "ENTREE", "SIDE", "BANQUET", "BUFFET", "CUISINE", "DRINK", "EAT", "EATING", "VEGAN", "VEGETARIAN", "ITALIAN", "SEAFOOD", "MEXICAN", "VIETNAMESE", "THAI", "SAUSAGE", "BARBECUE", "BARBEQUE", "BBQ", "SUSHI", "HOT DOG", "BURGER", "STEAK", "MEDITERRANEAN", "PERUVIAN", "GREEK", "BRAZILIAN", "ASIAN", "SOUL FOOD", "DONUT", "DOUGHNUT", "BEER", "ICE CREAM", "KOREAN", "FOOD TRUCK", "TAPAS", "STREET FOOD", "TACO", "TASTE", "SIP", "MUNCH", "RESTAURANT", "BAR", "DINER"];
+    let foodSet: Set<string> = new Set<string>(foodArray);
+
 
     let list: Array<Event> = [];
     var promise = new Promise((resolve, reject) => {
+      var mySet = new Set();
 
     rssGet.load('https://isthmus.com/search/event/calendar-of-events/index.rss', function (err, rss) {
       // get the specific items (go one layer down)
       var items = rss["items"];
-      var eventToAdd = {} as Event;
+
       for (var key in items) {
+        var eventToAdd = {} as Event;
+
         var title = items[key]["title"];
         // TODO figure out what to do with no dash lmao
         var titleIndex = title.indexOf(" - ");
@@ -43,17 +62,16 @@ export class RssComponent implements OnInit {
 
         // parse in the event NAME
         var eventName = title.substring(0, titleIndex);
-
         eventToAdd.title = eventName;
-        console.log(title.substring(0, titleIndex));
+
 
 
         // parse the event TIME
         var time = title.substring(titleIndex + 3, timeIndex);
         eventToAdd.time = time;
-        //console.log(title.substring(titleIndex + 3, timeIndex));
+
         var splitted = time.split(" ", 5);
-        //console.log(splitted);
+
 
         // month
         let month = 0;
@@ -155,7 +173,10 @@ export class RssComponent implements OnInit {
         // THIS IS THE FULL DATE, AS A STRING
         var date = "" + month + day + year;
 
-        //console.log(date);
+        eventToAdd.date = +date;
+        eventToAdd.time = time;
+
+
 
         // parse and add the LOCATION
         var location = title.substring(timeIndex + 3);
@@ -163,11 +184,11 @@ export class RssComponent implements OnInit {
           location = "See description.";
         }
         eventToAdd.location = location;
-        //console.log(location);
+
 
         // parse and add the event DESCRIPTION
         var description = items[key]["description"];
-
+        //console.log(description);
         eventToAdd.description = description;
 
         // parse and add the event LINK
@@ -183,7 +204,6 @@ export class RssComponent implements OnInit {
         var cost = 0;
         var free = description.toLowerCase().indexOf("free");
         if (free != -1) {
-          console.log("IT'S FREE");
         }
 
         var ind = description.indexOf("$");
@@ -196,33 +216,129 @@ export class RssComponent implements OnInit {
           }
 
           cost = description.substring(ind + 1, counter);
-          console.log(cost);
+
+        }
+        eventToAdd.cost = cost;
+        var keys = description.split(" ", 100);
+
+
+
+
+
+        //keys = keys.toUpperCase;
+        description = description.toUpperCase();
+        eventName = eventName.toUpperCase();
+        //console.log(description);
+        // musicSet and spokenWordSet
+
+        let music: boolean = false;
+        let spokenWord: boolean = false;
+        let dance: boolean = false;
+        let food: boolean = false;
+        let art: boolean = false;
+
+        // CHECK MUSIC SET
+        musicSet.forEach(function(item){
+          if (description.indexOf(item) != -1) {
+            music = true;
+
+          }
+          if (eventName.indexOf(item) != -1) {
+            music = true;
+          }
+        }, this);
+
+        // CHECK SPOKEN WORD SET
+        spokenWordSet.forEach(function(item){
+          if (description.indexOf(item) != -1) {
+            spokenWord = true;
+          }
+          if (eventName.indexOf(item) != -1) {
+            spokenWord = true;
+          }
+        }, this);
+
+        // CHECK FOOD SET
+        foodSet.forEach(function(item){
+          if (description.indexOf(item) != -1) {
+            food = true;
+          }
+          if (eventName.indexOf(item) != -1) {
+            food = true;
+          }
+        }, this);
+
+        // CHECK ART SET
+        artSet.forEach(function(item){
+          if (description.indexOf(item) != -1) {
+            art = true;
+          }
+          if (eventName.indexOf(item) != -1) {
+            art = true;
+          }
+        }, this);
+
+        // CHECK DANCE SET
+        danceSet.forEach(function(item){
+          if (description.indexOf(item) != -1) {
+            dance = true;
+          }
+          if (eventName.indexOf(item) != -1) {
+            dance = true;
+          }
+        }, this);
+
+
+        var genres = "";
+
+        if (music) {
+          genres = genres + "music;";
+          //eventToAdd.genre.push("music");
         }
 
-        var keys = description.split(" ", 100);
-        var mySet = new Set();
+        if (spokenWord) {
+          genres = genres + "spoken word;";
+          //eventToAdd.genre.push("spoken word");
+        }
+
+        if (dance) {
+          genres = genres + "dance;";
+          //eventToAdd.genre.push("dance");
+        }
+
+        if (art) {
+          genres = genres + "art;";
+          //eventToAdd.genre.push("art");
+        }
+
+        if (food) {
+          genres = genres + "food;";
+          //eventToAdd.genre.push("food");
+        }
+        //console.log(eventToAdd.genre);
+        eventToAdd.genre = genres;
 
 
-        // var splitted = time.split(" ", 5);
-
-
-
-
-
-
-
-        // parse and add the event GENRE
 
         // set default report value to ZERO
-        //this.eventToAdd.report = 0;
-
-        //this.dal.addToList(this.eventToAdd);
+        eventToAdd.report = 0;
+        if (list.indexOf(eventToAdd) == -1) {
+          list.push(eventToAdd);
+        }
 
       }
       resolve();
      })
     }).then(() => {
       //Add everything from the list to the database
+      for (var toAdd of list) {
+
+
+        // UNCOMMENT THIS IF YOU WANT TO ADD THE EVENTS OF THE DAY TO THE DATABASE
+        //this.dal.addToList(toAdd);
+
+      }
+
     });
   }
 

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { RssComponent } from './rss/rss.component';
-import { DataAccessLayerComponent } from './data-access-layer/data-access-layer.component';
 import { EventListDataComponent } from './event-list-data/event-list-data.component';
 import { EventCalendarDataComponent } from './event-calendar-data/event-calendar-data.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +13,16 @@ import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { SearchComponent } from './search/search.component';
 import { ReportComponent } from './report/report.component';
 import { EventComponent } from './event/event.component';
+import { ReportPipe } from './report.pipe';
+import { MusicGenrePipe } from './music-genre.pipe';
+import { DanceGenrePipe } from './dance-genre.pipe';
+import { ArtGenrePipe } from './art-genre.pipe';
+import { FoodGenrePipe } from './food-genre.pipe';
+import { SpokenWordGenrePipe } from './spoken-word-genre.pipe';
+import { CostPipe } from './cost.pipe';
+import { FilterVarsService } from "./filter-vars.service";
+import { DataAccessLayerService } from "./data-access-layer.service";
+import { DatePipe } from './date.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -29,14 +38,21 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     RssComponent,
-    DataAccessLayerComponent,
     EventListDataComponent,
     EventCalendarDataComponent,
     HeaderComponent,
     OptionsMenuComponent,
     SearchComponent,
     ReportComponent,
-    EventComponent
+    EventComponent,
+    ReportPipe,
+    MusicGenrePipe,
+    DanceGenrePipe,
+    ArtGenrePipe,
+    FoodGenrePipe,
+    SpokenWordGenrePipe,
+    CostPipe,
+    DatePipe
   ],
   imports: [
     BrowserModule,
@@ -44,7 +60,7 @@ export const firebaseConfig = {
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FilterVarsService, DataAccessLayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

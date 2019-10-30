@@ -1,0 +1,61 @@
+.filter-tab{
+  color: #EDEDF4;
+}
+.filter-tab:hover{
+  border-color: #EDEDF4;
+}
+.filter-tab.active{
+  background-color: #EDEDF4;
+  color: #A20021;
+}
+#filter-tabs{ border: none; }
+.filter-container{
+  border: solid 2px #EDEDF4;
+  border-radius: 0 0 0.5em 0.5em;
+}
+.filter-container{
+  -webkit-flex-flow: row wrap;
+  flex-flow:row wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: space-around;
+  align-content: space-around;
+}
+.filter{
+  margin: 10px auto;
+  position: relative;
+}
+.filter-btn{
+  width : 100px;
+  height : 60px;
+  font-size:1.1em;
+  font-weight: bold;
+  background-color: #EDEDF4;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
+}
+.filter-btn:hover{
+  background-color: #D8D8DE;
+}
+.filter-btn:focus{
+  box-shadow: none;
+  outline:none;
+}
+.oi-circle-check{
+  position : absolute;
+  top:6px;
+  left:80px;
+  color: #64A77E;
+  display : none;
+}
+.filterOn>span{
+  display: inherit;
+}
+@media (min-width: 768px){
+  .filter-container{
+    /* Make shit align left */
+  }
+}
+
+

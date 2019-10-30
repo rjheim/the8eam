@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RssComponent } from './rss.component';
 
-describe('RssComponent', () => {
+xdescribe('RssComponent', () => {
   let component: RssComponent;
   let fixture: ComponentFixture<RssComponent>;
 
@@ -19,7 +19,7 @@ describe('RssComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create an instance', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,30 +1,51 @@
-<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+
+
+
+<div (click)="onContainerClicked($event)"  class="modal fade" data-backdrop="true" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
      [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Report</h2>
-        <button (click)="hide()" class="pull-right" type="button">
-          <span>Close</span>
-        </button>
+
+    <div class="modal-content" id="feedback-modal" >
+      <div class="modal-header feedback-header">
+        <div class="container-fluid">
+          <div class="row">
+            <h3 class="col-11" style="padding-left:15px;">Feedback</h3>
+            <div class="col-1">
+              <button (click)="hide()" class="close close-feedback" aria-label="Close" type="button">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <h4 class="col-12 event-feedback" style="margin: 0 0 5px 0;"><small>{{eventItem.title}}</small></h4>
+          </div>
+        </div>
       </div>
       <div class="modal-body">
-        <div>
-          <label for="description">*Description</label>
-          <textarea id = "description"></textarea>
-        </div>
-        <h4>{{eventItem.id}}</h4>
 
-        <div>
-          <label for="email">Email</label>
-          <input type = "email" id = "email">
+        <div class="form-group">
+          <label >Feedback Type</label>
+          <select class="form-control">
+            <option>Inaccurate Information</option>
+            <option>Inappropriate</option>
+            <option>Duplicate Item</option>
+            <option>This isn't an Art Event</option>
+          </select>
         </div>
+
+        <div class="form-group">
+          <label  for="description">Description (Required)</label>
+          <textarea class = "form-control" id = "description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class = "form-control" type = "email" id = "email">
+        </div>
+
       </div>
       <div class="modal-footer">
         <div class = "button">
-          <button type="submit" id = "submitbutton">Submit</button>
+          <button (click)="submitFeedback(eventItem.id)" type="submit" id ="submitbutton" class="btn btn-primary btn-block">Submit</button>
         </div>
       </div>
     </div>
-  </div>
+
 </div>

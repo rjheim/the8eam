@@ -1,0 +1,20 @@
+
+.search-bar:focus{
+  box-shadow: none;
+  border-color:transparent;
+}
+.search-bar{
+  width:140px;
+}
+@media (min-width: 345px){
+  .search-bar{
+    width:100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-bar{
+    min-width: 240px;
+    margin-right: 5px;
+  }
+}

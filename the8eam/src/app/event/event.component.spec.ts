@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventComponent } from './event.component';
+import {Component , Input} from "@angular/core";
 
 describe('EventComponent', () => {
   let component: EventComponent;
@@ -8,7 +9,10 @@ describe('EventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventComponent ]
+      declarations: [
+        EventComponent,
+        MockReportComponent
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +23,16 @@ describe('EventComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create an instance', () => {
     expect(component).toBeTruthy();
   });
+
 });
+@Component({
+  selector: 'app-report',
+  template: ''
+})
+class MockReportComponent{
+  @Input()
+  eventItem: Event;
+}
